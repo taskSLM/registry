@@ -1,0 +1,13 @@
+name: "ultrafeedback-binarized-preferences-cleaned"
+creator: "argilla"
+size_rows: "61,135"
+target_task: "Preference Alignment (DPO)"
+license: "MIT"
+huggingface_url: "https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned"
+description: "A cleaned and decontaminated version of the UltraFeedback preference dataset, containing 61K high-quality preference pairs scored by GPT-4. Designed for Direct Preference Optimization (DPO) to align models with human preferences. The MIT license makes it suitable for both research and commercial alignment workflows."
+tags:
+  - alignment
+  - dpo
+  - preference-tuning
+  - rlhf
+  - decontaminated

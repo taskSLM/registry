@@ -1,0 +1,14 @@
+name: "Qwen3.5-4B"
+developer: "Alibaba"
+parameters: "4.0B"
+primary_task: "General Reasoning & Instruction Following"
+context_window: "256K tokens (extendable to 1M+)"
+license: "Apache 2.0"
+huggingface_url: "https://huggingface.co/Qwen/Qwen3.5-4B"
+description: "A state-of-the-art 4B parameter model with thinking/reasoning mode toggle, supporting 100+ languages. Features strong instruction following, long-document processing, and competitive performance across diverse benchmarks. Ideal for general-purpose deployment where quality and efficiency must be balanced."
+tags:
+  - reasoning
+  - multilingual
+  - instruction-following
+  - long-context
+  - thinking-mode

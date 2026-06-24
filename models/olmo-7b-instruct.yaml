@@ -1,0 +1,14 @@
+name: "OLMo-7B-Instruct"
+developer: "Allen Institute for AI (AI2)"
+parameters: "7.0B"
+primary_task: "Open Science Research & Instruction Following"
+context_window: "2K tokens"
+license: "Apache 2.0"
+huggingface_url: "https://huggingface.co/allenai/OLMo-7B-Instruct"
+description: "A fully open 7B parameter instruction-tuned model from AI2, built on the principles of open science. All training data, code, weights, logs, and intermediate checkpoints are publicly available. Provides complete reproducibility and transparency unmatched by any other model in its class. Ideal for academic research and reproducible ML."
+tags:
+  - open-science
+  - research
+  - instruction-following
+  - reproducible
+  - fully-open

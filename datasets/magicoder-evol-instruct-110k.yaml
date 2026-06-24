@@ -1,0 +1,13 @@
+name: "Magicoder-Evol-Instruct-110K"
+creator: "ise-uiuc"
+size_rows: "110,000"
+target_task: "Code Generation"
+license: "MIT"
+huggingface_url: "https://huggingface.co/datasets/ise-uiuc/Magicoder-Evol-Instruct-110K"
+description: "A high-quality, decontaminated code instruction dataset with 110K programming problems and solutions across multiple languages. Generated using the Evol-Instruct method to progressively increase problem complexity. The MIT license makes it ideal for both research and commercial fine-tuning of code-focused SLMs."
+tags:
+  - code-generation
+  - instruction-tuning
+  - programming
+  - decontaminated
+  - multi-language

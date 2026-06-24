@@ -1,0 +1,14 @@
+name: "smoltalk"
+creator: "HuggingFaceTB"
+size_rows: "1,100,000"
+target_task: "General Instruction Following"
+license: "Apache 2.0"
+huggingface_url: "https://huggingface.co/datasets/HuggingFaceTB/smoltalk"
+description: "The core instruction-tuning dataset used to train Hugging Face's SmolLM2 family of models. A carefully curated 1.1M-row mixture covering chat, reasoning, code, and general instruction following. Fully open under Apache 2.0, making it the go-to starting point for fine-tuning small language models on diverse tasks."
+tags:
+  - instruction-tuning
+  - chat
+  - reasoning
+  - code
+  - general-purpose
+  - fully-open

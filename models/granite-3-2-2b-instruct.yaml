@@ -1,0 +1,15 @@
+name: "Granite-3.2-2B-Instruct"
+developer: "IBM Research"
+parameters: "2.0B"
+primary_task: "Enterprise Function Calling & Tool Use"
+context_window: "128K tokens"
+license: "Apache 2.0"
+huggingface_url: "https://huggingface.co/ibm-granite/granite-3.2-2b-instruct"
+description: "IBM's enterprise-grade 2B parameter instruction-tuned model with native function calling capabilities and 128K context window. Optimized for enterprise tool use, structured data extraction, and production deployment. Combines small size with surprisingly strong performance on business automation tasks."
+tags:
+  - function-calling
+  - enterprise
+  - tool-use
+  - long-context
+  - structured-output
+  - production

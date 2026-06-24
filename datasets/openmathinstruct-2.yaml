@@ -1,0 +1,13 @@
+name: "OpenMathInstruct-2"
+creator: "NVIDIA"
+size_rows: "14,000,000"
+target_task: "Math Reasoning"
+license: "CC-BY-4.0"
+huggingface_url: "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2"
+description: "A massive 14M-row math instruction dataset from NVIDIA, augmented from GSM8K and MATH benchmarks using Llama-3.1-405B. Covers chain-of-thought reasoning across diverse math problems at varying difficulty levels. The largest permissively licensed math reasoning dataset available for fine-tuning small models."
+tags:
+  - math-reasoning
+  - chain-of-thought
+  - fine-tuning
+  - synthetic-data
+  - large-scale

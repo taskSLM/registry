@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     # This ensures the action ONLY runs when someone submits our exact "Model Submission" form
     if: contains(github.event.issue.labels.*.name, 'model-submission')
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,26 +30,41 @@ jobs:
         run: |
           # Convert the parser's JSON string into real variables using jq
           JSON_DATA='${{ steps.parse.outputs.parsed-issue-body }}'
-          
+
           MODEL_NAME=$(echo "$JSON_DATA" | jq -r '."model_name"')
+          DEVELOPER=$(echo "$JSON_DATA" | jq -r '."developer"')
           PARAM_SIZE=$(echo "$JSON_DATA" | jq -r '."parameter_size"')
+          LICENSE=$(echo "$JSON_DATA" | jq -r '."license"')
           PRIMARY_TASK=$(echo "$JSON_DATA" | jq -r '."primary_task"')
+          CONTEXT_WINDOW=$(echo "$JSON_DATA" | jq -r '."context_window"')
           HF_URL=$(echo "$JSON_DATA" | jq -r '."hf_url"')
           DESCRIPTION=$(echo "$JSON_DATA" | jq -r '."description"')
-          
+          TAGS_RAW=$(echo "$JSON_DATA" | jq -r '."tags" // ""')
+
           # Create a safe file name (e.g., "phi-3-mini" from "Phi 3 Mini")
           SAFE_FILE_NAME=$(echo "$MODEL_NAME" | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]_-' | tr ' ' '-')
-          
+
           # Write the data into a brand new YAML file inside the /models directory
           cat <<EOF > "models/${SAFE_FILE_NAME}.yaml"
           name: "${MODEL_NAME}"
+          developer: "${DEVELOPER}"
           parameters: "${PARAM_SIZE}"
           primary_task: "${PRIMARY_TASK}"
+          context_window: "${CONTEXT_WINDOW}"
+          license: "${LICENSE}"
           huggingface_url: "${HF_URL}"
           description: "${DESCRIPTION}"
           submitted_by: "@${{ github.event.issue.user.login }}"
           EOF
-          
+
+          # Append tags as a YAML list if provided
+          if [ -n "$TAGS_RAW" ]; then
+            echo "tags:" >> "models/${SAFE_FILE_NAME}.yaml"
+            echo "$TAGS_RAW" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
+              [ -n "$tag" ] && echo "  - ${tag}" >> "models/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
           # Pass the variables downstream to use in the PR title
           echo "safe_name=${SAFE_FILE_NAME}" >> $GITHUB_ENV
           echo "model_name=${MODEL_NAME}" >> $GITHUB_ENV
@@ -62,7 +77,7 @@ jobs:
           body: |
             This is an automated PR generated from Issue #${{ github.event.issue.number }}.
             Submitted by: @${{ github.event.issue.user.login }}
-            
+
             Please review the generated data inside `models/${{ env.safe_name }}.yaml`.
           branch: "submit/${{ env.safe_name }}"
           base: "main"

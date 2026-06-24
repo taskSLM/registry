@@ -17,6 +17,14 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: developer
+    attributes:
+      label: "Developer / Organization"
+      placeholder: "e.g., Microsoft, Google DeepMind, Hugging Face"
+    validations:
+      required: true
+
   - type: dropdown
     id: parameter_size
     attributes:
@@ -29,11 +37,34 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: license
+    attributes:
+      label: "Model License"
+      description: "Select the license under which the model weights are released."
+      options:
+        - "Apache 2.0"
+        - "MIT"
+        - "CC-BY-4.0"
+        - "Llama Community License"
+        - "BSD"
+        - "Other (specify in description)"
+    validations:
+      required: true
+
   - type: input
     id: primary_task
     attributes:
       label: "Primary Specialized Task"
       placeholder: "e.g., Text-to-SQL, Medical NER, Function Calling"
+    validations:
+      required: true
+
+  - type: input
+    id: context_window
+    attributes:
+      label: "Context Window"
+      placeholder: "e.g., 128K tokens, 4K tokens"
     validations:
       required: true
 
@@ -52,6 +83,15 @@ body:
       placeholder: "Briefly explain what makes this model great at this specific task, hardware requirements, etc."
     validations:
       required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      placeholder: "e.g., reasoning, code-generation, multilingual, edge-computing"
+      description: "Comma-separated list of tags to categorize this model."
+    validations:
+      required: false
 
   - type: checkboxes
     id: compliance

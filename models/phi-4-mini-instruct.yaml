@@ -1,0 +1,14 @@
+name: "Phi-4-mini-instruct"
+developer: "Microsoft"
+parameters: "3.8B"
+primary_task: "General Reasoning & Knowledge QA"
+context_window: "4K tokens"
+license: "MIT"
+huggingface_url: "https://huggingface.co/microsoft/Phi-4-mini-instruct"
+description: "Microsoft's best-in-class 3.8B parameter model trained on 5T tokens of high-quality filtered and synthetic data. Achieves top-tier reasoning benchmarks at its size: ARC-C 83.7%, GSM8K 88.6%. Extremely memory-efficient — runs in Q4 at just 2.49GB. Optimized for tight hardware, local deployment, and commercial use."
+tags:
+  - reasoning
+  - local-llm
+  - lightweight
+  - knowledge-qa
+  - edge-computing
