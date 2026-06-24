@@ -1,0 +1,31 @@
+name: "OLMo-1B"
+developer: "Allen Institute for AI (AI2)"
+parameters: "1.0B"
+param_count_m: 1000
+primary_task: "Research & Reproducibility"
+context_window: "2K tokens"
+license: "Apache 2.0"
+family: "olmo"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/allenai/OLMo-1B"
+description: "The 1B parameter member of AI2's OLMo family — fully open with all training data, code, weights, logs, and checkpoints available. Trained on Dolma dataset with complete reproducibility. Ideal for controlled experiments on small-model capabilities and training dynamics research."
+badges:
+  - verified
+  - fully-open
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.6
+  recommended_backend: "llama.cpp"
+tags:
+  - research
+  - fully-open
+  - reproducible
+  - lightweight
+  - baseline

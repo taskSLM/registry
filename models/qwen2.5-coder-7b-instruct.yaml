@@ -1,0 +1,31 @@
+name: "Qwen2.5-Coder-7B-Instruct"
+developer: "Alibaba"
+parameters: "7.6B"
+param_count_m: 7600
+primary_task: "Code Generation"
+context_window: "128K tokens"
+license: "Apache 2.0"
+family: "qwen"
+generation: 2.5
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct"
+description: "Alibaba's specialized code generation model at 7.6B parameters. Fine-tuned from Qwen2.5-7B on massive code datasets for superior performance on programming tasks. Supports 92 programming languages, long-context code understanding (128K), and excels at code completion, debugging, and code translation. The strongest Apache 2.0 code specialist under 8B."
+badges:
+  - verified
+  - community-pick
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.5
+  recommended_backend: "llama.cpp"
+tags:
+  - code-generation
+  - programming
+  - multi-language
+  - long-context
+  - high-performance

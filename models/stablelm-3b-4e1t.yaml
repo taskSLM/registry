@@ -1,0 +1,29 @@
+name: "StableLM-3B-4E1T"
+developer: "Stability AI"
+parameters: "3.0B"
+param_count_m: 3000
+primary_task: "General Reasoning & Chat"
+context_window: "4K tokens"
+license: "CC-BY-SA-4.0"
+family: "stablelm"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/stabilityai/stablelm-3b-4e1t"
+description: "Stability AI's 3B parameter model trained on 1 trillion tokens. Delivers solid general reasoning and conversational ability at a compact size. CC-BY-SA-4.0 licensed — permissive with attribution and share-alike requirements. A good choice when Apache/MIT models aren't available for a specific deployment scenario."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.8
+  recommended_backend: "llama.cpp"
+tags:
+  - reasoning
+  - chat
+  - lightweight
+  - efficient

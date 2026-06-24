@@ -1,0 +1,30 @@
+name: "Qwen2.5-Math-7B-Instruct"
+developer: "Alibaba"
+parameters: "7.6B"
+param_count_m: 7600
+primary_task: "Math Reasoning"
+context_window: "128K tokens"
+license: "Apache 2.0"
+family: "qwen"
+generation: 2.5
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct"
+description: "Alibaba's specialized mathematics model at 7.6B parameters. Fine-tuned from Qwen2.5-7B with advanced math reasoning training including chain-of-thought and tool-integrated reasoning. Excels at competition-level mathematics, theorem proving, and complex numerical reasoning. The strongest Apache 2.0 math specialist under 8B."
+badges:
+  - verified
+  - community-pick
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.5
+  recommended_backend: "llama.cpp"
+tags:
+  - math-reasoning
+  - chain-of-thought
+  - reasoning
+  - high-performance

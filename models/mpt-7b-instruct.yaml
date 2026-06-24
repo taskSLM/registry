@@ -1,0 +1,29 @@
+name: "MPT-7B-Instruct"
+developer: "MosaicML"
+parameters: "7.0B"
+param_count_m: 7000
+primary_task: "Long-Context Instruction Following"
+context_window: "65K tokens"
+license: "Apache 2.0"
+family: "mpt"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/mosaicml/mpt-7b-instruct"
+description: "MosaicML's 7B parameter instruction-tuned model with native 65K token context window. Trained with ALiBi positional encoding for efficient long-context processing. One of the first truly open 7B-class instruct models with Apache 2.0 licensing. Strong for long-document QA, summarization, and instruction following at scale."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.2
+  recommended_backend: "llama.cpp"
+tags:
+  - long-context
+  - instruction-following
+  - open-source
+  - chat

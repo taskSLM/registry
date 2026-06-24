@@ -1,0 +1,30 @@
+name: "Cerebras-GPT-6.7B"
+developer: "Cerebras Systems"
+parameters: "6.7B"
+param_count_m: 6700
+primary_task: "Research & Chinchilla-Optimal Training"
+context_window: "2K tokens"
+license: "Apache 2.0"
+family: "cerebras"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/cerebras/Cerebras-GPT-6.7B"
+description: "Cerebras's 6.7B parameter model trained following the Chinchilla scaling laws — 1.1T tokens for optimal compute efficiency. Part of a family of models from 111M to 13B all trained with identical data and recipes. Apache 2.0 licensed with full reproducibility. An important reference point for understanding compute-optimal training at the 7B scale."
+badges:
+  - verified
+  - baseline
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.0
+  recommended_backend: "llama.cpp"
+tags:
+  - research
+  - baseline
+  - efficient
+  - open-source

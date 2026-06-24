@@ -1,0 +1,30 @@
+name: "Amber-7B"
+developer: "LLM360"
+parameters: "7.0B"
+param_count_m: 7000
+primary_task: "Research & Reproducibility"
+context_window: "2K tokens"
+license: "Apache 2.0"
+family: "amber"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/LLM360/Amber"
+description: "LLM360's fully open 7B parameter model trained with complete transparency — all training data, code, intermediate checkpoints, and metrics are publicly available. Part of the LLM360 initiative for fully open-source LLM development. Trained on 1.25T tokens with a focus on reproducibility and open science."
+badges:
+  - verified
+  - fully-open
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.2
+  recommended_backend: "llama.cpp"
+tags:
+  - research
+  - fully-open
+  - reproducible
+  - open-science

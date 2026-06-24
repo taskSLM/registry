@@ -2,13 +2,13 @@
   "meta": {
     "name": "SLM World Registry",
     "description": "The world's largest registry of Small Language Models under 8B parameters",
-    "generated_at": "2026-06-24T20:33:55.543004+00:00",
+    "generated_at": "2026-06-24T20:38:47.224151+00:00",
     "version": "1.0.0",
     "counts": {
-      "models": 27,
+      "models": 35,
       "datasets": 21,
       "tasks": 15,
-      "benchmarks": 7
+      "benchmarks": 24
     }
   },
   "models": {
@@ -52,6 +52,116 @@
       "_connected_tasks": [
         "behavioral-anomaly-detection"
       ]
+    },
+    "amber-7b": {
+      "name": "Amber-7B",
+      "developer": "LLM360",
+      "parameters": "7.0B",
+      "param_count_m": 7000,
+      "primary_task": "Research & Reproducibility",
+      "context_window": "2K tokens",
+      "license": "Apache 2.0",
+      "family": "amber",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/LLM360/Amber",
+      "description": "LLM360's fully open 7B parameter model trained with complete transparency — all training data, code, intermediate checkpoints, and metrics are publicly available. Part of the LLM360 initiative for fully open-source LLM development. Trained on 1.25T tokens with a focus on reproducibility and open science.",
+      "badges": [
+        "verified",
+        "fully-open"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.2,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "research",
+        "fully-open",
+        "reproducible",
+        "open-science"
+      ],
+      "_file": "models/amber-7b.yaml",
+      "_connected_tasks": []
+    },
+    "cerebras-gpt-6.7b": {
+      "name": "Cerebras-GPT-6.7B",
+      "developer": "Cerebras Systems",
+      "parameters": "6.7B",
+      "param_count_m": 6700,
+      "primary_task": "Research & Chinchilla-Optimal Training",
+      "context_window": "2K tokens",
+      "license": "Apache 2.0",
+      "family": "cerebras",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/cerebras/Cerebras-GPT-6.7B",
+      "description": "Cerebras's 6.7B parameter model trained following the Chinchilla scaling laws — 1.1T tokens for optimal compute efficiency. Part of a family of models from 111M to 13B all trained with identical data and recipes. Apache 2.0 licensed with full reproducibility. An important reference point for understanding compute-optimal training at the 7B scale.",
+      "badges": [
+        "verified",
+        "baseline"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.0,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "research",
+        "baseline",
+        "efficient",
+        "open-source"
+      ],
+      "_file": "models/cerebras-gpt-6.7b.yaml",
+      "_connected_tasks": []
+    },
+    "deepseek-coder-6.7b-instruct": {
+      "name": "DeepSeek-Coder-6.7B-Instruct",
+      "developer": "DeepSeek AI",
+      "parameters": "6.7B",
+      "param_count_m": 6700,
+      "primary_task": "Code Generation",
+      "context_window": "16K tokens",
+      "license": "Apache 2.0",
+      "family": "deepseek",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
+      "description": "DeepSeek's specialized 6.7B code generation model trained on 2 trillion tokens of code data across 87 programming languages. Built on a 16K context window for repository-level code understanding. Achieves strong results on HumanEval, MBPP, and LiveCodeBench. Apache 2.0 licensed — one of the best open code models at its size.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.0,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "code-generation",
+        "programming",
+        "multi-language",
+        "high-performance"
+      ],
+      "_file": "models/deepseek-coder-6.7b-instruct.yaml",
+      "_connected_tasks": []
     },
     "falcon-7b-instruct": {
       "name": "Falcon-7B-Instruct",
@@ -362,6 +472,80 @@
         "instruction-following"
       ],
       "_file": "models/llama-3.2-1b-instruct.yaml",
+      "_connected_tasks": []
+    },
+    "mpt-7b-instruct": {
+      "name": "MPT-7B-Instruct",
+      "developer": "MosaicML",
+      "parameters": "7.0B",
+      "param_count_m": 7000,
+      "primary_task": "Long-Context Instruction Following",
+      "context_window": "65K tokens",
+      "license": "Apache 2.0",
+      "family": "mpt",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/mosaicml/mpt-7b-instruct",
+      "description": "MosaicML's 7B parameter instruction-tuned model with native 65K token context window. Trained with ALiBi positional encoding for efficient long-context processing. One of the first truly open 7B-class instruct models with Apache 2.0 licensing. Strong for long-document QA, summarization, and instruction following at scale.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.2,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "long-context",
+        "instruction-following",
+        "open-source",
+        "chat"
+      ],
+      "_file": "models/mpt-7b-instruct.yaml",
+      "_connected_tasks": []
+    },
+    "olmo-1b": {
+      "name": "OLMo-1B",
+      "developer": "Allen Institute for AI (AI2)",
+      "parameters": "1.0B",
+      "param_count_m": 1000,
+      "primary_task": "Research & Reproducibility",
+      "context_window": "2K tokens",
+      "license": "Apache 2.0",
+      "family": "olmo",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/allenai/OLMo-1B",
+      "description": "The 1B parameter member of AI2's OLMo family — fully open with all training data, code, weights, logs, and checkpoints available. Trained on Dolma dataset with complete reproducibility. Ideal for controlled experiments on small-model capabilities and training dynamics research.",
+      "badges": [
+        "verified",
+        "fully-open"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 0.6,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "research",
+        "fully-open",
+        "reproducible",
+        "lightweight",
+        "baseline"
+      ],
+      "_file": "models/olmo-1b.yaml",
       "_connected_tasks": []
     },
     "olmo-7b-instruct": {
@@ -835,6 +1019,81 @@
       "_file": "models/qwen2.5-3b-instruct.yaml",
       "_connected_tasks": []
     },
+    "qwen2.5-coder-7b-instruct": {
+      "name": "Qwen2.5-Coder-7B-Instruct",
+      "developer": "Alibaba",
+      "parameters": "7.6B",
+      "param_count_m": 7600,
+      "primary_task": "Code Generation",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 2.5,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct",
+      "description": "Alibaba's specialized code generation model at 7.6B parameters. Fine-tuned from Qwen2.5-7B on massive code datasets for superior performance on programming tasks. Supports 92 programming languages, long-context code understanding (128K), and excels at code completion, debugging, and code translation. The strongest Apache 2.0 code specialist under 8B.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "code-generation",
+        "programming",
+        "multi-language",
+        "long-context",
+        "high-performance"
+      ],
+      "_file": "models/qwen2.5-coder-7b-instruct.yaml",
+      "_connected_tasks": []
+    },
+    "qwen2.5-math-7b-instruct": {
+      "name": "Qwen2.5-Math-7B-Instruct",
+      "developer": "Alibaba",
+      "parameters": "7.6B",
+      "param_count_m": 7600,
+      "primary_task": "Math Reasoning",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 2.5,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/Qwen/Qwen2.5-Math-7B-Instruct",
+      "description": "Alibaba's specialized mathematics model at 7.6B parameters. Fine-tuned from Qwen2.5-7B with advanced math reasoning training including chain-of-thought and tool-integrated reasoning. Excels at competition-level mathematics, theorem proving, and complex numerical reasoning. The strongest Apache 2.0 math specialist under 8B.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "math-reasoning",
+        "chain-of-thought",
+        "reasoning",
+        "high-performance"
+      ],
+      "_file": "models/qwen2.5-math-7b-instruct.yaml",
+      "_connected_tasks": []
+    },
     "qwen3-5-4b": {
       "name": "Qwen3.5-4B",
       "developer": "Alibaba",
@@ -1048,6 +1307,42 @@
         "preference-alignment",
         "text-summarization"
       ]
+    },
+    "stablelm-3b-4e1t": {
+      "name": "StableLM-3B-4E1T",
+      "developer": "Stability AI",
+      "parameters": "3.0B",
+      "param_count_m": 3000,
+      "primary_task": "General Reasoning & Chat",
+      "context_window": "4K tokens",
+      "license": "CC-BY-SA-4.0",
+      "family": "stablelm",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/stabilityai/stablelm-3b-4e1t",
+      "description": "Stability AI's 3B parameter model trained on 1 trillion tokens. Delivers solid general reasoning and conversational ability at a compact size. CC-BY-SA-4.0 licensed — permissive with attribution and share-alike requirements. A good choice when Apache/MIT models aren't available for a specific deployment scenario.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.8,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "chat",
+        "lightweight",
+        "efficient"
+      ],
+      "_file": "models/stablelm-3b-4e1t.yaml",
+      "_connected_tasks": []
     },
     "tinyllama-1-1b": {
       "name": "TinyLlama-1.1B-Chat-v1.0",
@@ -2617,20 +2912,20 @@
         "datasets": 7
       },
       "Apache 2.0": {
-        "models": 20,
+        "models": 27,
         "datasets": 6
       },
       "Llama 3.2 Community License": {
         "models": 2,
         "datasets": 0
       },
+      "CC-BY-SA-4.0": {
+        "models": 1,
+        "datasets": 2
+      },
       "CC-BY-4.0": {
         "models": 0,
         "datasets": 4
-      },
-      "CC-BY-SA-4.0": {
-        "models": 0,
-        "datasets": 2
       },
       "BSD": {
         "models": 0,
@@ -2643,9 +2938,9 @@
     },
     "param_size_buckets": {
       "Under 1B": 4,
-      "1B - 3B": 10,
-      "3B - 5B": 9,
-      "5B - 8B": 4
+      "1B - 3B": 11,
+      "3B - 5B": 10,
+      "5B - 8B": 10
     }
   },
   "task_graph": {
@@ -2906,6 +3201,18 @@
   },
   "benchmarks": [
     {
+      "model": "models/qwen2.5-coder-7b-instruct.yaml",
+      "task": "tasks/text-to-sql.yaml",
+      "metric": "Execution Accuracy",
+      "score": 86.4,
+      "dataset": "datasets/spider.yaml",
+      "notes": "Strong schema understanding from code training. Zero-shot Spider evaluation.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-Coder-7B-Instruct",
+      "_task_name": "Text-to-SQL Generation"
+    },
+    {
       "model": "models/phi-3-mini.yaml",
       "task": "tasks/text-to-sql.yaml",
       "metric": "Execution Accuracy",
@@ -2916,6 +3223,30 @@
       "verified": false,
       "_model_name": "Phi-3-mini-4k-instruct",
       "_task_name": "Text-to-SQL Generation"
+    },
+    {
+      "model": "models/qwen2.5-coder-7b-instruct.yaml",
+      "task": "tasks/code-generation.yaml",
+      "metric": "HumanEval Score",
+      "score": 88.4,
+      "dataset": null,
+      "notes": "Specialized code model. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-Coder-7B-Instruct",
+      "_task_name": "Code Generation"
+    },
+    {
+      "model": "models/deepseek-coder-6.7b-instruct.yaml",
+      "task": "tasks/code-generation.yaml",
+      "metric": "HumanEval Score",
+      "score": 82.6,
+      "dataset": null,
+      "notes": "Trained on 2T tokens of code. As reported by DeepSeek AI.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "DeepSeek-Coder-6.7B-Instruct",
+      "_task_name": "Code Generation"
     },
     {
       "model": "models/gemma-3-4b-it.yaml",
@@ -2930,11 +3261,47 @@
       "_task_name": "Code Generation"
     },
     {
+      "model": "models/qwen2-5-7b-instruct.yaml",
+      "task": "tasks/code-generation.yaml",
+      "metric": "HumanEval Score",
+      "score": 79.3,
+      "dataset": null,
+      "notes": "Base instruct model, not code-specialized. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-7B-Instruct",
+      "_task_name": "Code Generation"
+    },
+    {
+      "model": "models/smollm3-3b.yaml",
+      "task": "tasks/code-generation.yaml",
+      "metric": "HumanEval Score",
+      "score": 61.2,
+      "dataset": null,
+      "notes": "Fully open 3B model — strong for its size. As reported by Hugging Face.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "SmolLM3-3B-Instruct",
+      "_task_name": "Code Generation"
+    },
+    {
+      "model": "models/qwen2.5-math-7b-instruct.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 93.8,
+      "dataset": "datasets/gsm8k.yaml",
+      "notes": "Specialized math model. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-Math-7B-Instruct",
+      "_task_name": "Math Reasoning"
+    },
+    {
       "model": "models/gemma-3-4b-it.yaml",
       "task": "tasks/math-reasoning.yaml",
       "metric": "GSM8K Accuracy",
       "score": 89.2,
-      "dataset": null,
+      "dataset": "datasets/gsm8k.yaml",
       "notes": "8-shot evaluation as reported by Google DeepMind.",
       "submitted_by": "@anckursingh",
       "verified": false,
@@ -2946,12 +3313,72 @@
       "task": "tasks/math-reasoning.yaml",
       "metric": "GSM8K Accuracy",
       "score": 88.6,
-      "dataset": null,
+      "dataset": "datasets/gsm8k.yaml",
       "notes": "As reported by Microsoft in the Phi-4 technical report.",
       "submitted_by": "@anckursingh",
       "verified": false,
       "_model_name": "Phi-4-mini-instruct",
       "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/qwen2-5-7b-instruct.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 90.1,
+      "dataset": "datasets/gsm8k.yaml",
+      "notes": "Base instruct model. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-7B-Instruct",
+      "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/qwen3-5-4b.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 91.2,
+      "dataset": "datasets/gsm8k.yaml",
+      "notes": "Thinking mode enabled. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen3.5-4B",
+      "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/tinyllama-1-1b.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 18.7,
+      "dataset": "datasets/gsm8k.yaml",
+      "notes": "1B baseline — not math-trained. Community evaluation.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "TinyLlama-1.1B-Chat-v1.0",
+      "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/qwen2-5-7b-instruct.yaml",
+      "task": "tasks/knowledge-qa.yaml",
+      "metric": "MMLU Score",
+      "score": 74.3,
+      "dataset": null,
+      "notes": "5-shot MMLU. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-7B-Instruct",
+      "_task_name": "Knowledge-Based Question Answering"
+    },
+    {
+      "model": "models/qwen3-5-4b.yaml",
+      "task": "tasks/knowledge-qa.yaml",
+      "metric": "MMLU Score",
+      "score": 72.8,
+      "dataset": null,
+      "notes": "5-shot MMLU at 4B scale. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen3.5-4B",
+      "_task_name": "Knowledge-Based Question Answering"
     },
     {
       "model": "models/phi-4-mini-instruct.yaml",
@@ -2978,6 +3405,66 @@
       "_task_name": "Knowledge-Based Question Answering"
     },
     {
+      "model": "models/gemma-3-4b-it.yaml",
+      "task": "tasks/knowledge-qa.yaml",
+      "metric": "MMLU Score",
+      "score": 68.2,
+      "dataset": null,
+      "notes": "5-shot MMLU. As reported by Google DeepMind.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Gemma 3 4B IT",
+      "_task_name": "Knowledge-Based Question Answering"
+    },
+    {
+      "model": "models/qwen3-5-4b.yaml",
+      "task": "tasks/general-reasoning.yaml",
+      "metric": "HellaSwag Score",
+      "score": 82.1,
+      "dataset": null,
+      "notes": "10-shot HellaSwag. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen3.5-4B",
+      "_task_name": "General Reasoning & Text Generation"
+    },
+    {
+      "model": "models/qwen2-5-7b-instruct.yaml",
+      "task": "tasks/general-reasoning.yaml",
+      "metric": "HellaSwag Score",
+      "score": 83.6,
+      "dataset": null,
+      "notes": "10-shot HellaSwag. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen2.5-7B-Instruct",
+      "_task_name": "General Reasoning & Text Generation"
+    },
+    {
+      "model": "models/phi-4-mini-instruct.yaml",
+      "task": "tasks/general-reasoning.yaml",
+      "metric": "HellaSwag Score",
+      "score": 79.4,
+      "dataset": null,
+      "notes": "10-shot HellaSwag. As reported by Microsoft.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Phi-4-mini-instruct",
+      "_task_name": "General Reasoning & Text Generation"
+    },
+    {
+      "model": "models/tinyllama-1-1b.yaml",
+      "task": "tasks/general-reasoning.yaml",
+      "metric": "HellaSwag Score",
+      "score": 60.3,
+      "dataset": null,
+      "notes": "1B baseline on HellaSwag. Community evaluation.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "TinyLlama-1.1B-Chat-v1.0",
+      "_task_name": "General Reasoning & Text Generation"
+    },
+    {
       "model": "models/llama-3-2-3b-instruct.yaml",
       "task": "tasks/instruction-following.yaml",
       "metric": "IFEval Score",
@@ -2987,6 +3474,18 @@
       "submitted_by": "@anckursingh",
       "verified": false,
       "_model_name": "Llama 3.2 3B Instruct",
+      "_task_name": "Instruction Following"
+    },
+    {
+      "model": "models/qwen3-5-4b.yaml",
+      "task": "tasks/instruction-following.yaml",
+      "metric": "IFEval Score",
+      "score": 81.2,
+      "dataset": null,
+      "notes": "Strong instruction following at 4B. As reported by Alibaba.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Qwen3.5-4B",
       "_task_name": "Instruction Following"
     }
   ]

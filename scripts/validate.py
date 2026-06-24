@@ -47,7 +47,7 @@ MODEL_OPTIONAL = ["tags", "submitted_by", "predecessor", "successor",
 
 KNOWN_BADGES = {"verified", "community-pick", "seed", "baseline", "fully-open", "popular", "new"}
 
-KNOWN_FAMILIES = {"phi", "qwen", "gemma", "smollm", "llama", "olmo", "granite", "tinylama", "falcon", "pythia", "aegis"}
+KNOWN_FAMILIES = {"phi", "qwen", "gemma", "smollm", "llama", "olmo", "granite", "tinylama", "falcon", "pythia", "aegis", "mpt", "stablelm", "amber", "cerebras", "deepseek"}
 
 DATASET_REQUIRED = [
     "name", "creator", "size_rows", "target_task",

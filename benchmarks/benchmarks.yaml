@@ -12,6 +12,15 @@
 
 entries:
   # ── Text-to-SQL ──────────────────────────────────────────────
+  - model: "models/qwen2.5-coder-7b-instruct.yaml"
+    task: "tasks/text-to-sql.yaml"
+    metric: "Execution Accuracy"
+    score: 86.4
+    dataset: "datasets/spider.yaml"
+    notes: "Strong schema understanding from code training. Zero-shot Spider evaluation."
+    submitted_by: "@anckursingh"
+    verified: false
+
   - model: "models/phi-3-mini.yaml"
     task: "tasks/text-to-sql.yaml"
     metric: "Execution Accuracy"
@@ -22,6 +31,24 @@ entries:
     verified: false
 
   # ── Code Generation ──────────────────────────────────────────
+  - model: "models/qwen2.5-coder-7b-instruct.yaml"
+    task: "tasks/code-generation.yaml"
+    metric: "HumanEval Score"
+    score: 88.4
+    dataset: null
+    notes: "Specialized code model. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/deepseek-coder-6.7b-instruct.yaml"
+    task: "tasks/code-generation.yaml"
+    metric: "HumanEval Score"
+    score: 82.6
+    dataset: null
+    notes: "Trained on 2T tokens of code. As reported by DeepSeek AI."
+    submitted_by: "@anckursingh"
+    verified: false
+
   - model: "models/gemma-3-4b-it.yaml"
     task: "tasks/code-generation.yaml"
     metric: "HumanEval Score"
@@ -31,12 +58,39 @@ entries:
     submitted_by: "@anckursingh"
     verified: false
 
+  - model: "models/qwen2-5-7b-instruct.yaml"
+    task: "tasks/code-generation.yaml"
+    metric: "HumanEval Score"
+    score: 79.3
+    dataset: null
+    notes: "Base instruct model, not code-specialized. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/smollm3-3b.yaml"
+    task: "tasks/code-generation.yaml"
+    metric: "HumanEval Score"
+    score: 61.2
+    dataset: null
+    notes: "Fully open 3B model — strong for its size. As reported by Hugging Face."
+    submitted_by: "@anckursingh"
+    verified: false
+
   # ── Math Reasoning ───────────────────────────────────────────
+  - model: "models/qwen2.5-math-7b-instruct.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 93.8
+    dataset: "datasets/gsm8k.yaml"
+    notes: "Specialized math model. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
   - model: "models/gemma-3-4b-it.yaml"
     task: "tasks/math-reasoning.yaml"
     metric: "GSM8K Accuracy"
     score: 89.2
-    dataset: null
+    dataset: "datasets/gsm8k.yaml"
     notes: "8-shot evaluation as reported by Google DeepMind."
     submitted_by: "@anckursingh"
     verified: false
@@ -45,12 +99,57 @@ entries:
     task: "tasks/math-reasoning.yaml"
     metric: "GSM8K Accuracy"
     score: 88.6
-    dataset: null
+    dataset: "datasets/gsm8k.yaml"
     notes: "As reported by Microsoft in the Phi-4 technical report."
     submitted_by: "@anckursingh"
     verified: false
 
+  - model: "models/qwen2-5-7b-instruct.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 90.1
+    dataset: "datasets/gsm8k.yaml"
+    notes: "Base instruct model. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/qwen3-5-4b.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 91.2
+    dataset: "datasets/gsm8k.yaml"
+    notes: "Thinking mode enabled. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/tinyllama-1-1b.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 18.7
+    dataset: "datasets/gsm8k.yaml"
+    notes: "1B baseline — not math-trained. Community evaluation."
+    submitted_by: "@anckursingh"
+    verified: false
+
   # ── Knowledge QA ─────────────────────────────────────────────
+  - model: "models/qwen2-5-7b-instruct.yaml"
+    task: "tasks/knowledge-qa.yaml"
+    metric: "MMLU Score"
+    score: 74.3
+    dataset: null
+    notes: "5-shot MMLU. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/qwen3-5-4b.yaml"
+    task: "tasks/knowledge-qa.yaml"
+    metric: "MMLU Score"
+    score: 72.8
+    dataset: null
+    notes: "5-shot MMLU at 4B scale. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
   - model: "models/phi-4-mini-instruct.yaml"
     task: "tasks/knowledge-qa.yaml"
     metric: "ARC-C"
@@ -69,6 +168,52 @@ entries:
     submitted_by: "@anckursingh"
     verified: false
 
+  - model: "models/gemma-3-4b-it.yaml"
+    task: "tasks/knowledge-qa.yaml"
+    metric: "MMLU Score"
+    score: 68.2
+    dataset: null
+    notes: "5-shot MMLU. As reported by Google DeepMind."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  # ── General Reasoning ────────────────────────────────────────
+  - model: "models/qwen3-5-4b.yaml"
+    task: "tasks/general-reasoning.yaml"
+    metric: "HellaSwag Score"
+    score: 82.1
+    dataset: null
+    notes: "10-shot HellaSwag. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/qwen2-5-7b-instruct.yaml"
+    task: "tasks/general-reasoning.yaml"
+    metric: "HellaSwag Score"
+    score: 83.6
+    dataset: null
+    notes: "10-shot HellaSwag. As reported by Alibaba."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/phi-4-mini-instruct.yaml"
+    task: "tasks/general-reasoning.yaml"
+    metric: "HellaSwag Score"
+    score: 79.4
+    dataset: null
+    notes: "10-shot HellaSwag. As reported by Microsoft."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/tinyllama-1-1b.yaml"
+    task: "tasks/general-reasoning.yaml"
+    metric: "HellaSwag Score"
+    score: 60.3
+    dataset: null
+    notes: "1B baseline on HellaSwag. Community evaluation."
+    submitted_by: "@anckursingh"
+    verified: false
+
   # ── Instruction Following ────────────────────────────────────
   - model: "models/llama-3-2-3b-instruct.yaml"
     task: "tasks/instruction-following.yaml"
@@ -76,5 +221,14 @@ entries:
     score: 78.6
     dataset: null
     notes: "Instruction-following evaluation. As reported by Meta."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/qwen3-5-4b.yaml"
+    task: "tasks/instruction-following.yaml"
+    metric: "IFEval Score"
+    score: 81.2
+    dataset: null
+    notes: "Strong instruction following at 4B. As reported by Alibaba."
     submitted_by: "@anckursingh"
     verified: false

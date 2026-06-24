@@ -1,0 +1,29 @@
+name: "DeepSeek-Coder-6.7B-Instruct"
+developer: "DeepSeek AI"
+parameters: "6.7B"
+param_count_m: 6700
+primary_task: "Code Generation"
+context_window: "16K tokens"
+license: "Apache 2.0"
+family: "deepseek"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct"
+description: "DeepSeek's specialized 6.7B code generation model trained on 2 trillion tokens of code data across 87 programming languages. Built on a 16K context window for repository-level code understanding. Achieves strong results on HumanEval, MBPP, and LiveCodeBench. Apache 2.0 licensed — one of the best open code models at its size."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.0
+  recommended_backend: "llama.cpp"
+tags:
+  - code-generation
+  - programming
+  - multi-language
+  - high-performance
