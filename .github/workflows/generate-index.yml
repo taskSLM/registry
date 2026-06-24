@@ -28,19 +28,23 @@ jobs:
         run: pip install pyyaml
 
       - name: Generate index.json
-        run: python scripts/generate_index.py
+        run: |
+          pip install pyyaml
+          python scripts/generate_index.py
+          # Also copy to docs/ for GitHub Pages
+          cp index.json docs/index.json
 
       - name: Commit and push index.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Only commit if index.json changed
-          if git diff --quiet index.json; then
-            echo "No changes to index.json — skipping commit."
+          # Only commit if index.json or docs/index.json changed
+          if git diff --quiet index.json docs/index.json; then
+            echo "No changes — skipping commit."
           else
-            git add index.json
+            git add index.json docs/index.json
             git commit -m "chore: auto-generate index.json [skip ci]"
             git push
-            echo "✅ index.json updated and pushed."
+            echo "index.json updated and pushed."
           fi

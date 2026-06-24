@@ -1,0 +1,11 @@
+# Auto-generated — treat as binary to surface conflicts immediately
+# Run `python scripts/generate_index.py` to regenerate
+index.json -text -merge
+
+# Scripts use LF line endings
+scripts/*.py text eol=lf
+*.sh text eol=lf
+
+# YAML files
+*.yaml text eol=lf
+*.yml text eol=lf

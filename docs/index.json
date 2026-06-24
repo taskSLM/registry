@@ -1,0 +1,1528 @@
+{
+  "meta": {
+    "name": "SLM World Registry",
+    "description": "The world's largest registry of Small Language Models under 8B parameters",
+    "generated_at": "2026-06-24T18:54:07.931576+00:00",
+    "version": "1.0.0",
+    "counts": {
+      "models": 11,
+      "datasets": 6,
+      "tasks": 9
+    }
+  },
+  "models": {
+    "gemma-3-4b-it": {
+      "name": "Gemma 3 4B IT",
+      "developer": "Google DeepMind",
+      "parameters": "4.0B",
+      "param_count_m": 4000,
+      "primary_task": "Multimodal Reasoning & Code Generation",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "gemma",
+      "generation": 3,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/google/gemma-3-4b-it",
+      "description": "A powerful 4B parameter multimodal instruction-tuned model from Google DeepMind supporting both text and image inputs. Achieves strong results on HumanEval (71.3%) and GSM8K (89.2%). Excels at code generation, math reasoning, and general chat tasks with the efficiency needed for edge deployment.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "multimodal",
+        "code-generation",
+        "math-reasoning",
+        "vision",
+        "instruction-following"
+      ],
+      "_file": "models/gemma-3-4b-it.yaml",
+      "_connected_tasks": [
+        "code-generation",
+        "math-reasoning",
+        "multimodal-reasoning"
+      ]
+    },
+    "gemma-4-e2b-it": {
+      "name": "Gemma 4 E2B IT",
+      "developer": "Google DeepMind",
+      "parameters": "2.3B effective (5.1B total)",
+      "param_count_m": 2300,
+      "param_total_m": 5100,
+      "primary_task": "Multimodal Edge AI",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "gemma",
+      "generation": 4,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/google/gemma-4-e2b-it",
+      "description": "Google DeepMind's most advanced sub-3B model supporting text, image, audio, and video inputs. Features Per-Layer Embeddings and hybrid attention architecture enabling it to run in under 1.5GB of memory. Purpose-built for on-device, mobile, and IoT deployment while maintaining strong multimodal reasoning capabilities.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.5,
+        "recommended_backend": "mediapipe"
+      },
+      "tags": [
+        "multimodal",
+        "on-device",
+        "mobile",
+        "vision",
+        "audio",
+        "edge-computing",
+        "tiny"
+      ],
+      "_file": "models/gemma-4-e2b-it.yaml",
+      "_connected_tasks": [
+        "multimodal-reasoning"
+      ]
+    },
+    "granite-3-2-2b-instruct": {
+      "name": "Granite-3.2-2B-Instruct",
+      "developer": "IBM Research",
+      "parameters": "2.0B",
+      "param_count_m": 2000,
+      "primary_task": "Enterprise Function Calling & Tool Use",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "granite",
+      "generation": 3.2,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/ibm-granite/granite-3.2-2b-instruct",
+      "description": "IBM's enterprise-grade 2B parameter instruction-tuned model with native function calling capabilities and 128K context window. Optimized for enterprise tool use, structured data extraction, and production deployment. Combines small size with surprisingly strong performance on business automation tasks.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.2,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "function-calling",
+        "enterprise",
+        "tool-use",
+        "long-context",
+        "structured-output",
+        "production"
+      ],
+      "_file": "models/granite-3-2-2b-instruct.yaml",
+      "_connected_tasks": [
+        "function-calling"
+      ]
+    },
+    "llama-3-2-3b-instruct": {
+      "name": "Llama 3.2 3B Instruct",
+      "developer": "Meta",
+      "parameters": "3.0B",
+      "param_count_m": 3000,
+      "primary_task": "Agentic Tool Calling & Structured Output",
+      "context_window": "128K tokens",
+      "license": "Llama 3.2 Community License",
+      "family": "llama",
+      "generation": 3.2,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct",
+      "description": "Meta's widely-adopted 3B parameter instruction-tuned model with over 2.18M+ HuggingFace downloads. Features strong tool calling capabilities, structured JSON output, and a massive community ecosystem. Optimized for agentic pipelines, mobile apps, and community-supported projects. The Llama Community License permits most commercial use.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.8,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "tool-calling",
+        "agentic",
+        "structured-output",
+        "mobile",
+        "community"
+      ],
+      "_file": "models/llama-3-2-3b-instruct.yaml",
+      "_connected_tasks": [
+        "function-calling",
+        "instruction-following"
+      ]
+    },
+    "olmo-7b-instruct": {
+      "name": "OLMo-7B-Instruct",
+      "developer": "Allen Institute for AI (AI2)",
+      "parameters": "7.0B",
+      "param_count_m": 7000,
+      "primary_task": "Open Science Research & Instruction Following",
+      "context_window": "2K tokens",
+      "license": "Apache 2.0",
+      "family": "olmo",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/allenai/OLMo-7B-Instruct",
+      "description": "A fully open 7B parameter instruction-tuned model from AI2, built on the principles of open science. All training data, code, weights, logs, and intermediate checkpoints are publicly available. Provides complete reproducibility and transparency unmatched by any other model in its class. Ideal for academic research and reproducible ML.",
+      "badges": [
+        "verified",
+        "fully-open"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.2,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "open-science",
+        "research",
+        "instruction-following",
+        "reproducible",
+        "fully-open"
+      ],
+      "_file": "models/olmo-7b-instruct.yaml",
+      "_connected_tasks": [
+        "instruction-following",
+        "knowledge-qa",
+        "preference-alignment"
+      ]
+    },
+    "phi-3-mini": {
+      "name": "Phi-3-mini-4k-instruct",
+      "developer": "Microsoft",
+      "parameters": "3.8B",
+      "param_count_m": 3800,
+      "primary_task": "General Reasoning & Text Generation",
+      "context_window": "4K tokens",
+      "license": "MIT",
+      "family": "phi",
+      "generation": 3,
+      "predecessor": null,
+      "successor": "models/phi-4-mini-instruct.yaml",
+      "huggingface_url": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct",
+      "description": "A highly capable, lightweight 3.8 billion parameter model trained on a mix of heavily filtered web data and synthetic data, optimized for commercial and local use.",
+      "badges": [
+        "verified",
+        "seed"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.2,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "local-llm",
+        "lightweight"
+      ],
+      "_file": "models/phi-3-mini.yaml",
+      "_connected_tasks": [
+        "general-reasoning",
+        "knowledge-qa"
+      ]
+    },
+    "phi-4-mini-instruct": {
+      "name": "Phi-4-mini-instruct",
+      "developer": "Microsoft",
+      "parameters": "3.8B",
+      "param_count_m": 3800,
+      "primary_task": "General Reasoning & Knowledge QA",
+      "context_window": "4K tokens",
+      "license": "MIT",
+      "family": "phi",
+      "generation": 4,
+      "predecessor": "models/phi-3-mini.yaml",
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/microsoft/Phi-4-mini-instruct",
+      "description": "Microsoft's best-in-class 3.8B parameter model trained on 5T tokens of high-quality filtered and synthetic data. Achieves top-tier reasoning benchmarks at its size: ARC-C 83.7%, GSM8K 88.6%. Extremely memory-efficient — runs in Q4 at just 2.49GB. Optimized for tight hardware, local deployment, and commercial use.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "local-llm",
+        "lightweight",
+        "knowledge-qa",
+        "edge-computing"
+      ],
+      "_file": "models/phi-4-mini-instruct.yaml",
+      "_connected_tasks": [
+        "general-reasoning",
+        "instruction-following",
+        "knowledge-qa",
+        "text-to-sql"
+      ]
+    },
+    "qwen2-5-7b-instruct": {
+      "name": "Qwen2.5-7B-Instruct",
+      "developer": "Alibaba",
+      "parameters": "7.6B",
+      "param_count_m": 7600,
+      "primary_task": "General Reasoning, Code & Math",
+      "context_window": "128K tokens",
+      "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 2.5,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
+      "description": "A highly capable 7.6B parameter instruction-tuned model that sits at the top of the sub-8B range. Delivers exceptional performance across reasoning, code generation, and mathematical tasks. Supports 29+ languages and long-context processing up to 128K tokens. The strongest Apache 2.0 licensed model under 8B for general-purpose use.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "code-generation",
+        "math-reasoning",
+        "multilingual",
+        "long-context",
+        "high-performance"
+      ],
+      "_file": "models/qwen2-5-7b-instruct.yaml",
+      "_connected_tasks": [
+        "code-generation",
+        "math-reasoning",
+        "text-to-sql"
+      ]
+    },
+    "qwen3-5-4b": {
+      "name": "Qwen3.5-4B",
+      "developer": "Alibaba",
+      "parameters": "4.0B",
+      "param_count_m": 4000,
+      "primary_task": "General Reasoning & Instruction Following",
+      "context_window": "256K tokens (extendable to 1M+)",
+      "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 3.5,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/Qwen/Qwen3.5-4B",
+      "description": "A state-of-the-art 4B parameter model with thinking/reasoning mode toggle, supporting 100+ languages. Features strong instruction following, long-document processing, and competitive performance across diverse benchmarks. Ideal for general-purpose deployment where quality and efficiency must be balanced.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "multilingual",
+        "instruction-following",
+        "long-context",
+        "thinking-mode"
+      ],
+      "_file": "models/qwen3-5-4b.yaml",
+      "_connected_tasks": [
+        "code-generation",
+        "function-calling",
+        "general-reasoning",
+        "instruction-following",
+        "knowledge-qa",
+        "math-reasoning",
+        "text-to-sql"
+      ]
+    },
+    "smollm3-3b": {
+      "name": "SmolLM3-3B-Instruct",
+      "developer": "Hugging Face",
+      "parameters": "3.0B",
+      "param_count_m": 3000,
+      "primary_task": "General Reasoning & Tool Calling",
+      "context_window": "64K tokens (128K with YaRN)",
+      "license": "Apache 2.0",
+      "family": "smollm",
+      "generation": 3,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Instruct",
+      "description": "A fully open 3B parameter model from Hugging Face with dual-mode reasoning (thinking/no-think), structured tool calling (JSON/XML/Python), and support for 6 languages. Weights, training data, and code are all publicly available, making it the most transparent SLM in its class. Ideal for RAG systems, code assistants, and research.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.8,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "reasoning",
+        "tool-calling",
+        "open-source",
+        "code-generation",
+        "rag",
+        "fully-open"
+      ],
+      "_file": "models/smollm3-3b.yaml",
+      "_connected_tasks": [
+        "code-generation",
+        "function-calling",
+        "general-reasoning",
+        "instruction-following",
+        "preference-alignment"
+      ]
+    },
+    "tinyllama-1-1b": {
+      "name": "TinyLlama-1.1B-Chat-v1.0",
+      "developer": "Zhang et al. (SUTD)",
+      "parameters": "1.1B",
+      "param_count_m": 1100,
+      "primary_task": "General Reasoning & Chat",
+      "context_window": "2K tokens",
+      "license": "Apache 2.0",
+      "family": "tinylama",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+      "description": "The gold standard for 1B-scale language models, trained on 3 trillion tokens with a Chinchilla-optimal approach. Despite its small size, it demonstrates surprisingly strong reasoning and conversational abilities. Ideal for research, resource-constrained environments, and as a baseline for fine-tuning experiments.",
+      "badges": [
+        "verified",
+        "baseline"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 0.7,
+        "recommended_backend": "llama.cpp"
+      },
+      "tags": [
+        "lightweight",
+        "research",
+        "chat",
+        "efficient",
+        "baseline"
+      ],
+      "_file": "models/tinyllama-1-1b.yaml",
+      "_connected_tasks": [
+        "general-reasoning",
+        "math-reasoning"
+      ]
+    }
+  },
+  "datasets": {
+    "magicoder-evol-instruct-110k": {
+      "name": "Magicoder-Evol-Instruct-110K",
+      "creator": "ise-uiuc",
+      "size_rows": "110,000",
+      "target_task": "Code Generation",
+      "license": "MIT",
+      "huggingface_url": "https://huggingface.co/datasets/ise-uiuc/Magicoder-Evol-Instruct-110K",
+      "description": "A high-quality, decontaminated code instruction dataset with 110K programming problems and solutions across multiple languages. Generated using the Evol-Instruct method to progressively increase problem complexity. The MIT license makes it ideal for both research and commercial fine-tuning of code-focused SLMs.",
+      "tags": [
+        "code-generation",
+        "instruction-tuning",
+        "programming",
+        "decontaminated",
+        "multi-language"
+      ],
+      "_file": "datasets/magicoder-evol-instruct-110k.yaml",
+      "_connected_tasks": [
+        "code-generation"
+      ]
+    },
+    "openmathinstruct-2": {
+      "name": "OpenMathInstruct-2",
+      "creator": "NVIDIA",
+      "size_rows": "14,000,000",
+      "target_task": "Math Reasoning",
+      "license": "CC-BY-4.0",
+      "huggingface_url": "https://huggingface.co/datasets/nvidia/OpenMathInstruct-2",
+      "description": "A massive 14M-row math instruction dataset from NVIDIA, augmented from GSM8K and MATH benchmarks using Llama-3.1-405B. Covers chain-of-thought reasoning across diverse math problems at varying difficulty levels. The largest permissively licensed math reasoning dataset available for fine-tuning small models.",
+      "tags": [
+        "math-reasoning",
+        "chain-of-thought",
+        "fine-tuning",
+        "synthetic-data",
+        "large-scale"
+      ],
+      "_file": "datasets/openmathinstruct-2.yaml",
+      "_connected_tasks": [
+        "math-reasoning"
+      ]
+    },
+    "smoltalk": {
+      "name": "smoltalk",
+      "creator": "HuggingFaceTB",
+      "size_rows": "1,100,000",
+      "target_task": "General Instruction Following",
+      "license": "Apache 2.0",
+      "huggingface_url": "https://huggingface.co/datasets/HuggingFaceTB/smoltalk",
+      "description": "The core instruction-tuning dataset used to train Hugging Face's SmolLM2 family of models. A carefully curated 1.1M-row mixture covering chat, reasoning, code, and general instruction following. Fully open under Apache 2.0, making it the go-to starting point for fine-tuning small language models on diverse tasks.",
+      "tags": [
+        "instruction-tuning",
+        "chat",
+        "reasoning",
+        "code",
+        "general-purpose",
+        "fully-open"
+      ],
+      "_file": "datasets/smoltalk.yaml",
+      "_connected_tasks": [
+        "function-calling",
+        "general-reasoning",
+        "instruction-following",
+        "knowledge-qa",
+        "multimodal-reasoning"
+      ]
+    },
+    "spider": {
+      "name": "Spider",
+      "creator": "Yale University",
+      "size_rows": "10,181",
+      "target_task": "Text-to-SQL Generation",
+      "license": "CC-BY-SA-4.0",
+      "huggingface_url": "https://huggingface.co/datasets/spider",
+      "description": "The definitive benchmark dataset for text-to-SQL generation, containing 10,181 natural language questions paired with SQL queries across 200 complex databases spanning 138 domains. Features multi-table joins, nested queries, and varied SQL complexity levels. The standard evaluation benchmark for the text-to-SQL task.",
+      "tags": [
+        "text-to-sql",
+        "benchmark",
+        "evaluation",
+        "multi-table",
+        "complex-sql"
+      ],
+      "_file": "datasets/spider.yaml",
+      "_connected_tasks": [
+        "text-to-sql"
+      ]
+    },
+    "sql-create-context": {
+      "name": "SQL-Create-Context",
+      "creator": "b-mc2",
+      "size_rows": "78,577",
+      "target_task": "Text-to-SQL Generation",
+      "license": "MIT",
+      "huggingface_url": "https://huggingface.co/datasets/b-mc2/sql-create-context",
+      "description": "A clean dataset aligning natural language questions with their corresponding SQL CREATE TABLE context and correct SQL queries. Ideal for fine-tuning small models on narrow text-to-sql translation.",
+      "tags": [
+        "text-to-sql",
+        "fine-tuning",
+        "structured-data"
+      ],
+      "_file": "datasets/sql-create-context.yaml",
+      "_connected_tasks": [
+        "text-to-sql"
+      ]
+    },
+    "ultrafeedback-binarized-preferences": {
+      "name": "ultrafeedback-binarized-preferences-cleaned",
+      "creator": "argilla",
+      "size_rows": "61,135",
+      "target_task": "Preference Alignment (DPO)",
+      "license": "MIT",
+      "huggingface_url": "https://huggingface.co/datasets/argilla/ultrafeedback-binarized-preferences-cleaned",
+      "description": "A cleaned and decontaminated version of the UltraFeedback preference dataset, containing 61K high-quality preference pairs scored by GPT-4. Designed for Direct Preference Optimization (DPO) to align models with human preferences. The MIT license makes it suitable for both research and commercial alignment workflows.",
+      "tags": [
+        "alignment",
+        "dpo",
+        "preference-tuning",
+        "rlhf",
+        "decontaminated"
+      ],
+      "_file": "datasets/ultrafeedback-binarized-preferences.yaml",
+      "_connected_tasks": [
+        "preference-alignment"
+      ]
+    }
+  },
+  "tasks": {
+    "code-generation": {
+      "task_id": "code-generation",
+      "display_name": "Code Generation",
+      "domain": "Software Engineering",
+      "description": "The process of generating syntactically correct and semantically meaningful source code from natural language descriptions. Covers function completion, bug fixing, code translation between languages, and implementing algorithms from specifications.",
+      "input_format": "Natural language instruction or problem description, optionally with existing code context",
+      "output_format": "Source code in the requested programming language",
+      "metrics_tracked": [
+        "Pass@1",
+        "Pass@10",
+        "HumanEval Score",
+        "LiveCodeBench Score"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/gemma-3-4b-it.yaml",
+          "notes": "71.3% HumanEval — top code performer at 4B scale with multimodal support."
+        },
+        {
+          "ref": "models/qwen2-5-7b-instruct.yaml",
+          "notes": "Exceptional code generation across multiple languages at 7.6B."
+        },
+        {
+          "ref": "models/smollm3-3b.yaml",
+          "notes": "Dual-mode reasoning ideal for code assistants, fully open for research."
+        },
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "Strong coding with thinking-mode toggle for complex algorithms."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/magicoder-evol-instruct-110k.yaml",
+          "purpose": "fine-tuning"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "math-reasoning",
+          "relationship": "related"
+        },
+        {
+          "task_id": "text-to-sql",
+          "relationship": "child"
+        },
+        {
+          "task_id": "instruction-following",
+          "relationship": "parent"
+        }
+      ],
+      "_file": "tasks/code-generation.yaml"
+    },
+    "function-calling": {
+      "task_id": "function-calling",
+      "display_name": "Function Calling / Tool Use",
+      "domain": "Agentic AI & Automation",
+      "description": "The ability of a model to select, parameterize, and invoke external tools or API functions based on user intent. Includes recognizing when a tool is needed, extracting correct arguments from context, formatting calls according to a schema, and interpreting tool outputs to continue the conversation or task.",
+      "input_format": "User request + available function/tool definitions (name, description, parameter schema)",
+      "output_format": "Structured function call with function name and arguments (JSON), or final response after tool use",
+      "metrics_tracked": [
+        "Tool Selection Accuracy",
+        "Argument Extraction Accuracy",
+        "Berkeley Function Calling Benchmark (BFCL)",
+        "Multi-turn Tool Use Success Rate"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/granite-3-2-2b-instruct.yaml",
+          "notes": "Purpose-built for enterprise function calling at just 2B — remarkably efficient."
+        },
+        {
+          "ref": "models/llama-3-2-3b-instruct.yaml",
+          "notes": "Native structured JSON output, strong agentic tool calling with huge ecosystem."
+        },
+        {
+          "ref": "models/smollm3-3b.yaml",
+          "notes": "JSON/XML/Python tool calling support, dual-mode reasoning for complex tool chains."
+        },
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "Qwen-Agent / MCP compatible, strong for multi-tool orchestration."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/smoltalk.yaml",
+          "purpose": "general-instruction-base"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "instruction-following",
+          "relationship": "parent"
+        },
+        {
+          "task_id": "code-generation",
+          "relationship": "related"
+        }
+      ],
+      "_file": "tasks/function-calling.yaml"
+    },
+    "general-reasoning": {
+      "task_id": "general-reasoning",
+      "display_name": "General Reasoning & Text Generation",
+      "domain": "Core Language Modeling",
+      "description": "The broadest evaluation of a language model's capabilities — encompassing logical deduction, common-sense reasoning, text generation quality, and versatility across unconstrained domains. This is the baseline task that most general-purpose SLMs are evaluated against before specialization.",
+      "input_format": "Open-ended natural language prompt",
+      "output_format": "Coherent, contextually appropriate natural language response",
+      "metrics_tracked": [
+        "HellaSwag Score",
+        "WinoGrande Accuracy",
+        "PIQA Score",
+        "Perplexity",
+        "BLEU / ROUGE (for generation tasks)"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "The best all-around general-purpose SLM under 8B — thinking mode, multilingual, 256K context."
+        },
+        {
+          "ref": "models/tinyllama-1-1b.yaml",
+          "notes": "Gold standard 1B baseline — trained on 3T tokens with Chinchilla-optimal scaling."
+        },
+        {
+          "ref": "models/phi-3-mini.yaml",
+          "notes": "Original registry seed model — lightweight reasoning champion."
+        },
+        {
+          "ref": "models/phi-4-mini-instruct.yaml",
+          "notes": "Successor to Phi-3-mini with improved reasoning and knowledge recall."
+        },
+        {
+          "ref": "models/smollm3-3b.yaml",
+          "notes": "Most transparent open model — ideal for reasoning research and fine-tuning."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/smoltalk.yaml",
+          "purpose": "instruction-tuning"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "math-reasoning",
+          "relationship": "child"
+        },
+        {
+          "task_id": "knowledge-qa",
+          "relationship": "child"
+        },
+        {
+          "task_id": "code-generation",
+          "relationship": "child"
+        },
+        {
+          "task_id": "instruction-following",
+          "relationship": "child"
+        }
+      ],
+      "_file": "tasks/general-reasoning.yaml"
+    },
+    "instruction-following": {
+      "task_id": "instruction-following",
+      "display_name": "Instruction Following",
+      "domain": "General NLP",
+      "description": "The foundational ability of a language model to accurately understand and execute natural language instructions. Encompasses formatting compliance, multi-step task execution, constraint satisfaction, and refusal of harmful requests. This is the core competency from which specialized tasks are derived.",
+      "input_format": "Natural language instruction with optional context, examples, and constraints",
+      "output_format": "Response that satisfies all specified constraints and formatting requirements",
+      "metrics_tracked": [
+        "IFEval Score",
+        "MT-Bench Score",
+        "AlpacaEval Win Rate",
+        "Constraint Satisfaction Rate"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "100+ languages, thinking mode — top all-around instruction follower at 4B."
+        },
+        {
+          "ref": "models/smollm3-3b.yaml",
+          "notes": "Structured output support (JSON/XML), excellent for constrained generation."
+        },
+        {
+          "ref": "models/olmo-7b-instruct.yaml",
+          "notes": "Fully open research model, strong baseline for instruction-following studies."
+        },
+        {
+          "ref": "models/llama-3-2-3b-instruct.yaml",
+          "notes": "Massive community adoption, strong structured output, proven reliability."
+        },
+        {
+          "ref": "models/phi-4-mini-instruct.yaml",
+          "notes": "Best-in-class reasoning at 3.8B, handles complex multi-step instructions well."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/smoltalk.yaml",
+          "purpose": "fine-tuning"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "text-to-sql",
+          "relationship": "child"
+        },
+        {
+          "task_id": "code-generation",
+          "relationship": "child"
+        },
+        {
+          "task_id": "function-calling",
+          "relationship": "child"
+        },
+        {
+          "task_id": "knowledge-qa",
+          "relationship": "child"
+        }
+      ],
+      "_file": "tasks/instruction-following.yaml"
+    },
+    "knowledge-qa": {
+      "task_id": "knowledge-qa",
+      "display_name": "Knowledge-Based Question Answering",
+      "domain": "Information Retrieval & QA",
+      "description": "The ability to answer factual questions by drawing on knowledge encoded during pre-training. Tests a model's capacity to recall facts, reason over stored knowledge, and handle ambiguous or under-specified queries. Ranges from trivia-style factoid questions to complex multi-hop reasoning across knowledge domains.",
+      "input_format": "Natural language question, optionally with retrieved context passages (RAG)",
+      "output_format": "Concise, factually accurate answer",
+      "metrics_tracked": [
+        "ARC-C (AI2 Reasoning Challenge)",
+        "MMLU Score",
+        "TruthfulQA Score",
+        "Natural Questions Accuracy"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/phi-4-mini-instruct.yaml",
+          "notes": "ARC-C 83.7% — best knowledge reasoning at 3.8B."
+        },
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "Strong factuality across 100+ languages, long-context for RAG."
+        },
+        {
+          "ref": "models/olmo-7b-instruct.yaml",
+          "notes": "Fully open training data enables knowledge-probing research."
+        },
+        {
+          "ref": "models/phi-3-mini.yaml",
+          "notes": "Original seed model of the registry — solid knowledge QA baseline."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/smoltalk.yaml",
+          "purpose": "general-instruction-base"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "general-reasoning",
+          "relationship": "parent"
+        },
+        {
+          "task_id": "instruction-following",
+          "relationship": "parent"
+        }
+      ],
+      "_file": "tasks/knowledge-qa.yaml"
+    },
+    "math-reasoning": {
+      "task_id": "math-reasoning",
+      "display_name": "Math Reasoning",
+      "domain": "Mathematics & Logic",
+      "description": "The ability to solve mathematical problems through step-by-step logical reasoning. Includes arithmetic, algebra, geometry, word problems, and competition-level math. Models must demonstrate chain-of-thought reasoning to arrive at correct numerical or symbolic answers.",
+      "input_format": "Natural language math problem, optionally with mathematical notation (LaTeX)",
+      "output_format": "Step-by-step reasoning chain followed by final answer",
+      "metrics_tracked": [
+        "GSM8K Accuracy",
+        "MATH Benchmark Score",
+        "AIME Score (competition-level)"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/gemma-3-4b-it.yaml",
+          "notes": "89.2% GSM8K — best math performer at 4B scale."
+        },
+        {
+          "ref": "models/qwen2-5-7b-instruct.yaml",
+          "notes": "Strong mathematical reasoning with long-context for complex proofs."
+        },
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "Thinking mode excels at step-by-step mathematical reasoning."
+        },
+        {
+          "ref": "models/tinyllama-1-1b.yaml",
+          "notes": "Surprisingly capable for its size — good baseline for math fine-tuning experiments."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/openmathinstruct-2.yaml",
+          "purpose": "fine-tuning"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "code-generation",
+          "relationship": "related"
+        },
+        {
+          "task_id": "general-reasoning",
+          "relationship": "child"
+        }
+      ],
+      "_file": "tasks/math-reasoning.yaml"
+    },
+    "multimodal-reasoning": {
+      "task_id": "multimodal-reasoning",
+      "display_name": "Multimodal Reasoning",
+      "domain": "Vision-Language & Multimodal AI",
+      "description": "The ability to process and reason across multiple input modalities — text, images, audio, and video — to answer questions, generate descriptions, or perform tasks. Requires understanding relationships between modalities and grounding language in visual or auditory context.",
+      "input_format": "Text prompt + optional image/audio/video input(s)",
+      "output_format": "Natural language response grounded in multimodal context",
+      "metrics_tracked": [
+        "MMMU Score",
+        "VQAv2 Accuracy",
+        "Image-Text Retrieval",
+        "Video Understanding Accuracy"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/gemma-3-4b-it.yaml",
+          "notes": "Text + image support at 4B, strong vision-language reasoning."
+        },
+        {
+          "ref": "models/gemma-4-e2b-it.yaml",
+          "notes": "Text + image + audio + video at just 2.3B effective — best for edge multimodal."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/smoltalk.yaml",
+          "purpose": "text-instruction-base",
+          "notes": "Multimodal fine-tuning datasets with permissive licenses are scarce — this is a known gap in the open-source ecosystem."
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "instruction-following",
+          "relationship": "parent"
+        },
+        {
+          "task_id": "knowledge-qa",
+          "relationship": "related"
+        }
+      ],
+      "_file": "tasks/multimodal-reasoning.yaml"
+    },
+    "preference-alignment": {
+      "task_id": "preference-alignment",
+      "display_name": "Preference Alignment (DPO / RLHF)",
+      "domain": "Model Alignment & Safety",
+      "description": "The process of aligning a language model's outputs with human preferences using techniques like Direct Preference Optimization (DPO) or Reinforcement Learning from Human Feedback (RLHF). This is a post-training step applied after supervised fine-tuning to improve helpfulness, harmlessness, and honesty.",
+      "input_format": "Prompt + chosen response + rejected response (preference pairs)",
+      "output_format": "Aligned model that produces responses preferred by humans",
+      "metrics_tracked": [
+        "Win Rate vs. Base Model",
+        "Helpfulness Score",
+        "Harmlessness Score",
+        "AlpacaEval Win Rate"
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/ultrafeedback-binarized-preferences.yaml",
+          "purpose": "dpo-training",
+          "notes": "61K cleaned GPT-4 scored preference pairs — the standard for DPO alignment."
+        }
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/smollm3-3b.yaml",
+          "notes": "Fully open pipeline — can study alignment from base to aligned model."
+        },
+        {
+          "ref": "models/olmo-7b-instruct.yaml",
+          "notes": "Open training data enables full alignment research reproducibility."
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "instruction-following",
+          "relationship": "enhances"
+        },
+        {
+          "task_id": "knowledge-qa",
+          "relationship": "enhances"
+        }
+      ],
+      "tags": [
+        "alignment",
+        "dpo",
+        "rlhf",
+        "safety",
+        "post-training"
+      ],
+      "_file": "tasks/preference-alignment.yaml"
+    },
+    "text-to-sql": {
+      "task_id": "text-to-sql",
+      "display_name": "Text-to-SQL Generation",
+      "domain": "Structured Data & Databases",
+      "description": "The process of translating natural language questions or instructions into valid, executable SQL queries based on a given database schema. Requires understanding of table relationships, column types, and SQL dialect nuances.",
+      "input_format": "Plain text question + SQL CREATE TABLE schema definitions",
+      "output_format": "Executable SQL query string",
+      "metrics_tracked": [
+        "Execution Accuracy",
+        "Exact String Match"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/qwen2-5-7b-instruct.yaml",
+          "notes": "Strong code reasoning and schema understanding at 7.6B."
+        },
+        {
+          "ref": "models/phi-4-mini-instruct.yaml",
+          "notes": "Excellent reasoning at 3.8B, good for simple-to-moderate queries."
+        },
+        {
+          "ref": "models/qwen3-5-4b.yaml",
+          "notes": "Strong general-purpose model with long-context support for large schemas."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/sql-create-context.yaml",
+          "purpose": "fine-tuning"
+        },
+        {
+          "ref": "datasets/spider.yaml",
+          "purpose": "evaluation"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "code-generation",
+          "relationship": "related"
+        },
+        {
+          "task_id": "instruction-following",
+          "relationship": "parent"
+        }
+      ],
+      "_file": "tasks/text-to-sql.yaml"
+    }
+  },
+  "cross_references": {
+    "gemma-3-4b-it": {
+      "models": [
+        {
+          "task": "code-generation",
+          "notes": "71.3% HumanEval — top code performer at 4B scale with multimodal support."
+        },
+        {
+          "task": "math-reasoning",
+          "notes": "89.2% GSM8K — best math performer at 4B scale."
+        },
+        {
+          "task": "multimodal-reasoning",
+          "notes": "Text + image support at 4B, strong vision-language reasoning."
+        }
+      ],
+      "datasets": []
+    },
+    "qwen2-5-7b-instruct": {
+      "models": [
+        {
+          "task": "code-generation",
+          "notes": "Exceptional code generation across multiple languages at 7.6B."
+        },
+        {
+          "task": "math-reasoning",
+          "notes": "Strong mathematical reasoning with long-context for complex proofs."
+        },
+        {
+          "task": "text-to-sql",
+          "notes": "Strong code reasoning and schema understanding at 7.6B."
+        }
+      ],
+      "datasets": []
+    },
+    "smollm3-3b": {
+      "models": [
+        {
+          "task": "code-generation",
+          "notes": "Dual-mode reasoning ideal for code assistants, fully open for research."
+        },
+        {
+          "task": "function-calling",
+          "notes": "JSON/XML/Python tool calling support, dual-mode reasoning for complex tool chains."
+        },
+        {
+          "task": "general-reasoning",
+          "notes": "Most transparent open model — ideal for reasoning research and fine-tuning."
+        },
+        {
+          "task": "instruction-following",
+          "notes": "Structured output support (JSON/XML), excellent for constrained generation."
+        },
+        {
+          "task": "preference-alignment",
+          "notes": "Fully open pipeline — can study alignment from base to aligned model."
+        }
+      ],
+      "datasets": []
+    },
+    "qwen3-5-4b": {
+      "models": [
+        {
+          "task": "code-generation",
+          "notes": "Strong coding with thinking-mode toggle for complex algorithms."
+        },
+        {
+          "task": "function-calling",
+          "notes": "Qwen-Agent / MCP compatible, strong for multi-tool orchestration."
+        },
+        {
+          "task": "general-reasoning",
+          "notes": "The best all-around general-purpose SLM under 8B — thinking mode, multilingual, 256K context."
+        },
+        {
+          "task": "instruction-following",
+          "notes": "100+ languages, thinking mode — top all-around instruction follower at 4B."
+        },
+        {
+          "task": "knowledge-qa",
+          "notes": "Strong factuality across 100+ languages, long-context for RAG."
+        },
+        {
+          "task": "math-reasoning",
+          "notes": "Thinking mode excels at step-by-step mathematical reasoning."
+        },
+        {
+          "task": "text-to-sql",
+          "notes": "Strong general-purpose model with long-context support for large schemas."
+        }
+      ],
+      "datasets": []
+    },
+    "magicoder-evol-instruct-110k": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "code-generation",
+          "purpose": "fine-tuning",
+          "notes": ""
+        }
+      ]
+    },
+    "granite-3-2-2b-instruct": {
+      "models": [
+        {
+          "task": "function-calling",
+          "notes": "Purpose-built for enterprise function calling at just 2B — remarkably efficient."
+        }
+      ],
+      "datasets": []
+    },
+    "llama-3-2-3b-instruct": {
+      "models": [
+        {
+          "task": "function-calling",
+          "notes": "Native structured JSON output, strong agentic tool calling with huge ecosystem."
+        },
+        {
+          "task": "instruction-following",
+          "notes": "Massive community adoption, strong structured output, proven reliability."
+        }
+      ],
+      "datasets": []
+    },
+    "smoltalk": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "function-calling",
+          "purpose": "general-instruction-base",
+          "notes": ""
+        },
+        {
+          "task": "general-reasoning",
+          "purpose": "instruction-tuning",
+          "notes": ""
+        },
+        {
+          "task": "instruction-following",
+          "purpose": "fine-tuning",
+          "notes": ""
+        },
+        {
+          "task": "knowledge-qa",
+          "purpose": "general-instruction-base",
+          "notes": ""
+        },
+        {
+          "task": "multimodal-reasoning",
+          "purpose": "text-instruction-base",
+          "notes": "Multimodal fine-tuning datasets with permissive licenses are scarce — this is a known gap in the open-source ecosystem."
+        }
+      ]
+    },
+    "tinyllama-1-1b": {
+      "models": [
+        {
+          "task": "general-reasoning",
+          "notes": "Gold standard 1B baseline — trained on 3T tokens with Chinchilla-optimal scaling."
+        },
+        {
+          "task": "math-reasoning",
+          "notes": "Surprisingly capable for its size — good baseline for math fine-tuning experiments."
+        }
+      ],
+      "datasets": []
+    },
+    "phi-3-mini": {
+      "models": [
+        {
+          "task": "general-reasoning",
+          "notes": "Original registry seed model — lightweight reasoning champion."
+        },
+        {
+          "task": "knowledge-qa",
+          "notes": "Original seed model of the registry — solid knowledge QA baseline."
+        }
+      ],
+      "datasets": []
+    },
+    "phi-4-mini-instruct": {
+      "models": [
+        {
+          "task": "general-reasoning",
+          "notes": "Successor to Phi-3-mini with improved reasoning and knowledge recall."
+        },
+        {
+          "task": "instruction-following",
+          "notes": "Best-in-class reasoning at 3.8B, handles complex multi-step instructions well."
+        },
+        {
+          "task": "knowledge-qa",
+          "notes": "ARC-C 83.7% — best knowledge reasoning at 3.8B."
+        },
+        {
+          "task": "text-to-sql",
+          "notes": "Excellent reasoning at 3.8B, good for simple-to-moderate queries."
+        }
+      ],
+      "datasets": []
+    },
+    "olmo-7b-instruct": {
+      "models": [
+        {
+          "task": "instruction-following",
+          "notes": "Fully open research model, strong baseline for instruction-following studies."
+        },
+        {
+          "task": "knowledge-qa",
+          "notes": "Fully open training data enables knowledge-probing research."
+        },
+        {
+          "task": "preference-alignment",
+          "notes": "Open training data enables full alignment research reproducibility."
+        }
+      ],
+      "datasets": []
+    },
+    "openmathinstruct-2": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "math-reasoning",
+          "purpose": "fine-tuning",
+          "notes": ""
+        }
+      ]
+    },
+    "gemma-4-e2b-it": {
+      "models": [
+        {
+          "task": "multimodal-reasoning",
+          "notes": "Text + image + audio + video at just 2.3B effective — best for edge multimodal."
+        }
+      ],
+      "datasets": []
+    },
+    "ultrafeedback-binarized-preferences": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "preference-alignment",
+          "purpose": "dpo-training",
+          "notes": "61K cleaned GPT-4 scored preference pairs — the standard for DPO alignment."
+        }
+      ]
+    },
+    "sql-create-context": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "text-to-sql",
+          "purpose": "fine-tuning",
+          "notes": ""
+        }
+      ]
+    },
+    "spider": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "text-to-sql",
+          "purpose": "evaluation",
+          "notes": ""
+        }
+      ]
+    }
+  },
+  "summaries": {
+    "licenses": {
+      "Apache 2.0": {
+        "models": 8,
+        "datasets": 1
+      },
+      "Llama 3.2 Community License": {
+        "models": 1,
+        "datasets": 0
+      },
+      "MIT": {
+        "models": 2,
+        "datasets": 3
+      },
+      "CC-BY-4.0": {
+        "models": 0,
+        "datasets": 1
+      },
+      "CC-BY-SA-4.0": {
+        "models": 0,
+        "datasets": 1
+      }
+    },
+    "param_size_buckets": {
+      "Under 1B": 0,
+      "1B - 3B": 3,
+      "3B - 5B": 6,
+      "5B - 8B": 2
+    }
+  },
+  "task_graph": {
+    "nodes": [
+      {
+        "id": "code-generation",
+        "display_name": "Code Generation",
+        "domain": "Software Engineering"
+      },
+      {
+        "id": "function-calling",
+        "display_name": "Function Calling / Tool Use",
+        "domain": "Agentic AI & Automation"
+      },
+      {
+        "id": "general-reasoning",
+        "display_name": "General Reasoning & Text Generation",
+        "domain": "Core Language Modeling"
+      },
+      {
+        "id": "instruction-following",
+        "display_name": "Instruction Following",
+        "domain": "General NLP"
+      },
+      {
+        "id": "knowledge-qa",
+        "display_name": "Knowledge-Based Question Answering",
+        "domain": "Information Retrieval & QA"
+      },
+      {
+        "id": "math-reasoning",
+        "display_name": "Math Reasoning",
+        "domain": "Mathematics & Logic"
+      },
+      {
+        "id": "multimodal-reasoning",
+        "display_name": "Multimodal Reasoning",
+        "domain": "Vision-Language & Multimodal AI"
+      },
+      {
+        "id": "preference-alignment",
+        "display_name": "Preference Alignment (DPO / RLHF)",
+        "domain": "Model Alignment & Safety"
+      },
+      {
+        "id": "text-to-sql",
+        "display_name": "Text-to-SQL Generation",
+        "domain": "Structured Data & Databases"
+      }
+    ],
+    "edges": [
+      {
+        "from": "code-generation",
+        "to": "math-reasoning",
+        "relationship": "related"
+      },
+      {
+        "from": "code-generation",
+        "to": "text-to-sql",
+        "relationship": "child"
+      },
+      {
+        "from": "code-generation",
+        "to": "instruction-following",
+        "relationship": "parent"
+      },
+      {
+        "from": "function-calling",
+        "to": "instruction-following",
+        "relationship": "parent"
+      },
+      {
+        "from": "function-calling",
+        "to": "code-generation",
+        "relationship": "related"
+      },
+      {
+        "from": "general-reasoning",
+        "to": "math-reasoning",
+        "relationship": "child"
+      },
+      {
+        "from": "general-reasoning",
+        "to": "knowledge-qa",
+        "relationship": "child"
+      },
+      {
+        "from": "general-reasoning",
+        "to": "code-generation",
+        "relationship": "child"
+      },
+      {
+        "from": "general-reasoning",
+        "to": "instruction-following",
+        "relationship": "child"
+      },
+      {
+        "from": "instruction-following",
+        "to": "text-to-sql",
+        "relationship": "child"
+      },
+      {
+        "from": "instruction-following",
+        "to": "code-generation",
+        "relationship": "child"
+      },
+      {
+        "from": "instruction-following",
+        "to": "function-calling",
+        "relationship": "child"
+      },
+      {
+        "from": "instruction-following",
+        "to": "knowledge-qa",
+        "relationship": "child"
+      },
+      {
+        "from": "knowledge-qa",
+        "to": "general-reasoning",
+        "relationship": "parent"
+      },
+      {
+        "from": "knowledge-qa",
+        "to": "instruction-following",
+        "relationship": "parent"
+      },
+      {
+        "from": "math-reasoning",
+        "to": "code-generation",
+        "relationship": "related"
+      },
+      {
+        "from": "math-reasoning",
+        "to": "general-reasoning",
+        "relationship": "child"
+      },
+      {
+        "from": "multimodal-reasoning",
+        "to": "instruction-following",
+        "relationship": "parent"
+      },
+      {
+        "from": "multimodal-reasoning",
+        "to": "knowledge-qa",
+        "relationship": "related"
+      },
+      {
+        "from": "preference-alignment",
+        "to": "instruction-following",
+        "relationship": "enhances"
+      },
+      {
+        "from": "preference-alignment",
+        "to": "knowledge-qa",
+        "relationship": "enhances"
+      },
+      {
+        "from": "text-to-sql",
+        "to": "code-generation",
+        "relationship": "related"
+      },
+      {
+        "from": "text-to-sql",
+        "to": "instruction-following",
+        "relationship": "parent"
+      }
+    ]
+  }
+}
