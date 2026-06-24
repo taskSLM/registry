@@ -2,15 +2,56 @@
   "meta": {
     "name": "SLM World Registry",
     "description": "The world's largest registry of Small Language Models under 8B parameters",
-    "generated_at": "2026-06-24T19:11:59.668450+00:00",
+    "generated_at": "2026-06-24T19:48:27.298117+00:00",
     "version": "1.0.0",
     "counts": {
-      "models": 26,
-      "datasets": 20,
-      "tasks": 14
+      "models": 27,
+      "datasets": 21,
+      "tasks": 15
     }
   },
   "models": {
+    "aegis-nano": {
+      "name": "AegisNano",
+      "developer": "Aegis-Edge Team",
+      "parameters": "6.3M",
+      "param_count_m": 6,
+      "primary_task": "Behavioral Anomaly Detection",
+      "context_window": "512 tokens",
+      "license": "MIT",
+      "family": "aegis",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
+      "huggingface_url": "https://github.com/anckursingh/anamoly-detection-slm",
+      "description": "A 6.3M-parameter transformer SLM purpose-built for detecting autonomous agent (bot) behavior vs human behavior from telemetry sequences. Trained via knowledge distillation from Llama 3.1 70B with behavioral tokenization encoding event types, inter-event timing, and jitter patterns into a 1024-token vocabulary. The smallest model in the SLM World registry — INT8 quantized footprint is just 6.5 MB, making it deployable on microcontrollers and edge devices. Detects three threat models: slow-burn agent fraud, agent hijacking via prompt injection, and synthetic biometric patterns. Also supports transfer learning for financial fraud detection.",
+      "badges": [
+        "verified",
+        "fully-open"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 0.007,
+        "recommended_backend": "onnxruntime"
+      },
+      "tags": [
+        "anomaly-detection",
+        "tiny",
+        "on-device",
+        "edge-computing",
+        "fully-open",
+        "knowledge-distillation"
+      ],
+      "_file": "models/aegis-nano.yaml",
+      "_connected_tasks": [
+        "behavioral-anomaly-detection"
+      ]
+    },
     "falcon-7b-instruct": {
       "name": "Falcon-7B-Instruct",
       "developer": "Technology Innovation Institute",
@@ -1087,6 +1128,26 @@
         "named-entity-recognition"
       ]
     },
+    "drain3-behavioral": {
+      "name": "Drain3 Behavioral Telemetry Dataset",
+      "creator": "Aegis-Edge Team",
+      "size_rows": "3,164",
+      "target_task": "Behavioral Anomaly Detection",
+      "license": "MIT",
+      "huggingface_url": "https://github.com/anckursingh/anamoly-detection-slm",
+      "description": "A synthetic behavioral telemetry dataset for training models to distinguish human from autonomous agent (bot) behavior. Contains 3,164 sequences tokenized from event logs (Android, OpenSSH, Linux, BGL) parsed through Drain3 log parser (22.47x compression ratio). Includes 3x data augmentation via synthetic jitter injection on anomaly examples. Features: event type IDs, delta-time bins, jitter bins encoded into a 1024-token vocabulary. Two classes: human sequences (exponential inter-event times, Rayleigh jitter) and bot sequences (constant timing, uniform low jitter). Designed for knowledge distillation training of small models.",
+      "tags": [
+        "anomaly-detection",
+        "synthetic-data",
+        "fine-tuning",
+        "cybersecurity",
+        "behavioral"
+      ],
+      "_file": "datasets/drain3-behavioral.yaml",
+      "_connected_tasks": [
+        "behavioral-anomaly-detection"
+      ]
+    },
     "gsm8k": {
       "name": "GSM8K",
       "creator": "OpenAI",
@@ -1424,6 +1485,49 @@
     }
   },
   "tasks": {
+    "behavioral-anomaly-detection": {
+      "task_id": "behavioral-anomaly-detection",
+      "display_name": "Behavioral Anomaly Detection",
+      "domain": "Cybersecurity & Fraud Detection",
+      "description": "Distinguishing human-generated behavioral telemetry from autonomous agent (bot) behavior by analyzing sequences of events, inter-event timing patterns, and signal jitter characteristics. Critical for detecting AI-driven fraud, agent hijacking, and synthetic biometric generation. Requires models to identify subtle statistical regularities that separate human chaos from machine precision.",
+      "input_format": "Tokenized behavioral sequence (event types, delta-time bins, jitter bins) with max 512 tokens",
+      "output_format": "Binary classification (human vs bot) with confidence score and anomaly ranking",
+      "metrics_tracked": [
+        "Agent-Turing Score (TPR+TNR)/2",
+        "F1 Score",
+        "AUC-ROC",
+        "Precision",
+        "Recall"
+      ],
+      "recommended_models": [
+        {
+          "ref": "models/aegis-nano.yaml",
+          "notes": "Purpose-built for this task — 6.3M params, 6.5 MB INT8, F1 0.93 on blind test."
+        }
+      ],
+      "recommended_datasets": [
+        {
+          "ref": "datasets/drain3-behavioral.yaml",
+          "purpose": "fine-tuning"
+        }
+      ],
+      "related_tasks": [
+        {
+          "task_id": "instruction-following",
+          "relationship": "related"
+        },
+        {
+          "task_id": "sentiment-analysis",
+          "relationship": "related"
+        }
+      ],
+      "tags": [
+        "anomaly-detection",
+        "cybersecurity",
+        "fraud-detection"
+      ],
+      "_file": "tasks/behavioral-anomaly-detection.yaml"
+    },
     "code-generation": {
       "task_id": "code-generation",
       "display_name": "Code Generation",
@@ -2100,6 +2204,25 @@
     }
   },
   "cross_references": {
+    "aegis-nano": {
+      "models": [
+        {
+          "task": "behavioral-anomaly-detection",
+          "notes": "Purpose-built for this task — 6.3M params, 6.5 MB INT8, F1 0.93 on blind test."
+        }
+      ],
+      "datasets": []
+    },
+    "drain3-behavioral": {
+      "models": [],
+      "datasets": [
+        {
+          "task": "behavioral-anomaly-detection",
+          "purpose": "fine-tuning",
+          "notes": ""
+        }
+      ]
+    },
     "gemma-3-4b-it": {
       "models": [
         {
@@ -2490,6 +2613,10 @@
   },
   "summaries": {
     "licenses": {
+      "MIT": {
+        "models": 5,
+        "datasets": 7
+      },
       "Apache 2.0": {
         "models": 20,
         "datasets": 6
@@ -2497,10 +2624,6 @@
       "Llama 3.2 Community License": {
         "models": 2,
         "datasets": 0
-      },
-      "MIT": {
-        "models": 4,
-        "datasets": 6
       },
       "CC-BY-4.0": {
         "models": 0,
@@ -2520,7 +2643,7 @@
       }
     },
     "param_size_buckets": {
-      "Under 1B": 3,
+      "Under 1B": 4,
       "1B - 3B": 10,
       "3B - 5B": 9,
       "5B - 8B": 4
@@ -2528,6 +2651,11 @@
   },
   "task_graph": {
     "nodes": [
+      {
+        "id": "behavioral-anomaly-detection",
+        "display_name": "Behavioral Anomaly Detection",
+        "domain": "Cybersecurity & Fraud Detection"
+      },
       {
         "id": "code-generation",
         "display_name": "Code Generation",
@@ -2600,6 +2728,16 @@
       }
     ],
     "edges": [
+      {
+        "from": "behavioral-anomaly-detection",
+        "to": "instruction-following",
+        "relationship": "related"
+      },
+      {
+        "from": "behavioral-anomaly-detection",
+        "to": "sentiment-analysis",
+        "relationship": "related"
+      },
       {
         "from": "code-generation",
         "to": "math-reasoning",

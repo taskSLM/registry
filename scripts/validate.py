@@ -47,7 +47,7 @@ MODEL_OPTIONAL = ["tags", "submitted_by", "predecessor", "successor",
 
 KNOWN_BADGES = {"verified", "community-pick", "seed", "baseline", "fully-open", "popular", "new"}
 
-KNOWN_FAMILIES = {"phi", "qwen", "gemma", "smollm", "llama", "olmo", "granite", "tinylama", "falcon", "pythia"}
+KNOWN_FAMILIES = {"phi", "qwen", "gemma", "smollm", "llama", "olmo", "granite", "tinylama", "falcon", "pythia", "aegis"}
 
 DATASET_REQUIRED = [
     "name", "creator", "size_rows", "target_task",
@@ -77,16 +77,19 @@ KNOWN_TAGS = {
     "function-calling", "agentic", "chat", "instruction-following",
     "knowledge-qa", "text-to-sql", "summarization", "translation",
     "named-entity-recognition", "sentiment-analysis",
+    "anomaly-detection",
     # Deployment
     "edge-computing", "on-device", "mobile", "lightweight",
     "efficient", "production", "local-llm",
     # Quality / Openness
     "open-source", "fully-open", "reproducible", "research",
-    "community", "benchmark", "baseline",
+    "community", "benchmark", "baseline", "knowledge-distillation",
     # Data characteristics
     "fine-tuning", "evaluation", "synthetic-data", "large-scale",
     "chain-of-thought", "decontaminated", "multi-table", "complex-sql",
     "multi-language", "structured-output", "structured-data",
+    # Security
+    "cybersecurity", "fraud-detection", "behavioral",
     # Alignment
     "alignment", "dpo", "rlhf", "safety", "post-training",
     "preference-tuning",

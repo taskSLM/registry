@@ -1,0 +1,27 @@
+task_id: "behavioral-anomaly-detection"
+display_name: "Behavioral Anomaly Detection"
+domain: "Cybersecurity & Fraud Detection"
+description: "Distinguishing human-generated behavioral telemetry from autonomous agent (bot) behavior by analyzing sequences of events, inter-event timing patterns, and signal jitter characteristics. Critical for detecting AI-driven fraud, agent hijacking, and synthetic biometric generation. Requires models to identify subtle statistical regularities that separate human chaos from machine precision."
+input_format: "Tokenized behavioral sequence (event types, delta-time bins, jitter bins) with max 512 tokens"
+output_format: "Binary classification (human vs bot) with confidence score and anomaly ranking"
+metrics_tracked:
+  - Agent-Turing Score (TPR+TNR)/2
+  - F1 Score
+  - AUC-ROC
+  - Precision
+  - Recall
+recommended_models:
+  - ref: "models/aegis-nano.yaml"
+    notes: "Purpose-built for this task — 6.3M params, 6.5 MB INT8, F1 0.93 on blind test."
+recommended_datasets:
+  - ref: "datasets/drain3-behavioral.yaml"
+    purpose: "fine-tuning"
+related_tasks:
+  - task_id: "instruction-following"
+    relationship: "related"
+  - task_id: "sentiment-analysis"
+    relationship: "related"
+tags:
+  - anomaly-detection
+  - cybersecurity
+  - fraud-detection

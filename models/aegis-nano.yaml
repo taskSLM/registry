@@ -1,0 +1,32 @@
+name: "AegisNano"
+developer: "Aegis-Edge Team"
+parameters: "6.3M"
+param_count_m: 6
+primary_task: "Behavioral Anomaly Detection"
+context_window: "512 tokens"
+license: "MIT"
+family: "aegis"
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: "https://github.com/anckursingh/anamoly-detection-slm"
+description: "A 6.3M-parameter transformer SLM purpose-built for detecting autonomous agent (bot) behavior vs human behavior from telemetry sequences. Trained via knowledge distillation from Llama 3.1 70B with behavioral tokenization encoding event types, inter-event timing, and jitter patterns into a 1024-token vocabulary. The smallest model in the SLM World registry — INT8 quantized footprint is just 6.5 MB, making it deployable on microcontrollers and edge devices. Detects three threat models: slow-burn agent fraud, agent hijacking via prompt injection, and synthetic biometric patterns. Also supports transfer learning for financial fraud detection."
+badges:
+  - verified
+  - fully-open
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.007
+  recommended_backend: "onnxruntime"
+tags:
+  - anomaly-detection
+  - tiny
+  - on-device
+  - edge-computing
+  - fully-open
+  - knowledge-distillation

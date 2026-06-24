@@ -1,0 +1,13 @@
+name: "Drain3 Behavioral Telemetry Dataset"
+creator: "Aegis-Edge Team"
+size_rows: "3,164"
+target_task: "Behavioral Anomaly Detection"
+license: "MIT"
+huggingface_url: "https://github.com/anckursingh/anamoly-detection-slm"
+description: "A synthetic behavioral telemetry dataset for training models to distinguish human from autonomous agent (bot) behavior. Contains 3,164 sequences tokenized from event logs (Android, OpenSSH, Linux, BGL) parsed through Drain3 log parser (22.47x compression ratio). Includes 3x data augmentation via synthetic jitter injection on anomaly examples. Features: event type IDs, delta-time bins, jitter bins encoded into a 1024-token vocabulary. Two classes: human sequences (exponential inter-event times, Rayleigh jitter) and bot sequences (constant timing, uniform low jitter). Designed for knowledge distillation training of small models."
+tags:
+  - anomaly-detection
+  - synthetic-data
+  - fine-tuning
+  - cybersecurity
+  - behavioral
