@@ -1,0 +1,12 @@
+name: "Phi-3-mini-4k-instruct"
+developer: "Microsoft"
+parameters: "3.8B"
+primary_task: "General Reasoning & Text Generation"
+context_window: "4K tokens"
+license: "MIT"
+huggingface_url: "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct"
+description: "A highly capable, lightweight 3.8 billion parameter model trained on a mix of heavily filtered web data and synthetic data, optimized for commercial and local use."
+tags:
+  - reasoning
+  - local-llm
+  - lightweight
