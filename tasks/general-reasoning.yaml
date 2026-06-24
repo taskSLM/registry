@@ -1,0 +1,35 @@
+task_id: "general-reasoning"
+display_name: "General Reasoning & Text Generation"
+domain: "Core Language Modeling"
+description: "The broadest evaluation of a language model's capabilities — encompassing logical deduction, common-sense reasoning, text generation quality, and versatility across unconstrained domains. This is the baseline task that most general-purpose SLMs are evaluated against before specialization."
+input_format: "Open-ended natural language prompt"
+output_format: "Coherent, contextually appropriate natural language response"
+metrics_tracked:
+  - HellaSwag Score
+  - WinoGrande Accuracy
+  - PIQA Score
+  - Perplexity
+  - BLEU / ROUGE (for generation tasks)
+recommended_models:
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "The best all-around general-purpose SLM under 8B — thinking mode, multilingual, 256K context."
+  - ref: "models/tinyllama-1-1b.yaml"
+    notes: "Gold standard 1B baseline — trained on 3T tokens with Chinchilla-optimal scaling."
+  - ref: "models/phi-3-mini.yaml"
+    notes: "Original registry seed model — lightweight reasoning champion."
+  - ref: "models/phi-4-mini-instruct.yaml"
+    notes: "Successor to Phi-3-mini with improved reasoning and knowledge recall."
+  - ref: "models/smollm3-3b.yaml"
+    notes: "Most transparent open model — ideal for reasoning research and fine-tuning."
+recommended_datasets:
+  - ref: "datasets/smoltalk.yaml"
+    purpose: "instruction-tuning"
+related_tasks:
+  - task_id: "math-reasoning"
+    relationship: "child"
+  - task_id: "knowledge-qa"
+    relationship: "child"
+  - task_id: "code-generation"
+    relationship: "child"
+  - task_id: "instruction-following"
+    relationship: "child"

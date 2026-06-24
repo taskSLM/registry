@@ -1,0 +1,28 @@
+task_id: "function-calling"
+display_name: "Function Calling / Tool Use"
+domain: "Agentic AI & Automation"
+description: "The ability of a model to select, parameterize, and invoke external tools or API functions based on user intent. Includes recognizing when a tool is needed, extracting correct arguments from context, formatting calls according to a schema, and interpreting tool outputs to continue the conversation or task."
+input_format: "User request + available function/tool definitions (name, description, parameter schema)"
+output_format: "Structured function call with function name and arguments (JSON), or final response after tool use"
+metrics_tracked:
+  - Tool Selection Accuracy
+  - Argument Extraction Accuracy
+  - Berkeley Function Calling Benchmark (BFCL)
+  - Multi-turn Tool Use Success Rate
+recommended_models:
+  - ref: "models/granite-3-2-2b-instruct.yaml"
+    notes: "Purpose-built for enterprise function calling at just 2B — remarkably efficient."
+  - ref: "models/llama-3-2-3b-instruct.yaml"
+    notes: "Native structured JSON output, strong agentic tool calling with huge ecosystem."
+  - ref: "models/smollm3-3b.yaml"
+    notes: "JSON/XML/Python tool calling support, dual-mode reasoning for complex tool chains."
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "Qwen-Agent / MCP compatible, strong for multi-tool orchestration."
+recommended_datasets:
+  - ref: "datasets/smoltalk.yaml"
+    purpose: "general-instruction-base"
+related_tasks:
+  - task_id: "instruction-following"
+    relationship: "parent"
+  - task_id: "code-generation"
+    relationship: "related"

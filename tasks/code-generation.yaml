@@ -1,0 +1,30 @@
+task_id: "code-generation"
+display_name: "Code Generation"
+domain: "Software Engineering"
+description: "The process of generating syntactically correct and semantically meaningful source code from natural language descriptions. Covers function completion, bug fixing, code translation between languages, and implementing algorithms from specifications."
+input_format: "Natural language instruction or problem description, optionally with existing code context"
+output_format: "Source code in the requested programming language"
+metrics_tracked:
+  - Pass@1
+  - Pass@10
+  - HumanEval Score
+  - LiveCodeBench Score
+recommended_models:
+  - ref: "models/gemma-3-4b-it.yaml"
+    notes: "71.3% HumanEval — top code performer at 4B scale with multimodal support."
+  - ref: "models/qwen2-5-7b-instruct.yaml"
+    notes: "Exceptional code generation across multiple languages at 7.6B."
+  - ref: "models/smollm3-3b.yaml"
+    notes: "Dual-mode reasoning ideal for code assistants, fully open for research."
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "Strong coding with thinking-mode toggle for complex algorithms."
+recommended_datasets:
+  - ref: "datasets/magicoder-evol-instruct-110k.yaml"
+    purpose: "fine-tuning"
+related_tasks:
+  - task_id: "math-reasoning"
+    relationship: "related"
+  - task_id: "text-to-sql"
+    relationship: "child"
+  - task_id: "instruction-following"
+    relationship: "parent"

@@ -1,0 +1,27 @@
+task_id: "math-reasoning"
+display_name: "Math Reasoning"
+domain: "Mathematics & Logic"
+description: "The ability to solve mathematical problems through step-by-step logical reasoning. Includes arithmetic, algebra, geometry, word problems, and competition-level math. Models must demonstrate chain-of-thought reasoning to arrive at correct numerical or symbolic answers."
+input_format: "Natural language math problem, optionally with mathematical notation (LaTeX)"
+output_format: "Step-by-step reasoning chain followed by final answer"
+metrics_tracked:
+  - GSM8K Accuracy
+  - MATH Benchmark Score
+  - AIME Score (competition-level)
+recommended_models:
+  - ref: "models/gemma-3-4b-it.yaml"
+    notes: "89.2% GSM8K — best math performer at 4B scale."
+  - ref: "models/qwen2-5-7b-instruct.yaml"
+    notes: "Strong mathematical reasoning with long-context for complex proofs."
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "Thinking mode excels at step-by-step mathematical reasoning."
+  - ref: "models/tinyllama-1-1b.yaml"
+    notes: "Surprisingly capable for its size — good baseline for math fine-tuning experiments."
+recommended_datasets:
+  - ref: "datasets/openmathinstruct-2.yaml"
+    purpose: "fine-tuning"
+related_tasks:
+  - task_id: "code-generation"
+    relationship: "related"
+  - task_id: "general-reasoning"
+    relationship: "child"

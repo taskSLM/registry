@@ -1,0 +1,31 @@
+task_id: "preference-alignment"
+display_name: "Preference Alignment (DPO / RLHF)"
+domain: "Model Alignment & Safety"
+description: "The process of aligning a language model's outputs with human preferences using techniques like Direct Preference Optimization (DPO) or Reinforcement Learning from Human Feedback (RLHF). This is a post-training step applied after supervised fine-tuning to improve helpfulness, harmlessness, and honesty."
+input_format: "Prompt + chosen response + rejected response (preference pairs)"
+output_format: "Aligned model that produces responses preferred by humans"
+metrics_tracked:
+  - Win Rate vs. Base Model
+  - Helpfulness Score
+  - Harmlessness Score
+  - AlpacaEval Win Rate
+recommended_datasets:
+  - ref: "datasets/ultrafeedback-binarized-preferences.yaml"
+    purpose: "dpo-training"
+    notes: "61K cleaned GPT-4 scored preference pairs — the standard for DPO alignment."
+recommended_models:
+  - ref: "models/smollm3-3b.yaml"
+    notes: "Fully open pipeline — can study alignment from base to aligned model."
+  - ref: "models/olmo-7b-instruct.yaml"
+    notes: "Open training data enables full alignment research reproducibility."
+related_tasks:
+  - task_id: "instruction-following"
+    relationship: "enhances"
+  - task_id: "knowledge-qa"
+    relationship: "enhances"
+tags:
+  - alignment
+  - dpo
+  - rlhf
+  - safety
+  - post-training

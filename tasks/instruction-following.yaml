@@ -1,0 +1,34 @@
+task_id: "instruction-following"
+display_name: "Instruction Following"
+domain: "General NLP"
+description: "The foundational ability of a language model to accurately understand and execute natural language instructions. Encompasses formatting compliance, multi-step task execution, constraint satisfaction, and refusal of harmful requests. This is the core competency from which specialized tasks are derived."
+input_format: "Natural language instruction with optional context, examples, and constraints"
+output_format: "Response that satisfies all specified constraints and formatting requirements"
+metrics_tracked:
+  - IFEval Score
+  - MT-Bench Score
+  - AlpacaEval Win Rate
+  - Constraint Satisfaction Rate
+recommended_models:
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "100+ languages, thinking mode — top all-around instruction follower at 4B."
+  - ref: "models/smollm3-3b.yaml"
+    notes: "Structured output support (JSON/XML), excellent for constrained generation."
+  - ref: "models/olmo-7b-instruct.yaml"
+    notes: "Fully open research model, strong baseline for instruction-following studies."
+  - ref: "models/llama-3-2-3b-instruct.yaml"
+    notes: "Massive community adoption, strong structured output, proven reliability."
+  - ref: "models/phi-4-mini-instruct.yaml"
+    notes: "Best-in-class reasoning at 3.8B, handles complex multi-step instructions well."
+recommended_datasets:
+  - ref: "datasets/smoltalk.yaml"
+    purpose: "fine-tuning"
+related_tasks:
+  - task_id: "text-to-sql"
+    relationship: "child"
+  - task_id: "code-generation"
+    relationship: "child"
+  - task_id: "function-calling"
+    relationship: "child"
+  - task_id: "knowledge-qa"
+    relationship: "child"

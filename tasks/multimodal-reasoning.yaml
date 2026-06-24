@@ -1,0 +1,25 @@
+task_id: "multimodal-reasoning"
+display_name: "Multimodal Reasoning"
+domain: "Vision-Language & Multimodal AI"
+description: "The ability to process and reason across multiple input modalities — text, images, audio, and video — to answer questions, generate descriptions, or perform tasks. Requires understanding relationships between modalities and grounding language in visual or auditory context."
+input_format: "Text prompt + optional image/audio/video input(s)"
+output_format: "Natural language response grounded in multimodal context"
+metrics_tracked:
+  - MMMU Score
+  - VQAv2 Accuracy
+  - Image-Text Retrieval
+  - Video Understanding Accuracy
+recommended_models:
+  - ref: "models/gemma-3-4b-it.yaml"
+    notes: "Text + image support at 4B, strong vision-language reasoning."
+  - ref: "models/gemma-4-e2b-it.yaml"
+    notes: "Text + image + audio + video at just 2.3B effective — best for edge multimodal."
+recommended_datasets:
+  - ref: "datasets/smoltalk.yaml"
+    purpose: "text-instruction-base"
+    notes: "Multimodal fine-tuning datasets with permissive licenses are scarce — this is a known gap in the open-source ecosystem."
+related_tasks:
+  - task_id: "instruction-following"
+    relationship: "parent"
+  - task_id: "knowledge-qa"
+    relationship: "related"

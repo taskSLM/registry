@@ -1,0 +1,28 @@
+task_id: "knowledge-qa"
+display_name: "Knowledge-Based Question Answering"
+domain: "Information Retrieval & QA"
+description: "The ability to answer factual questions by drawing on knowledge encoded during pre-training. Tests a model's capacity to recall facts, reason over stored knowledge, and handle ambiguous or under-specified queries. Ranges from trivia-style factoid questions to complex multi-hop reasoning across knowledge domains."
+input_format: "Natural language question, optionally with retrieved context passages (RAG)"
+output_format: "Concise, factually accurate answer"
+metrics_tracked:
+  - ARC-C (AI2 Reasoning Challenge)
+  - MMLU Score
+  - TruthfulQA Score
+  - Natural Questions Accuracy
+recommended_models:
+  - ref: "models/phi-4-mini-instruct.yaml"
+    notes: "ARC-C 83.7% — best knowledge reasoning at 3.8B."
+  - ref: "models/qwen3-5-4b.yaml"
+    notes: "Strong factuality across 100+ languages, long-context for RAG."
+  - ref: "models/olmo-7b-instruct.yaml"
+    notes: "Fully open training data enables knowledge-probing research."
+  - ref: "models/phi-3-mini.yaml"
+    notes: "Original seed model of the registry — solid knowledge QA baseline."
+recommended_datasets:
+  - ref: "datasets/smoltalk.yaml"
+    purpose: "general-instruction-base"
+related_tasks:
+  - task_id: "general-reasoning"
+    relationship: "parent"
+  - task_id: "instruction-following"
+    relationship: "parent"
