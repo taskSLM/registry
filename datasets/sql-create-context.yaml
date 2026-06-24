@@ -1,0 +1,11 @@
+name: "SQL-Create-Context"
+creator: "b-mc2"
+size_rows: "78,577"
+target_task: "Text-to-SQL Generation"
+license: "MIT"
+huggingface_url: "https://huggingface.co/datasets/b-mc2/sql-create-context"
+description: "A clean dataset aligning natural language questions with their corresponding SQL CREATE TABLE context and correct SQL queries. Ideal for fine-tuning small models on narrow text-to-sql translation."
+tags:
+  - text-to-sql
+  - fine-tuning
+  - structured-data
