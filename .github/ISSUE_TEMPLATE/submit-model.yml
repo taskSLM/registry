@@ -1,0 +1,64 @@
+name: "🚀 Submit a Small Language Model"
+description: Add a task-specific SLM (sub-8B) to the registry.
+title: "[Model Submission]: "
+labels: ["model-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for contributing to the SLM Registry!
+        Please fill out the details below accurately. Models must be strictly **under 8 Billion parameters** to be accepted.
+
+  - type: input
+    id: model_name
+    attributes:
+      label: "Model Name"
+      placeholder: "e.g., Phi-3-mini-4k-instruct"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: parameter_size
+    attributes:
+      label: "Parameter Size"
+      options:
+        - "Under 1B"
+        - "1B - 3B"
+        - "3B - 5B"
+        - "5B - 8B"
+    validations:
+      required: true
+
+  - type: input
+    id: primary_task
+    attributes:
+      label: "Primary Specialized Task"
+      placeholder: "e.g., Text-to-SQL, Medical NER, Function Calling"
+    validations:
+      required: true
+
+  - type: input
+    id: hf_url
+    attributes:
+      label: "Hugging Face or Download URL"
+      placeholder: "https://huggingface.co/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Model Description"
+      placeholder: "Briefly explain what makes this model great at this specific task, hardware requirements, etc."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: "Eligibility Check"
+      options:
+        - label: "I confirm this model is strictly under 8 Billion parameters."
+          required: true
+        - label: "The model weights are publicly accessible."
+          required: true
