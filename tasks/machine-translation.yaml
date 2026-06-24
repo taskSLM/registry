@@ -1,0 +1,26 @@
+task_id: machine-translation
+display_name: Machine Translation
+domain: Multilingual NLP
+description: Translating text from one language to another while preserving meaning, tone, and nuance. Tests cross-lingual
+  understanding and generation. Critical for making AI accessible across language communities.
+input_format: Source language text + target language specification
+output_format: Fluent translation in the target language
+metrics_tracked:
+- BLEU
+- COMET
+- chrF
+recommended_models:
+- ref: models/qwen3-5-4b.yaml
+  notes: 100+ languages, state-of-the-art multilingual translation at 4B.
+- ref: models/qwen2.5-7b-instruct.yaml
+  notes: 29+ languages with strong cross-lingual understanding.
+- ref: models/phi-3.5-mini-instruct.yaml
+  notes: Significantly improved multilingual over Phi-3-mini, MIT licensed.
+recommended_datasets:
+- ref: datasets/opus100.yaml
+  purpose: fine-tuning
+related_tasks:
+- task_id: instruction-following
+  relationship: parent
+- task_id: multimodal-reasoning
+  relationship: related

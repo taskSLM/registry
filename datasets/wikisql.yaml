@@ -1,0 +1,14 @@
+name: WikiSQL
+creator: Salesforce Research
+size_rows: 80,654
+target_task: Text-to-SQL Generation
+license: BSD
+huggingface_url: https://huggingface.co/datasets/wikisql
+description: The original text-to-SQL benchmark. 80K examples pairing natural language questions with SQL queries over Wikipedia
+  tables. Simpler than Spider (single-table queries only) but larger and ideal for initial fine-tuning before moving to more
+  complex multi-table tasks.
+tags:
+- text-to-sql
+- benchmark
+- fine-tuning
+- structured-data

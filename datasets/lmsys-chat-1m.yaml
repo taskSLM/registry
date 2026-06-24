@@ -1,0 +1,15 @@
+name: lmsys-chat-1m
+creator: LMSYS
+size_rows: 1,000,000
+target_task: Instruction Following
+license: Apache 2.0
+huggingface_url: https://huggingface.co/datasets/lmsys/lmsys-chat-1m
+description: One million real user conversations with 25+ LLMs from Chatbot Arena. Contains diverse prompts, model responses,
+  and human preference votes. Invaluable for understanding real-world usage patterns and training models to handle the full
+  diversity of user requests.
+tags:
+- instruction-following
+- chat
+- fine-tuning
+- human-feedback
+- large-scale

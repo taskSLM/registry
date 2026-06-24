@@ -1,0 +1,15 @@
+name: WildChat-1M
+creator: Allen Institute for AI
+size_rows: 1,040,000
+target_task: Instruction Following
+license: ODC-BY
+huggingface_url: https://huggingface.co/datasets/allenai/WildChat-1M
+description: Over 1M real conversations between users and GPT-3.5/GPT-4. Captures the genuine distribution of user requests
+  — from coding to creative writing to roleplay. A critical resource for training models that handle the messy, diverse reality
+  of user interactions.
+tags:
+- instruction-following
+- chat
+- fine-tuning
+- human-generated
+- large-scale

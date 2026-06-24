@@ -1,0 +1,15 @@
+name: CodeFeedback-Filtered-Instruction
+creator: m-a-p
+size_rows: 156,868
+target_task: Code Generation
+license: MIT
+huggingface_url: https://huggingface.co/datasets/m-a-p/CodeFeedback-Filtered-Instruction
+description: A filtered and decontaminated code instruction dataset combining the best of Magicoder, ShareGPT code conversations,
+  and Evol-Instruct code problems. 157K high-quality coding tasks with verified solutions across multiple programming languages.
+  MIT licensed for unrestricted use.
+tags:
+- code-generation
+- fine-tuning
+- decontaminated
+- multi-language
+- instruction-tuning

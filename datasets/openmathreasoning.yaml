@@ -1,0 +1,15 @@
+name: OpenMathReasoning
+creator: NVIDIA
+size_rows: 4,920,000
+target_task: Math Reasoning
+license: CC-BY-4.0
+huggingface_url: https://huggingface.co/datasets/nvidia/OpenMathReasoning
+description: NVIDIA's massive 4.9M-row math reasoning dataset with chain-of-thought solutions. Covers a wide range of difficulty
+  levels from arithmetic to competition math. Designed for teaching models to reason step-by-step through mathematical problems.
+  Complements OpenMathInstruct-2 for comprehensive math fine-tuning.
+tags:
+- math-reasoning
+- chain-of-thought
+- fine-tuning
+- synthetic-data
+- large-scale

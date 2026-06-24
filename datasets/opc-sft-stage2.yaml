@@ -1,0 +1,14 @@
+name: opc-sft-stage2
+creator: OpenCoder
+size_rows: 436,000
+target_task: Code Generation
+license: Apache 2.0
+huggingface_url: https://huggingface.co/datasets/OpenCoder/opc-sft-stage2
+description: Stage 2 supervised fine-tuning dataset from the OpenCoder project. 436K examples used to train open-source code
+  models. Covers diverse programming tasks, languages, and difficulty levels. Part of a fully open code model training pipeline.
+tags:
+- code-generation
+- fine-tuning
+- multi-language
+- instruction-tuning
+- large-scale

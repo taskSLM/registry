@@ -1,0 +1,32 @@
+name: Pythia-1.4B
+developer: EleutherAI
+parameters: 1.4B
+param_count_m: 1400
+primary_task: Research & Reproducibility
+context_window: 2K tokens
+license: Apache 2.0
+family: pythia
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/EleutherAI/pythia-1.4b
+description: Part of EleutherAI's Pythia scaling suite — a set of 8 model sizes all trained on the same data in the same order.
+  The 1.4B variant provides an excellent mid-size baseline for controlled experiments on model scaling, training dynamics,
+  and interpretability. Apache 2.0 licensed with full training data available.
+badges:
+- verified
+- baseline
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.9
+  recommended_backend: llama.cpp
+tags:
+- research
+- reproducible
+- baseline
+- open-source

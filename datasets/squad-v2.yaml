@@ -1,0 +1,14 @@
+name: SQuAD v2
+creator: Stanford
+size_rows: 151,574
+target_task: Extractive Question Answering
+license: CC-BY-SA-4.0
+huggingface_url: https://huggingface.co/datasets/rajpurkar/squad_v2
+description: The Stanford Question Answering Dataset v2 — the standard for reading comprehension evaluation. 150K+ questions
+  over Wikipedia articles, including unanswerable questions that test a model's ability to know when it doesn't know. Essential
+  for training and evaluating QA capabilities.
+tags:
+- knowledge-qa
+- evaluation
+- benchmark
+- reading-comprehension

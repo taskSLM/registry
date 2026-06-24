@@ -1,0 +1,31 @@
+name: Falcon-7B-Instruct
+developer: Technology Innovation Institute
+parameters: 7.0B
+param_count_m: 7000
+primary_task: General Reasoning & Chat
+context_window: 2K tokens
+license: Apache 2.0
+family: falcon
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/tiiuae/falcon-7b-instruct
+description: TII's Falcon-7B, one of the first truly open 7B-class models to compete with proprietary alternatives. Trained
+  on 1.5T tokens of the RefinedWeb corpus. While surpassed by newer models in raw benchmarks, it remains a historically significant
+  and fully Apache 2.0 licensed model for research and deployment.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.2
+  recommended_backend: llama.cpp
+tags:
+- chat
+- reasoning
+- multilingual
+- open-source

@@ -1,0 +1,32 @@
+name: Pythia-2.8B
+developer: EleutherAI
+parameters: 2.8B
+param_count_m: 2800
+primary_task: Research & Reproducibility
+context_window: 2K tokens
+license: Apache 2.0
+family: pythia
+generation: 1
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/EleutherAI/pythia-2.8b
+description: The 2.8B member of EleutherAI's Pythia scaling suite. Trained on the exact same data as all other Pythia models,
+  enabling controlled experiments on how model capabilities emerge with scale. All 154 training checkpoints are available
+  for studying training dynamics. Apache 2.0.
+badges:
+- verified
+- baseline
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.7
+  recommended_backend: llama.cpp
+tags:
+- research
+- reproducible
+- baseline
+- open-source

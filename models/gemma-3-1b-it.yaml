@@ -1,0 +1,33 @@
+name: Gemma 3 1B IT
+developer: Google DeepMind
+parameters: 1.0B
+param_count_m: 1000
+primary_task: Lightweight Multimodal Reasoning
+context_window: 32K tokens
+license: Apache 2.0
+family: gemma
+generation: 3
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/google/gemma-3-1b-it
+description: The smallest Gemma 3 variant at 1B parameters, supporting both text and image inputs. A remarkably capable tiny
+  multimodal model that fits on virtually any device. Perfect for mobile vision-language tasks, on-device image understanding,
+  and lightweight multimodal assistants.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.6
+  recommended_backend: llama.cpp
+tags:
+- multimodal
+- vision
+- tiny
+- mobile
+- on-device
+- lightweight

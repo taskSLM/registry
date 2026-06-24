@@ -1,0 +1,15 @@
+name: OpenAssistant Conversations (oasst2)
+creator: LAION
+size_rows: 135,000
+target_task: Instruction Following
+license: Apache 2.0
+huggingface_url: https://huggingface.co/datasets/OpenAssistant/oasst2
+description: Human-generated multi-turn conversation trees from the OpenAssistant project. 135K messages across 66K conversation
+  trees in multiple languages. Each message is labeled for quality, making it ideal for curated instruction tuning. A foundational
+  open-source alternative to proprietary RLHF data.
+tags:
+- instruction-following
+- chat
+- fine-tuning
+- human-generated
+- multilingual

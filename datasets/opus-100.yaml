@@ -1,0 +1,13 @@
+name: OPUS-100
+creator: Helsinki-NLP
+size_rows: 1,000,000
+target_task: Machine Translation
+license: CC-BY-4.0
+huggingface_url: https://huggingface.co/datasets/opus100
+description: A multilingual translation corpus covering 100 languages with English-centric parallel data. 1M sentence pairs
+  across diverse language families. Ideal for fine-tuning small models on translation tasks for low-resource language pairs.
+tags:
+- translation
+- multilingual
+- fine-tuning
+- large-scale

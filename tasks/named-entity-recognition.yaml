@@ -1,0 +1,26 @@
+task_id: named-entity-recognition
+display_name: Named Entity Recognition (NER)
+domain: Natural Language Processing
+description: Identifying and classifying named entities (persons, organizations, locations, dates, etc.) in unstructured text.
+  A foundational NLP task critical for information extraction, knowledge graph construction, and document understanding pipelines.
+input_format: Raw text passage
+output_format: Token-level entity labels (e.g., PER, ORG, LOC, MISC)
+metrics_tracked:
+- F1 Score (Entity-level)
+- Precision
+- Recall
+recommended_models:
+- ref: models/granite-3-2-2b-instruct.yaml
+  notes: Strong structured output, ideal for entity extraction at 2B.
+- ref: models/qwen2.5-0.5b-instruct.yaml
+  notes: Surprisingly capable at NER despite tiny size — great for lightweight extraction.
+- ref: models/smollm2-1.7b-instruct.yaml
+  notes: Fully open, strong at structured extraction tasks.
+recommended_datasets:
+- ref: datasets/conll2003.yaml
+  purpose: fine-tuning
+related_tasks:
+- task_id: instruction-following
+  relationship: parent
+- task_id: knowledge-qa
+  relationship: related

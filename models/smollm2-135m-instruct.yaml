@@ -1,0 +1,33 @@
+name: SmolLM2-135M-Instruct
+developer: Hugging Face
+parameters: 135M
+param_count_m: 135
+primary_task: Lightweight Instruction Following
+context_window: 8K tokens
+license: Apache 2.0
+family: smollm
+generation: 2
+predecessor: null
+successor: models/smollm3-3b.yaml
+huggingface_url: https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct
+description: The smallest model in the SmolLM2 family at just 135M parameters. Remarkably capable for its size with basic
+  instruction following and chat abilities. Fully open (weights + data + code). Ideal for embedded systems, research on tiny
+  models, and extreme edge deployment.
+badges:
+- verified
+- fully-open
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.1
+  recommended_backend: llama.cpp
+tags:
+- lightweight
+- tiny
+- on-device
+- fully-open
+- efficient

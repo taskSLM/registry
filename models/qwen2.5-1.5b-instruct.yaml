@@ -1,0 +1,32 @@
+name: Qwen2.5-1.5B-Instruct
+developer: Alibaba
+parameters: 1.5B
+param_count_m: 1500
+primary_task: General Reasoning & Instruction Following
+context_window: 32K tokens
+license: Apache 2.0
+family: qwen
+generation: 2.5
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct
+description: A compact 1.5B model from Alibaba's Qwen2.5 series. Balances strong performance with minimal resource requirements.
+  Supports 29+ languages and delivers solid reasoning, chat, and instruction-following at a fraction of the cost of larger
+  models.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.9
+  recommended_backend: llama.cpp
+tags:
+- lightweight
+- multilingual
+- reasoning
+- instruction-following
+- efficient

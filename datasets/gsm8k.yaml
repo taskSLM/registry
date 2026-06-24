@@ -1,0 +1,14 @@
+name: GSM8K
+creator: OpenAI
+size_rows: 8,792
+target_task: Math Reasoning
+license: MIT
+huggingface_url: https://huggingface.co/datasets/gsm8k
+description: The standard benchmark for grade-school math word problems. 8.8K linguistically diverse problems requiring multi-step
+  arithmetic reasoning. Each problem includes a step-by-step natural language solution. The de facto evaluation standard for
+  math reasoning in language models.
+tags:
+- math-reasoning
+- evaluation
+- benchmark
+- chain-of-thought

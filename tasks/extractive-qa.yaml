@@ -1,0 +1,26 @@
+task_id: extractive-qa
+display_name: Extractive Question Answering
+domain: Information Retrieval & QA
+description: Reading a passage and extracting the exact answer span for a given question. Unlike knowledge QA (which relies
+  on memorized facts), extractive QA tests reading comprehension — the answer must be found in the provided text. Fundational
+  for RAG pipelines.
+input_format: Context passage + question
+output_format: Answer span extracted verbatim from the context
+metrics_tracked:
+- Exact Match
+- F1 Score
+recommended_models:
+- ref: models/phi-4-mini-instruct.yaml
+  notes: Strong reading comprehension, ideal for RAG pipelines.
+- ref: models/qwen3-5-4b.yaml
+  notes: Long context support enables processing lengthy passages.
+- ref: models/smollm3-3b.yaml
+  notes: Fully open, good baseline for RAG research.
+recommended_datasets:
+- ref: datasets/squad-v2.yaml
+  purpose: evaluation
+related_tasks:
+- task_id: knowledge-qa
+  relationship: related
+- task_id: instruction-following
+  relationship: parent

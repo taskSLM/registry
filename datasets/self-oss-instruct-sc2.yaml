@@ -1,0 +1,14 @@
+name: self-oss-instruct-sc2-exec-filter-50k
+creator: bigcode
+size_rows: 50,722
+target_task: Code Generation
+license: Apache 2.0
+huggingface_url: https://huggingface.co/datasets/bigcode/self-oss-instruct-sc2-exec-filter-50k
+description: Self-instruction dataset from the StarCoder2 project with execution-based filtering. 50K high-quality coding
+  problems where generated solutions were verified by actually running the code. Produced during the training of StarCoder2,
+  one of the best open code models.
+tags:
+- code-generation
+- fine-tuning
+- execution-verified
+- instruction-tuning

@@ -1,0 +1,31 @@
+name: Phi-3-mini-128k-instruct
+developer: Microsoft
+parameters: 3.8B
+param_count_m: 3800
+primary_task: Long-Context Reasoning
+context_window: 128K tokens
+license: MIT
+family: phi
+generation: 3
+predecessor: null
+successor: models/phi-3.5-mini-instruct.yaml
+huggingface_url: https://huggingface.co/microsoft/Phi-3-mini-128k-instruct
+description: Long-context variant of Phi-3-mini with 128K token context window. Same strong reasoning capabilities as the
+  4K version but capable of processing entire books, lengthy documents, and extended conversations. MIT licensed. A strong
+  choice for RAG alternatives and long-document QA.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 2.2
+  recommended_backend: llama.cpp
+tags:
+- long-context
+- reasoning
+- lightweight
+- local-llm

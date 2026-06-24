@@ -1,0 +1,14 @@
+name: CoNLL-2003
+creator: CoNLL Shared Task
+size_rows: 20,744
+target_task: Named Entity Recognition
+license: CC-BY-4.0
+huggingface_url: https://huggingface.co/datasets/conll2003
+description: 'The classic NER benchmark dataset. 20K sentences annotated with four entity types: PERSON, ORGANIZATION, LOCATION,
+  and MISC. The standard evaluation set for named entity recognition in English. Simple, well-understood, and ideal for fine-tuning
+  small models on NER.'
+tags:
+- named-entity-recognition
+- benchmark
+- evaluation
+- fine-tuning

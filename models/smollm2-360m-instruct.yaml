@@ -1,0 +1,33 @@
+name: SmolLM2-360M-Instruct
+developer: Hugging Face
+parameters: 360M
+param_count_m: 360
+primary_task: Lightweight Instruction Following
+context_window: 8K tokens
+license: Apache 2.0
+family: smollm
+generation: 2
+predecessor: null
+successor: models/smollm3-3b.yaml
+huggingface_url: https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct
+description: A 360M parameter instruction-tuned model from the SmolLM2 family. Provides a step up from the 135M variant with
+  noticeably better reasoning and instruction following. Fully open (weights + data + code). Great for resource-constrained
+  environments and research on small model capabilities.
+badges:
+- verified
+- fully-open
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.2
+  recommended_backend: llama.cpp
+tags:
+- lightweight
+- tiny
+- on-device
+- fully-open
+- efficient

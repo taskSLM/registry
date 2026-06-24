@@ -1,0 +1,32 @@
+name: Qwen2.5-3B-Instruct
+developer: Alibaba
+parameters: 3.1B
+param_count_m: 3100
+primary_task: General Reasoning & Code Generation
+context_window: 32K tokens
+license: Apache 2.0
+family: qwen
+generation: 2.5
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/Qwen/Qwen2.5-3B-Instruct
+description: The 3B variant of Qwen2.5 offering strong reasoning and code generation at a highly efficient size. Hits the
+  sweet spot between TinyLlama-1.1B and 7B models for quality-per-parameter. Supports 29+ languages with solid instruction
+  following.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.9
+  recommended_backend: llama.cpp
+tags:
+- reasoning
+- code-generation
+- multilingual
+- instruction-following
+- efficient

@@ -1,0 +1,25 @@
+task_id: sentiment-analysis
+display_name: Sentiment Analysis
+domain: Natural Language Processing
+description: Classifying the sentiment or emotional tone of text — positive, negative, neutral, or fine-grained emotions.
+  A bread-and-butter NLP task used in customer feedback analysis, social media monitoring, and brand intelligence. Well-suited
+  to small, specialized models.
+input_format: Text passage (review, tweet, comment)
+output_format: Sentiment label with optional confidence score
+metrics_tracked:
+- Accuracy
+- F1 Score
+- Macro-F1
+recommended_models:
+- ref: models/smollm2-135m-instruct.yaml
+  notes: Tiny 135M model sufficient for sentiment classification when fine-tuned.
+- ref: models/qwen2.5-0.5b-instruct.yaml
+  notes: Minimal resource requirements, strong at text classification.
+- ref: models/tinyllama-1-1b.yaml
+  notes: Good baseline with strong text understanding at 1.1B.
+recommended_datasets: []
+related_tasks:
+- task_id: named-entity-recognition
+  relationship: related
+- task_id: instruction-following
+  relationship: parent

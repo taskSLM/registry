@@ -1,0 +1,33 @@
+name: Qwen2.5-0.5B-Instruct
+developer: Alibaba
+parameters: 0.5B
+param_count_m: 500
+primary_task: Lightweight Instruction Following
+context_window: 32K tokens
+license: Apache 2.0
+family: qwen
+generation: 2.5
+predecessor: null
+successor: null
+huggingface_url: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct
+description: The smallest member of the Qwen2.5 family at 0.5B parameters. Surprisingly capable for its size, supporting 29+
+  languages and 32K context. Ideal for resource-constrained environments, on-device deployment, and as a minimal baseline
+  for fine-tuning experiments.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.3
+  recommended_backend: llama.cpp
+tags:
+- lightweight
+- multilingual
+- on-device
+- efficient
+- instruction-following
+- tiny

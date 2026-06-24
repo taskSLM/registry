@@ -1,0 +1,33 @@
+name: SmolLM2-1.7B-Instruct
+developer: Hugging Face
+parameters: 1.7B
+param_count_m: 1700
+primary_task: General Reasoning & Instruction Following
+context_window: 8K tokens
+license: Apache 2.0
+family: smollm
+generation: 2
+predecessor: null
+successor: models/smollm3-3b.yaml
+huggingface_url: https://huggingface.co/HuggingFaceTB/SmolLM2-1.7B-Instruct
+description: The largest SmolLM2 model at 1.7B parameters. Trained on the fully open smoltalk dataset and delivers strong
+  reasoning and chat abilities. Complete transparency — weights, training data, and code are all publicly available. Excellent
+  for research, fine-tuning, and deployment on consumer hardware.
+badges:
+- verified
+- fully-open
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.0
+  recommended_backend: llama.cpp
+tags:
+- reasoning
+- fully-open
+- instruction-following
+- efficient
+- chat

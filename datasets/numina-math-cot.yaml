@@ -1,0 +1,14 @@
+name: NuminaMath-CoT
+creator: AI-MO (Numina)
+size_rows: 859,000
+target_task: Math Reasoning
+license: Apache 2.0
+huggingface_url: https://huggingface.co/datasets/AI-MO/NuminaMath-CoT
+description: Chain-of-thought math dataset from the team that won the AI Math Olympiad prize. 859K high-quality problems with
+  detailed step-by-step solutions. Covers competition-level mathematics and advanced problem-solving strategies. The gold
+  standard for training SLMs on mathematical reasoning.
+tags:
+- math-reasoning
+- chain-of-thought
+- fine-tuning
+- competition-math

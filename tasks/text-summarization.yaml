@@ -1,0 +1,27 @@
+task_id: text-summarization
+display_name: Text Summarization
+domain: Natural Language Processing
+description: Condensing long documents, articles, or conversations into shorter summaries while preserving key information
+  and meaning. Tests a model's ability to identify salient content, maintain factual accuracy, and produce fluent compressed
+  text.
+input_format: Long-form text (article, document, dialogue transcript)
+output_format: Concise summary capturing essential information
+metrics_tracked:
+- ROUGE-L
+- BERTScore
+- Factual Consistency
+recommended_models:
+- ref: models/qwen3-5-4b.yaml
+  notes: 256K context ideal for long-document summarization.
+- ref: models/phi-3.5-mini-instruct.yaml
+  notes: 128K context, MIT licensed, strong at concise generation.
+- ref: models/smollm3-3b.yaml
+  notes: Fully open, dual-mode reasoning for extractive and abstractive summarization.
+recommended_datasets:
+- ref: datasets/smoltalk.yaml
+  purpose: general-instruction-base
+related_tasks:
+- task_id: instruction-following
+  relationship: parent
+- task_id: knowledge-qa
+  relationship: related

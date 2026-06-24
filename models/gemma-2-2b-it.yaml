@@ -1,0 +1,31 @@
+name: Gemma 2 2B IT
+developer: Google DeepMind
+parameters: 2.6B
+param_count_m: 2600
+primary_task: General Reasoning & Chat
+context_window: 8K tokens
+license: Apache 2.0
+family: gemma
+generation: 2
+predecessor: null
+successor: models/gemma-3-4b-it.yaml
+huggingface_url: https://huggingface.co/google/gemma-2-2b-it
+description: Google's Gemma 2 at 2.6B parameters. Punching well above its weight class, this model delivers competitive performance
+  against much larger models. Known for strong reasoning, clean outputs, and efficient deployment. Predecessor to the Gemma
+  3 4B, showing Google's progression in the small model space.
+badges:
+- verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.6
+  recommended_backend: llama.cpp
+tags:
+- reasoning
+- chat
+- efficient
+- instruction-following
