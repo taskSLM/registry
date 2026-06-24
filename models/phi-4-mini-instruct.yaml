@@ -1,11 +1,28 @@
 name: "Phi-4-mini-instruct"
 developer: "Microsoft"
 parameters: "3.8B"
+param_count_m: 3800
 primary_task: "General Reasoning & Knowledge QA"
 context_window: "4K tokens"
 license: "MIT"
+family: "phi"
+generation: 4
+predecessor: "models/phi-3-mini.yaml"
+successor: null
 huggingface_url: "https://huggingface.co/microsoft/Phi-4-mini-instruct"
 description: "Microsoft's best-in-class 3.8B parameter model trained on 5T tokens of high-quality filtered and synthetic data. Achieves top-tier reasoning benchmarks at its size: ARC-C 83.7%, GSM8K 88.6%. Extremely memory-efficient — runs in Q4 at just 2.49GB. Optimized for tight hardware, local deployment, and commercial use."
+badges:
+  - verified
+  - community-pick
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 2.5
+  recommended_backend: "llama.cpp"
 tags:
   - reasoning
   - local-llm

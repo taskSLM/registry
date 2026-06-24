@@ -1,11 +1,28 @@
 name: "SmolLM3-3B-Instruct"
 developer: "Hugging Face"
 parameters: "3.0B"
+param_count_m: 3000
 primary_task: "General Reasoning & Tool Calling"
 context_window: "64K tokens (128K with YaRN)"
 license: "Apache 2.0"
+family: "smollm"
+generation: 3
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Instruct"
 description: "A fully open 3B parameter model from Hugging Face with dual-mode reasoning (thinking/no-think), structured tool calling (JSON/XML/Python), and support for 6 languages. Weights, training data, and code are all publicly available, making it the most transparent SLM in its class. Ideal for RAG systems, code assistants, and research."
+badges:
+  - verified
+  - community-pick
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.8
+  recommended_backend: "llama.cpp"
 tags:
   - reasoning
   - tool-calling

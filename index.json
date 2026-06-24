@@ -2,7 +2,7 @@
   "meta": {
     "name": "SLM World Registry",
     "description": "The world's largest registry of Small Language Models under 8B parameters",
-    "generated_at": "2026-06-24T18:42:38.604088+00:00",
+    "generated_at": "2026-06-24T18:54:07.931576+00:00",
     "version": "1.0.0",
     "counts": {
       "models": 11,
@@ -15,11 +15,29 @@
       "name": "Gemma 3 4B IT",
       "developer": "Google DeepMind",
       "parameters": "4.0B",
+      "param_count_m": 4000,
       "primary_task": "Multimodal Reasoning & Code Generation",
       "context_window": "128K tokens",
       "license": "Apache 2.0",
+      "family": "gemma",
+      "generation": 3,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/google/gemma-3-4b-it",
       "description": "A powerful 4B parameter multimodal instruction-tuned model from Google DeepMind supporting both text and image inputs. Achieves strong results on HumanEval (71.3%) and GSM8K (89.2%). Excels at code generation, math reasoning, and general chat tasks with the efficiency needed for edge deployment.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "multimodal",
         "code-generation",
@@ -38,11 +56,30 @@
       "name": "Gemma 4 E2B IT",
       "developer": "Google DeepMind",
       "parameters": "2.3B effective (5.1B total)",
+      "param_count_m": 2300,
+      "param_total_m": 5100,
       "primary_task": "Multimodal Edge AI",
       "context_window": "128K tokens",
       "license": "Apache 2.0",
+      "family": "gemma",
+      "generation": 4,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/google/gemma-4-e2b-it",
       "description": "Google DeepMind's most advanced sub-3B model supporting text, image, audio, and video inputs. Features Per-Layer Embeddings and hybrid attention architecture enabling it to run in under 1.5GB of memory. Purpose-built for on-device, mobile, and IoT deployment while maintaining strong multimodal reasoning capabilities.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.5,
+        "recommended_backend": "mediapipe"
+      },
       "tags": [
         "multimodal",
         "on-device",
@@ -61,11 +98,29 @@
       "name": "Granite-3.2-2B-Instruct",
       "developer": "IBM Research",
       "parameters": "2.0B",
+      "param_count_m": 2000,
       "primary_task": "Enterprise Function Calling & Tool Use",
       "context_window": "128K tokens",
       "license": "Apache 2.0",
+      "family": "granite",
+      "generation": 3.2,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/ibm-granite/granite-3.2-2b-instruct",
       "description": "IBM's enterprise-grade 2B parameter instruction-tuned model with native function calling capabilities and 128K context window. Optimized for enterprise tool use, structured data extraction, and production deployment. Combines small size with surprisingly strong performance on business automation tasks.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.2,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "function-calling",
         "enterprise",
@@ -83,11 +138,29 @@
       "name": "Llama 3.2 3B Instruct",
       "developer": "Meta",
       "parameters": "3.0B",
+      "param_count_m": 3000,
       "primary_task": "Agentic Tool Calling & Structured Output",
       "context_window": "128K tokens",
       "license": "Llama 3.2 Community License",
+      "family": "llama",
+      "generation": 3.2,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct",
       "description": "Meta's widely-adopted 3B parameter instruction-tuned model with over 2.18M+ HuggingFace downloads. Features strong tool calling capabilities, structured JSON output, and a massive community ecosystem. Optimized for agentic pipelines, mobile apps, and community-supported projects. The Llama Community License permits most commercial use.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.8,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "tool-calling",
         "agentic",
@@ -105,11 +178,30 @@
       "name": "OLMo-7B-Instruct",
       "developer": "Allen Institute for AI (AI2)",
       "parameters": "7.0B",
+      "param_count_m": 7000,
       "primary_task": "Open Science Research & Instruction Following",
       "context_window": "2K tokens",
       "license": "Apache 2.0",
+      "family": "olmo",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/allenai/OLMo-7B-Instruct",
       "description": "A fully open 7B parameter instruction-tuned model from AI2, built on the principles of open science. All training data, code, weights, logs, and intermediate checkpoints are publicly available. Provides complete reproducibility and transparency unmatched by any other model in its class. Ideal for academic research and reproducible ML.",
+      "badges": [
+        "verified",
+        "fully-open"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.2,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "open-science",
         "research",
@@ -128,11 +220,30 @@
       "name": "Phi-3-mini-4k-instruct",
       "developer": "Microsoft",
       "parameters": "3.8B",
+      "param_count_m": 3800,
       "primary_task": "General Reasoning & Text Generation",
       "context_window": "4K tokens",
       "license": "MIT",
+      "family": "phi",
+      "generation": 3,
+      "predecessor": null,
+      "successor": "models/phi-4-mini-instruct.yaml",
       "huggingface_url": "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct",
       "description": "A highly capable, lightweight 3.8 billion parameter model trained on a mix of heavily filtered web data and synthetic data, optimized for commercial and local use.",
+      "badges": [
+        "verified",
+        "seed"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.2,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "reasoning",
         "local-llm",
@@ -148,11 +259,30 @@
       "name": "Phi-4-mini-instruct",
       "developer": "Microsoft",
       "parameters": "3.8B",
+      "param_count_m": 3800,
       "primary_task": "General Reasoning & Knowledge QA",
       "context_window": "4K tokens",
       "license": "MIT",
+      "family": "phi",
+      "generation": 4,
+      "predecessor": "models/phi-3-mini.yaml",
+      "successor": null,
       "huggingface_url": "https://huggingface.co/microsoft/Phi-4-mini-instruct",
       "description": "Microsoft's best-in-class 3.8B parameter model trained on 5T tokens of high-quality filtered and synthetic data. Achieves top-tier reasoning benchmarks at its size: ARC-C 83.7%, GSM8K 88.6%. Extremely memory-efficient — runs in Q4 at just 2.49GB. Optimized for tight hardware, local deployment, and commercial use.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "reasoning",
         "local-llm",
@@ -172,11 +302,29 @@
       "name": "Qwen2.5-7B-Instruct",
       "developer": "Alibaba",
       "parameters": "7.6B",
+      "param_count_m": 7600,
       "primary_task": "General Reasoning, Code & Math",
       "context_window": "128K tokens",
       "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 2.5,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct",
       "description": "A highly capable 7.6B parameter instruction-tuned model that sits at the top of the sub-8B range. Delivers exceptional performance across reasoning, code generation, and mathematical tasks. Supports 29+ languages and long-context processing up to 128K tokens. The strongest Apache 2.0 licensed model under 8B for general-purpose use.",
+      "badges": [
+        "verified"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": false,
+        "mobile_phone": false,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 4.5,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "reasoning",
         "code-generation",
@@ -196,11 +344,30 @@
       "name": "Qwen3.5-4B",
       "developer": "Alibaba",
       "parameters": "4.0B",
+      "param_count_m": 4000,
       "primary_task": "General Reasoning & Instruction Following",
       "context_window": "256K tokens (extendable to 1M+)",
       "license": "Apache 2.0",
+      "family": "qwen",
+      "generation": 3.5,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/Qwen/Qwen3.5-4B",
       "description": "A state-of-the-art 4B parameter model with thinking/reasoning mode toggle, supporting 100+ languages. Features strong instruction following, long-document processing, and competitive performance across diverse benchmarks. Ideal for general-purpose deployment where quality and efficiency must be balanced.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 2.5,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "reasoning",
         "multilingual",
@@ -223,11 +390,30 @@
       "name": "SmolLM3-3B-Instruct",
       "developer": "Hugging Face",
       "parameters": "3.0B",
+      "param_count_m": 3000,
       "primary_task": "General Reasoning & Tool Calling",
       "context_window": "64K tokens (128K with YaRN)",
       "license": "Apache 2.0",
+      "family": "smollm",
+      "generation": 3,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/HuggingFaceTB/SmolLM3-3B-Instruct",
       "description": "A fully open 3B parameter model from Hugging Face with dual-mode reasoning (thinking/no-think), structured tool calling (JSON/XML/Python), and support for 6 languages. Weights, training data, and code are all publicly available, making it the most transparent SLM in its class. Ideal for RAG systems, code assistants, and research.",
+      "badges": [
+        "verified",
+        "community-pick"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 1.8,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "reasoning",
         "tool-calling",
@@ -249,11 +435,30 @@
       "name": "TinyLlama-1.1B-Chat-v1.0",
       "developer": "Zhang et al. (SUTD)",
       "parameters": "1.1B",
+      "param_count_m": 1100,
       "primary_task": "General Reasoning & Chat",
       "context_window": "2K tokens",
       "license": "Apache 2.0",
+      "family": "tinylama",
+      "generation": 1,
+      "predecessor": null,
+      "successor": null,
       "huggingface_url": "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0",
       "description": "The gold standard for 1B-scale language models, trained on 3 trillion tokens with a Chinchilla-optimal approach. Despite its small size, it demonstrates surprisingly strong reasoning and conversational abilities. Ideal for research, resource-constrained environments, and as a baseline for fine-tuning experiments.",
+      "badges": [
+        "verified",
+        "baseline"
+      ],
+      "hardware_compat": {
+        "raspberry_pi_5": true,
+        "mobile_phone": true,
+        "consumer_gpu_8gb": true,
+        "consumer_gpu_24gb": true,
+        "cpu_only": true,
+        "apple_silicon_16gb": true,
+        "min_ram_gb_q4": 0.7,
+        "recommended_backend": "llama.cpp"
+      },
       "tags": [
         "lightweight",
         "research",

@@ -1,11 +1,27 @@
 name: "Qwen2.5-7B-Instruct"
 developer: "Alibaba"
 parameters: "7.6B"
+param_count_m: 7600
 primary_task: "General Reasoning, Code & Math"
 context_window: "128K tokens"
 license: "Apache 2.0"
+family: "qwen"
+generation: 2.5
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
 description: "A highly capable 7.6B parameter instruction-tuned model that sits at the top of the sub-8B range. Delivers exceptional performance across reasoning, code generation, and mathematical tasks. Supports 29+ languages and long-context processing up to 128K tokens. The strongest Apache 2.0 licensed model under 8B for general-purpose use."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: false
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 4.5
+  recommended_backend: "llama.cpp"
 tags:
   - reasoning
   - code-generation

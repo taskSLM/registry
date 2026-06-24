@@ -45,6 +45,10 @@ MODEL_OPTIONAL = ["tags", "submitted_by", "predecessor", "successor",
                    "generation", "family", "param_count_m", "param_total_m",
                    "badges", "hardware_compat"]
 
+KNOWN_BADGES = {"verified", "community-pick", "seed", "baseline", "fully-open", "popular", "new"}
+
+KNOWN_FAMILIES = {"phi", "qwen", "gemma", "smollm", "llama", "olmo", "granite", "tinylama", "falcon", "pythia"}
+
 DATASET_REQUIRED = [
     "name", "creator", "size_rows", "target_task",
     "license", "huggingface_url", "description"
@@ -330,6 +334,30 @@ def validate_file(filepath: Path, strict: bool = False,
         else:
             warn(issue)
             warnings_count += 1
+
+    # 5b. Badges (models only)
+    if schema_type == "model" and "badges" in data:
+        badges = data["badges"]
+        if isinstance(badges, list):
+            for badge in badges:
+                if badge not in KNOWN_BADGES:
+                    warn(f"Unknown badge: '{badge}'")
+                    warnings_count += 1
+
+    # 5c. Family validation
+    if schema_type == "model" and "family" in data:
+        fam = data["family"]
+        if fam not in KNOWN_FAMILIES:
+            warn(f"Unknown family: '{fam}' (consider adding to KNOWN_FAMILIES)")
+            warnings_count += 1
+
+    # 5d. Lineage validation
+    if schema_type == "model":
+        for field in ["predecessor", "successor"]:
+            if field in data and data[field] is not None:
+                ref = data[field]
+                if isinstance(ref, str) and not (ROOT / ref).exists():
+                    warn(f"{field} ref '{ref}' does not exist")
 
     # 6. URL check
     if check_urls and "huggingface_url" in data:

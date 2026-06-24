@@ -1,0 +1,80 @@
+# SLM World Benchmark Leaderboard
+#
+# Schema per entry:
+#   model: "models/<name>.yaml"     # Reference to model
+#   task: "tasks/<id>.yaml"         # Reference to task
+#   metric: "<name>"                # Metric name (must match task metrics_tracked)
+#   score: <float>                  # Score value
+#   dataset: "datasets/<name>.yaml" # Eval dataset used
+#   notes: "<optional context>"
+#   submitted_by: "<github handle>"
+#   verified: true/false            # Maintainer-verified?
+
+entries:
+  # ── Text-to-SQL ──────────────────────────────────────────────
+  - model: "models/phi-3-mini.yaml"
+    task: "tasks/text-to-sql.yaml"
+    metric: "Execution Accuracy"
+    score: 72.4
+    dataset: "datasets/spider.yaml"
+    notes: "Base model without SQL-specific fine-tuning. Zero-shot evaluation."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  # ── Code Generation ──────────────────────────────────────────
+  - model: "models/gemma-3-4b-it.yaml"
+    task: "tasks/code-generation.yaml"
+    metric: "HumanEval Score"
+    score: 71.3
+    dataset: null
+    notes: "As reported by Google DeepMind in the Gemma 3 technical report."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  # ── Math Reasoning ───────────────────────────────────────────
+  - model: "models/gemma-3-4b-it.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 89.2
+    dataset: null
+    notes: "8-shot evaluation as reported by Google DeepMind."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/phi-4-mini-instruct.yaml"
+    task: "tasks/math-reasoning.yaml"
+    metric: "GSM8K Accuracy"
+    score: 88.6
+    dataset: null
+    notes: "As reported by Microsoft in the Phi-4 technical report."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  # ── Knowledge QA ─────────────────────────────────────────────
+  - model: "models/phi-4-mini-instruct.yaml"
+    task: "tasks/knowledge-qa.yaml"
+    metric: "ARC-C"
+    score: 83.7
+    dataset: null
+    notes: "AI2 Reasoning Challenge — Challenging set. As reported by Microsoft."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  - model: "models/phi-3-mini.yaml"
+    task: "tasks/knowledge-qa.yaml"
+    metric: "ARC-C"
+    score: 69.5
+    dataset: null
+    notes: "Baseline score for the seed model."
+    submitted_by: "@anckursingh"
+    verified: false
+
+  # ── Instruction Following ────────────────────────────────────
+  - model: "models/llama-3-2-3b-instruct.yaml"
+    task: "tasks/instruction-following.yaml"
+    metric: "IFEval Score"
+    score: 78.6
+    dataset: null
+    notes: "Instruction-following evaluation. As reported by Meta."
+    submitted_by: "@anckursingh"
+    verified: false

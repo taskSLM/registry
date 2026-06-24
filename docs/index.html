@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLM World Registry</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --dim: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --yellow: #d2991d; --orange: #db6d28;
+    --red: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.5;
+    max-width: 1200px; margin: 0 auto; padding: 24px;
+  }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .subtitle { color: var(--dim); margin-bottom: 24px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; text-align: center;
+  }
+  .stat-card .num { font-size: 32px; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 13px; color: var(--dim); margin-top: 4px; }
+  .tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab {
+    padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px 6px 0 0;
+    background: var(--surface); color: var(--dim); cursor: pointer; font-size: 14px;
+    border-bottom: none;
+  }
+  .tab.active { color: var(--text); background: var(--bg); border-color: var(--accent); font-weight: 600; }
+  input, select {
+    background: var(--surface); color: var(--text); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 12px; font-size: 14px; width: 100%;
+  }
+  .search-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .search-bar input { flex: 1; min-width: 200px; }
+  .search-bar select { width: auto; min-width: 140px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--dim); font-weight: 600; position: sticky; top: 0; background: var(--bg); cursor: pointer; }
+  th:hover { color: var(--text); }
+  tr:hover { background: var(--surface); }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px;
+    background: var(--surface); border: 1px solid var(--border); margin: 2px;
+  }
+  .badge {
+    display: inline-block; padding: 1px 6px; border-radius: 10px; font-size: 10px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge-verified { background: #1a3a2a; color: var(--green); }
+  .badge-community-pick { background: #3a2a1a; color: var(--yellow); }
+  .badge-seed { background: #2a1a3a; color: #bc8cff; }
+  .badge-baseline { background: #1a2a3a; color: var(--accent); }
+  .badge-fully-open { background: #1a3a3a; color: #56d4dd; }
+  .hw-yes { color: var(--green); font-weight: 600; }
+  .hw-no { color: var(--dim); }
+  .hw-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin-bottom: 16px; }
+  .hw-item {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
+    padding: 12px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .hw-item .count { font-size: 24px; font-weight: 700; }
+  .model-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; margin-bottom: 12px;
+  }
+  .model-card h3 { color: var(--accent); margin-bottom: 4px; }
+  .model-card .meta { color: var(--dim); font-size: 13px; margin-bottom: 8px; }
+  .license-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px;
+    background: #1a2a3a; color: var(--accent);
+  }
+  .task-node { margin-bottom: 20px; }
+  .task-node h3 { color: var(--accent); }
+  .rec-list { margin: 8px 0 0 16px; color: var(--dim); font-size: 13px; }
+  .rec-list li { margin-bottom: 4px; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--dim); font-size: 13px; text-align: center; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .loading { text-align: center; padding: 60px; color: var(--dim); font-size: 18px; }
+</style>
+</head>
+<body>
+
+<h1>SLM World Registry</h1>
+<p class="subtitle">The world's largest open registry of Small Language Models under 8B parameters</p>
+
+<div id="app"><div class="loading">Loading registry...</div></div>
+
+<footer>
+  <p>SLM World Registry &mdash; MIT Licensed &mdash; <a href="https://github.com/taskSLM/registry">GitHub</a></p>
+</footer>
+
+<script>
+const BADGE_LABELS = {
+  'verified': 'Verified',
+  'community-pick': 'Community Pick',
+  'seed': 'Seed',
+  'baseline': 'Baseline',
+  'fully-open': 'Fully Open'
+};
+
+async function load() {
+  try {
+    // Try local first, then fall back to GitHub raw
+    let resp;
+    try { resp = await fetch('index.json'); } catch(e) {}
+    if (!resp || !resp.ok) {
+      resp = await fetch('https://raw.githubusercontent.com/taskSLM/registry/main/index.json');
+    }
+    const data = await resp.json();
+    render(data);
+  } catch(e) {
+    document.getElementById('app').innerHTML =
+      `<div class="loading" style="color:var(--red)">Failed to load registry data.<br><small>${e.message}</small></div>`;
+  }
+}
+
+function renderBadges(badges) {
+  if (!badges || !badges.length) return '';
+  return badges.map(b => {
+    const label = BADGE_LABELS[b] || b;
+    return `<span class="badge badge-${b}">${label}</span>`;
+  }).join(' ');
+}
+
+function renderTags(tags) {
+  if (!tags || !tags.length) return '';
+  return tags.map(t => `<span class="tag">${t}</span>`).join(' ');
+}
+
+function hwIcon(val) { return val ? '<span class="hw-yes">YES</span>' : '<span class="hw-no">no</span>'; }
+
+function renderStats(data) {
+  const m = data.meta?.counts || {};
+  const hwCounts = { rpi: 0, mobile: 0, gpu8: 0, cpu: 0 };
+  Object.values(data.models || {}).forEach(md => {
+    const hw = md.hardware_compat || {};
+    if (hw.raspberry_pi_5) hwCounts.rpi++;
+    if (hw.mobile_phone) hwCounts.mobile++;
+    if (hw.consumer_gpu_8gb) hwCounts.gpu8++;
+    if (hw.cpu_only) hwCounts.cpu++;
+  });
+
+  return `
+    <div class="stats">
+      <div class="stat-card"><div class="num">${m.models || 0}</div><div class="label">Models</div></div>
+      <div class="stat-card"><div class="num">${m.datasets || 0}</div><div class="label">Datasets</div></div>
+      <div class="stat-card"><div class="num">${m.tasks || 0}</div><div class="label">Tasks</div></div>
+      <div class="stat-card"><div class="num">${hwCounts.rpi}</div><div class="label">Run on RPi 5</div></div>
+      <div class="stat-card"><div class="num">${hwCounts.mobile}</div><div class="label">Run on Mobile</div></div>
+      <div class="stat-card"><div class="num">${hwCounts.cpu}</div><div class="label">CPU Compatible</div></div>
+    </div>`;
+}
+
+function renderModelTable(data, filter = '', sortBy = 'params_desc') {
+  let models = Object.entries(data.models || {}).map(([k, m]) => ({key: k, ...m}));
+  const f = filter.toLowerCase();
+
+  if (f) {
+    models = models.filter(m =>
+      (m.name || '').toLowerCase().includes(f) ||
+      (m.developer || '').toLowerCase().includes(f) ||
+      (m.primary_task || '').toLowerCase().includes(f) ||
+      (m.tags || []).some(t => t.toLowerCase().includes(f)) ||
+      (m._connected_tasks || []).some(t => t.toLowerCase().includes(f))
+    );
+  }
+
+  // Sort
+  if (sortBy === 'params_asc') models.sort((a,b) => (a.param_count_m || 9999) - (b.param_count_m || 9999));
+  else if (sortBy === 'params_desc') models.sort((a,b) => (b.param_count_m || 0) - (a.param_count_m || 0));
+  else if (sortBy === 'name') models.sort((a,b) => (a.name||'').localeCompare(b.name||''));
+  else if (sortBy === 'developer') models.sort((a,b) => (a.developer||'').localeCompare(b.developer||''));
+
+  let rows = models.map(m => {
+    const hw = m.hardware_compat || {};
+    return `
+    <tr>
+      <td>
+        <strong><a href="${m.huggingface_url || '#'}" target="_blank">${m.name || m.key}</a></strong>
+        <div style="margin-top:2px">${renderBadges(m.badges)}</div>
+      </td>
+      <td>${m.developer || '?'}</td>
+      <td>${m.parameters || '?'}</td>
+      <td>${m.primary_task || '?'}</td>
+      <td><span class="license-badge">${m.license || '?'}</span></td>
+      <td style="font-size:12px">${hwIcon(hw.raspberry_pi_5)} ${hwIcon(hw.mobile_phone)} ${hwIcon(hw.consumer_gpu_8gb)}</td>
+      <td style="font-size:11px;max-width:200px">${renderTags(m.tags)}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div class="search-bar">
+      <input type="text" id="modelSearch" placeholder="Search by name, developer, task, or tag..." value="${escapeHtml(filter)}" oninput="switchTab('models', document.getElementById('modelSearch').value, document.getElementById('modelSort').value)">
+      <select id="modelSort" onchange="switchTab('models', document.getElementById('modelSearch').value, this.value)">
+        <option value="params_desc" ${sortBy==='params_desc'?'selected':''}>Size: Largest first</option>
+        <option value="params_asc" ${sortBy==='params_asc'?'selected':''}>Size: Smallest first</option>
+        <option value="name" ${sortBy==='name'?'selected':''}>Name: A-Z</option>
+        <option value="developer" ${sortBy==='developer'?'selected':''}>Developer: A-Z</option>
+      </select>
+    </div>
+    <p style="color:var(--dim);margin-bottom:8px">${models.length} model(s)</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr>
+        <th>Model</th><th>Developer</th><th>Params</th><th>Best For</th><th>License</th><th>RPi5 / Mobile / GPU8</th><th>Tags</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>`;
+}
+
+function renderHardwareMatrix(data) {
+  const models = Object.entries(data.models || {}).map(([k,m]) => ({key:k,...m}));
+  models.sort((a,b) => (a.param_count_m || 9999) - (b.param_count_m || 9999));
+
+  let rows = models.map(m => {
+    const hw = m.hardware_compat || {};
+    return `<tr>
+      <td><strong>${m.name || m.key}</strong></td>
+      <td>${m.parameters || '?'}</td>
+      <td>${hwIcon(hw.raspberry_pi_5)}</td>
+      <td>${hwIcon(hw.mobile_phone)}</td>
+      <td>${hwIcon(hw.consumer_gpu_8gb)}</td>
+      <td>${hwIcon(hw.consumer_gpu_24gb)}</td>
+      <td>${hwIcon(hw.cpu_only)}</td>
+      <td>${hw.min_ram_gb_q4 || '?'} GB</td>
+      <td style="font-size:12px">${hw.recommended_backend || ''}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr>
+        <th>Model</th><th>Params</th><th>RPi 5</th><th>Mobile</th><th>GPU 8GB</th><th>GPU 24GB</th><th>CPU</th><th>Q4 RAM</th><th>Backend</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>`;
+}
+
+function renderTasks(data) {
+  const tasks = Object.entries(data.tasks || {}).sort((a,b) =>
+    (a[1].display_name||'').localeCompare(b[1].display_name||''));
+  return tasks.map(([id, t]) => `
+    <div class="task-node">
+      <h3>${t.display_name || id}</h3>
+      <p style="color:var(--dim);font-size:13px">${t.domain || ''}</p>
+      <p style="margin:4px 0">${(t.description || '').slice(0, 160)}...</p>
+      <p style="font-size:12px;color:var(--dim)">Metrics: ${(t.metrics_tracked||[]).join(', ')}</p>
+      ${t.recommended_models ? `
+        <ul class="rec-list"><strong>Top Models:</strong>
+          ${t.recommended_models.map(rm => `<li>${rm.ref} &mdash; ${rm.notes || ''}</li>`).join('')}
+        </ul>` : ''}
+      ${t.recommended_datasets ? `
+        <ul class="rec-list"><strong>Datasets:</strong>
+          ${t.recommended_datasets.map(rd => `<li>${rd.ref} (${rd.purpose || 'general'})</li>`).join('')}
+        </ul>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderDatasets(data) {
+  const datasets = Object.entries(data.datasets || {}).sort((a,b) =>
+    (a[1].name||'').localeCompare(b[1].name||''));
+  let rows = datasets.map(([k, d]) => `
+    <tr>
+      <td><strong><a href="${d.huggingface_url || '#'}" target="_blank">${d.name || k}</a></strong></td>
+      <td>${d.creator || '?'}</td>
+      <td>${d.size_rows || '?'}</td>
+      <td>${d.target_task || '?'}</td>
+      <td><span class="license-badge">${d.license || '?'}</span></td>
+      <td style="font-size:11px">${renderTags(d.tags)}</td>
+    </tr>`).join('');
+
+  return `
+    <p style="color:var(--dim);margin-bottom:8px">${datasets.length} dataset(s)</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>Dataset</th><th>Creator</th><th>Rows</th><th>Target Task</th><th>License</th><th>Tags</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>`;
+}
+
+function renderBenchmarks(data) {
+  // Benchmarks are loaded from benchmarks/benchmarks.yaml separately
+  return `<p style="color:var(--dim)">Benchmark leaderboard data is in <code>benchmarks/benchmarks.yaml</code>.
+    Run <code>slm leaderboard</code> via the CLI, or view the file on
+    <a href="https://github.com/taskSLM/registry/blob/main/benchmarks/benchmarks.yaml">GitHub</a>.</p>`;
+}
+
+let currentTab = 'models';
+let currentData = null;
+
+function switchTab(tab, filterVal, sortVal) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+
+  const content = document.getElementById('tab-content');
+  const filter = filterVal || '';
+  const sort = sortVal || 'params_desc';
+
+  if (tab === 'models') content.innerHTML = renderModelTable(currentData, filter, sort);
+  else if (tab === 'hardware') content.innerHTML = renderHardwareMatrix(currentData);
+  else if (tab === 'tasks') content.innerHTML = renderTasks(currentData);
+  else if (tab === 'datasets') content.innerHTML = renderDatasets(currentData);
+  else if (tab === 'benchmarks') content.innerHTML = renderBenchmarks(currentData);
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render(data) {
+  currentData = data;
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    ${renderStats(data)}
+    <div class="tabs">
+      <div class="tab active" id="tab-models" onclick="switchTab('models')">Models</div>
+      <div class="tab" id="tab-hardware" onclick="switchTab('hardware')">Hardware Matrix</div>
+      <div class="tab" id="tab-tasks" onclick="switchTab('tasks')">Tasks</div>
+      <div class="tab" id="tab-datasets" onclick="switchTab('datasets')">Datasets</div>
+      <div class="tab" id="tab-benchmarks" onclick="switchTab('benchmarks')">Benchmarks</div>
+    </div>
+    <div id="tab-content">${renderModelTable(data)}</div>
+  `;
+}
+
+load();
+</script>
+
+</body>
+</html>

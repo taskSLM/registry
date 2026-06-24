@@ -1,11 +1,28 @@
 name: "TinyLlama-1.1B-Chat-v1.0"
 developer: "Zhang et al. (SUTD)"
 parameters: "1.1B"
+param_count_m: 1100
 primary_task: "General Reasoning & Chat"
 context_window: "2K tokens"
 license: "Apache 2.0"
+family: "tinylama"
+generation: 1
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 description: "The gold standard for 1B-scale language models, trained on 3 trillion tokens with a Chinchilla-optimal approach. Despite its small size, it demonstrates surprisingly strong reasoning and conversational abilities. Ideal for research, resource-constrained environments, and as a baseline for fine-tuning experiments."
+badges:
+  - verified
+  - baseline
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 0.7
+  recommended_backend: "llama.cpp"
 tags:
   - lightweight
   - research

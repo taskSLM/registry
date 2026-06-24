@@ -1,0 +1,2 @@
+[console_scripts]
+slm = slm_registry.cli:main

@@ -1,0 +1,12 @@
+LICENSE
+README.md
+pyproject.toml
+slm_registry/__init__.py
+slm_registry/cli.py
+slm_registry/registry.py
+slm_registry.egg-info/PKG-INFO
+slm_registry.egg-info/SOURCES.txt
+slm_registry.egg-info/dependency_links.txt
+slm_registry.egg-info/entry_points.txt
+slm_registry.egg-info/requires.txt
+slm_registry.egg-info/top_level.txt

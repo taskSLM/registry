@@ -1,11 +1,27 @@
 name: "Gemma 3 4B IT"
 developer: "Google DeepMind"
 parameters: "4.0B"
+param_count_m: 4000
 primary_task: "Multimodal Reasoning & Code Generation"
 context_window: "128K tokens"
 license: "Apache 2.0"
+family: "gemma"
+generation: 3
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/google/gemma-3-4b-it"
 description: "A powerful 4B parameter multimodal instruction-tuned model from Google DeepMind supporting both text and image inputs. Achieves strong results on HumanEval (71.3%) and GSM8K (89.2%). Excels at code generation, math reasoning, and general chat tasks with the efficiency needed for edge deployment."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: false
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 2.5
+  recommended_backend: "llama.cpp"
 tags:
   - multimodal
   - code-generation

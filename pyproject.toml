@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slm-registry"
+version = "0.1.0"
+description = "CLI for the SLM World Registry — the world's largest registry of Small Language Models under 8B parameters"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "SLM World Contributors"}
+]
+keywords = [
+    "slm", "small-language-model", "llm", "nlp",
+    "registry", "cli", "huggingface", "machine-learning"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pyyaml>=6.0", "pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/taskSLM/registry"
+Documentation = "https://github.com/taskSLM/registry/blob/main/README.md"
+Repository = "https://github.com/taskSLM/registry"
+Issues = "https://github.com/taskSLM/registry/issues"
+
+[project.scripts]
+slm = "slm_registry.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["slm_registry*"]

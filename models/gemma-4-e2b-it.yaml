@@ -1,11 +1,28 @@
 name: "Gemma 4 E2B IT"
 developer: "Google DeepMind"
 parameters: "2.3B effective (5.1B total)"
+param_count_m: 2300
+param_total_m: 5100
 primary_task: "Multimodal Edge AI"
 context_window: "128K tokens"
 license: "Apache 2.0"
+family: "gemma"
+generation: 4
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/google/gemma-4-e2b-it"
 description: "Google DeepMind's most advanced sub-3B model supporting text, image, audio, and video inputs. Features Per-Layer Embeddings and hybrid attention architecture enabling it to run in under 1.5GB of memory. Purpose-built for on-device, mobile, and IoT deployment while maintaining strong multimodal reasoning capabilities."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.5
+  recommended_backend: "mediapipe"  # Google on-device stack
 tags:
   - multimodal
   - on-device

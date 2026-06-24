@@ -1,11 +1,28 @@
 name: "Qwen3.5-4B"
 developer: "Alibaba"
 parameters: "4.0B"
+param_count_m: 4000
 primary_task: "General Reasoning & Instruction Following"
 context_window: "256K tokens (extendable to 1M+)"
 license: "Apache 2.0"
+family: "qwen"
+generation: 3.5
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/Qwen/Qwen3.5-4B"
 description: "A state-of-the-art 4B parameter model with thinking/reasoning mode toggle, supporting 100+ languages. Features strong instruction following, long-document processing, and competitive performance across diverse benchmarks. Ideal for general-purpose deployment where quality and efficiency must be balanced."
+badges:
+  - verified
+  - community-pick
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 2.5
+  recommended_backend: "llama.cpp"
 tags:
   - reasoning
   - multilingual

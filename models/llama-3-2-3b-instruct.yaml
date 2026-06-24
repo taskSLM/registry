@@ -1,11 +1,27 @@
 name: "Llama 3.2 3B Instruct"
 developer: "Meta"
 parameters: "3.0B"
+param_count_m: 3000
 primary_task: "Agentic Tool Calling & Structured Output"
 context_window: "128K tokens"
 license: "Llama 3.2 Community License"
+family: "llama"
+generation: 3.2
+predecessor: null
+successor: null
 huggingface_url: "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct"
 description: "Meta's widely-adopted 3B parameter instruction-tuned model with over 2.18M+ HuggingFace downloads. Features strong tool calling capabilities, structured JSON output, and a massive community ecosystem. Optimized for agentic pipelines, mobile apps, and community-supported projects. The Llama Community License permits most commercial use."
+badges:
+  - verified
+hardware_compat:
+  raspberry_pi_5: true
+  mobile_phone: true
+  consumer_gpu_8gb: true
+  consumer_gpu_24gb: true
+  cpu_only: true
+  apple_silicon_16gb: true
+  min_ram_gb_q4: 1.8
+  recommended_backend: "llama.cpp"
 tags:
   - tool-calling
   - agentic
