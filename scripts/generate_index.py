@@ -136,6 +136,28 @@ def build_task_graph(tasks: dict) -> list[dict]:
     return {"nodes": nodes, "edges": edges}
 
 
+def load_benchmarks() -> list[dict]:
+    """Load and enrich benchmark entries from benchmarks.yaml."""
+    bench_path = ROOT / "benchmarks" / "benchmarks.yaml"
+    if not bench_path.exists():
+        return []
+    with open(bench_path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    entries = data.get("entries", []) if data else []
+
+    # Enrich with model names and task display names for frontend rendering
+    models = load_yaml_files("models")
+    tasks = load_yaml_files("tasks")
+    for e in entries:
+        model_ref = e.get("model", "").replace("models/", "").replace(".yaml", "")
+        task_ref = e.get("task", "").replace("tasks/", "").replace(".yaml", "")
+        if model_ref in models:
+            e["_model_name"] = models[model_ref].get("name", model_ref)
+        if task_ref in tasks:
+            e["_task_name"] = tasks[task_ref].get("display_name", task_ref)
+    return entries
+
+
 def generate_index(pretty: bool = True) -> dict:
     """Build the complete registry index."""
     models = load_yaml_files("models")
@@ -154,6 +176,7 @@ def generate_index(pretty: bool = True) -> dict:
                 "models": len(models),
                 "datasets": len(datasets),
                 "tasks": len(tasks),
+                "benchmarks": 0,  # populated below
             }
         },
         "models": {},
@@ -165,7 +188,12 @@ def generate_index(pretty: bool = True) -> dict:
             "param_size_buckets": build_param_size_buckets(models),
         },
         "task_graph": build_task_graph(tasks),
+        "benchmarks": [],
     }
+
+    # Load benchmarks
+    index["benchmarks"] = load_benchmarks()
+    index["meta"]["counts"]["benchmarks"] = len(index["benchmarks"])
 
     # Add models with their task connections
     for key, model in models.items():

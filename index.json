@@ -2,12 +2,13 @@
   "meta": {
     "name": "SLM World Registry",
     "description": "The world's largest registry of Small Language Models under 8B parameters",
-    "generated_at": "2026-06-24T19:59:40.140329+00:00",
+    "generated_at": "2026-06-24T20:30:57.421350+00:00",
     "version": "1.0.0",
     "counts": {
       "models": 27,
       "datasets": 21,
-      "tasks": 15
+      "tasks": 15,
+      "benchmarks": 7
     }
   },
   "models": {
@@ -2904,5 +2905,91 @@
         "relationship": "parent"
       }
     ]
-  }
+  },
+  "benchmarks": [
+    {
+      "model": "models/phi-3-mini.yaml",
+      "task": "tasks/text-to-sql.yaml",
+      "metric": "Execution Accuracy",
+      "score": 72.4,
+      "dataset": "datasets/spider.yaml",
+      "notes": "Base model without SQL-specific fine-tuning. Zero-shot evaluation.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Phi-3-mini-4k-instruct",
+      "_task_name": "Text-to-SQL Generation"
+    },
+    {
+      "model": "models/gemma-3-4b-it.yaml",
+      "task": "tasks/code-generation.yaml",
+      "metric": "HumanEval Score",
+      "score": 71.3,
+      "dataset": null,
+      "notes": "As reported by Google DeepMind in the Gemma 3 technical report.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Gemma 3 4B IT",
+      "_task_name": "Code Generation"
+    },
+    {
+      "model": "models/gemma-3-4b-it.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 89.2,
+      "dataset": null,
+      "notes": "8-shot evaluation as reported by Google DeepMind.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Gemma 3 4B IT",
+      "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/phi-4-mini-instruct.yaml",
+      "task": "tasks/math-reasoning.yaml",
+      "metric": "GSM8K Accuracy",
+      "score": 88.6,
+      "dataset": null,
+      "notes": "As reported by Microsoft in the Phi-4 technical report.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Phi-4-mini-instruct",
+      "_task_name": "Math Reasoning"
+    },
+    {
+      "model": "models/phi-4-mini-instruct.yaml",
+      "task": "tasks/knowledge-qa.yaml",
+      "metric": "ARC-C",
+      "score": 83.7,
+      "dataset": null,
+      "notes": "AI2 Reasoning Challenge — Challenging set. As reported by Microsoft.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Phi-4-mini-instruct",
+      "_task_name": "Knowledge-Based Question Answering"
+    },
+    {
+      "model": "models/phi-3-mini.yaml",
+      "task": "tasks/knowledge-qa.yaml",
+      "metric": "ARC-C",
+      "score": 69.5,
+      "dataset": null,
+      "notes": "Baseline score for the seed model.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Phi-3-mini-4k-instruct",
+      "_task_name": "Knowledge-Based Question Answering"
+    },
+    {
+      "model": "models/llama-3-2-3b-instruct.yaml",
+      "task": "tasks/instruction-following.yaml",
+      "metric": "IFEval Score",
+      "score": 78.6,
+      "dataset": null,
+      "notes": "Instruction-following evaluation. As reported by Meta.",
+      "submitted_by": "@anckursingh",
+      "verified": false,
+      "_model_name": "Llama 3.2 3B Instruct",
+      "_task_name": "Instruction Following"
+    }
+  ]
 }

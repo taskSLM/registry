@@ -322,10 +322,54 @@ function renderDatasets(data) {
 }
 
 function renderBenchmarks(data) {
-  // Benchmarks are loaded from benchmarks/benchmarks.yaml separately
-  return `<p style="color:var(--dim)">Benchmark leaderboard data is in <code>benchmarks/benchmarks.yaml</code>.
-    Run <code>slm leaderboard</code> via the CLI, or view the file on
-    <a href="https://github.com/taskSLM/registry/blob/main/benchmarks/benchmarks.yaml">GitHub</a>.</p>`;
+  const entries = data.benchmarks || [];
+  if (!entries.length) {
+    return `<p style="color:var(--dim)">No benchmark entries yet. Submit via <code>benchmarks/benchmarks.yaml</code>.</p>`;
+  }
+
+  // Group by task
+  const byTask = {};
+  entries.forEach(e => {
+    const taskName = e._task_name || e.task || 'Unknown';
+    if (!byTask[taskName]) byTask[taskName] = [];
+    byTask[taskName].push(e);
+  });
+
+  let html = '';
+  for (const [taskName, taskEntries] of Object.entries(byTask)) {
+    // Sort by score descending
+    taskEntries.sort((a, b) => (b.score || 0) - (a.score || 0));
+
+    html += `<div class="task-node">`;
+    html += `<h3>${taskName}</h3>`;
+    html += `<div style="overflow-x:auto"><table>`;
+    html += `<thead><tr><th>Rank</th><th>Model</th><th>Metric</th><th>Score</th><th>Verified</th><th>Notes</th></tr></thead><tbody>`;
+
+    taskEntries.forEach((e, i) => {
+      const modelName = e._model_name || e.model || '?';
+      const metric = e.metric || '?';
+      const score = e.score != null ? e.score : '?';
+      const verified = e.verified ? '<span class="hw-yes">YES</span>' : '<span class="hw-no">~</span>';
+      const notes = (e.notes || '').slice(0, 80);
+      const rank = i === 0 ? '<strong>1st</strong>' : `${i+1}th`;
+      html += `<tr>
+        <td>${rank}</td>
+        <td><strong>${modelName}</strong></td>
+        <td>${metric}</td>
+        <td><strong>${score}</strong></td>
+        <td>${verified}</td>
+        <td style="font-size:12px;color:var(--dim)">${notes}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div></div>`;
+  }
+
+  html += `<p style="color:var(--dim);margin-top:16px;font-size:13px">
+    Submit benchmarks via <a href="https://github.com/taskSLM/registry/blob/main/benchmarks/benchmarks.yaml">benchmarks/benchmarks.yaml</a>.
+    Run <code>slm leaderboard</code> in the CLI for terminal view.</p>`;
+
+  return html;
 }
 
 function switchTab(tab) {
