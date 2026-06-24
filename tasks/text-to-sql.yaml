@@ -1,0 +1,9 @@
+task_id: "text-to-sql"
+display_name: "Text-to-SQL Generation"
+description: "The process of translating natural language questions or instructions into valid, executable SQL queries based on a given database schema."
+input_format: "Plain text question + SQL CREATE TABLE schema definitions"
+output_format: "Executable SQL query string"
+recommended_eval_dataset: "datasets/sql-create-context.yaml"
+metrics_tracked:
+  - Execution Accuracy
+  - Exact String Match
