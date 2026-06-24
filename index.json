@@ -2,7 +2,7 @@
   "meta": {
     "name": "SLM World Registry",
     "description": "The world's largest registry of Small Language Models under 8B parameters",
-    "generated_at": "2026-06-24T20:31:19.859874+00:00",
+    "generated_at": "2026-06-24T20:33:42.334870+00:00",
     "version": "1.0.0",
     "counts": {
       "models": 27,
@@ -715,6 +715,7 @@
       "_file": "models/qwen2-5-7b-instruct.yaml",
       "_connected_tasks": [
         "code-generation",
+        "machine-translation",
         "math-reasoning",
         "text-to-sql"
       ]
@@ -1327,7 +1328,9 @@
         "large-scale"
       ],
       "_file": "datasets/opus-100.yaml",
-      "_connected_tasks": []
+      "_connected_tasks": [
+        "machine-translation"
+      ]
     },
     "self-oss-instruct-sc2": {
       "name": "self-oss-instruct-sc2-exec-filter-50k",
@@ -1864,7 +1867,7 @@
           "notes": "100+ languages, state-of-the-art multilingual translation at 4B."
         },
         {
-          "ref": "models/qwen2.5-7b-instruct.yaml",
+          "ref": "models/qwen2-5-7b-instruct.yaml",
           "notes": "29+ languages with strong cross-lingual understanding."
         },
         {
@@ -1874,7 +1877,7 @@
       ],
       "recommended_datasets": [
         {
-          "ref": "datasets/opus100.yaml",
+          "ref": "datasets/opus-100.yaml",
           "purpose": "fine-tuning"
         }
       ],
@@ -2248,6 +2251,10 @@
           "notes": "Exceptional code generation across multiple languages at 7.6B."
         },
         {
+          "task": "machine-translation",
+          "notes": "29+ languages with strong cross-lingual understanding."
+        },
+        {
           "task": "math-reasoning",
           "notes": "Strong mathematical reasoning with long-context for complex proofs."
         },
@@ -2489,15 +2496,6 @@
       ],
       "datasets": []
     },
-    "qwen2.5-7b-instruct": {
-      "models": [
-        {
-          "task": "machine-translation",
-          "notes": "29+ languages with strong cross-lingual understanding."
-        }
-      ],
-      "datasets": []
-    },
     "phi-3.5-mini-instruct": {
       "models": [
         {
@@ -2511,7 +2509,7 @@
       ],
       "datasets": []
     },
-    "opus100": {
+    "opus-100": {
       "models": [],
       "datasets": [
         {

@@ -101,6 +101,9 @@ KNOWN_TAGS = {
     "tool-use", "open-science", "rag", "code",
     # Data processing
     "instruction-tuning", "programming", "general-purpose",
+    # Additional data/source tags
+    "human-generated", "human-feedback", "competition-math",
+    "reading-comprehension", "execution-verified",
 }
 
 

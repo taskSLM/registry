@@ -12,12 +12,12 @@ metrics_tracked:
 recommended_models:
 - ref: models/qwen3-5-4b.yaml
   notes: 100+ languages, state-of-the-art multilingual translation at 4B.
-- ref: models/qwen2.5-7b-instruct.yaml
+- ref: models/qwen2-5-7b-instruct.yaml
   notes: 29+ languages with strong cross-lingual understanding.
 - ref: models/phi-3.5-mini-instruct.yaml
   notes: Significantly improved multilingual over Phi-3-mini, MIT licensed.
 recommended_datasets:
-- ref: datasets/opus100.yaml
+- ref: datasets/opus-100.yaml
   purpose: fine-tuning
 related_tasks:
 - task_id: instruction-following
