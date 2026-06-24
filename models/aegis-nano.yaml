@@ -9,7 +9,7 @@ family: "aegis"
 generation: 1
 predecessor: null
 successor: null
-huggingface_url: "https://github.com/anckursingh/anamoly-detection-slm"
+huggingface_url: "https://huggingface.co/anckursingh/aegis-nano"
 description: "A 6.3M-parameter transformer SLM purpose-built for detecting autonomous agent (bot) behavior vs human behavior from telemetry sequences. Trained via knowledge distillation from Llama 3.1 70B with behavioral tokenization encoding event types, inter-event timing, and jitter patterns into a 1024-token vocabulary. The smallest model in the SLM World registry — INT8 quantized footprint is just 6.5 MB, making it deployable on microcontrollers and edge devices. Detects three threat models: slow-burn agent fraud, agent hijacking via prompt injection, and synthetic biometric patterns. Also supports transfer learning for financial fraud detection."
 badges:
   - verified
