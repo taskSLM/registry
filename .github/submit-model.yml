@@ -1,0 +1,74 @@
+name: "Auto-Generate Model from Issue Submission"
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    # This ensures the action ONLY runs when someone submits our exact "Model Submission" form
+    if: contains(github.event.issue.labels.*.name, 'model-submission')
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse Issue Form Responses
+        id: parse
+        uses: edumserrano/github-issue-forms-parser@v1
+        with:
+          template-filepath: '.github/ISSUE_TEMPLATE/submit-model.yml'
+          issue-form-body: '${{ github.event.issue.body }}'
+
+      - name: Generate YAML file from form data
+        run: |
+          # Convert the parser's JSON string into real variables using jq
+          JSON_DATA='${{ steps.parse.outputs.parsed-issue-body }}'
+          
+          MODEL_NAME=$(echo "$JSON_DATA" | jq -r '."model_name"')
+          PARAM_SIZE=$(echo "$JSON_DATA" | jq -r '."parameter_size"')
+          PRIMARY_TASK=$(echo "$JSON_DATA" | jq -r '."primary_task"')
+          HF_URL=$(echo "$JSON_DATA" | jq -r '."hf_url"')
+          DESCRIPTION=$(echo "$JSON_DATA" | jq -r '."description"')
+          
+          # Create a safe file name (e.g., "phi-3-mini" from "Phi 3 Mini")
+          SAFE_FILE_NAME=$(echo "$MODEL_NAME" | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]_-' | tr ' ' '-')
+          
+          # Write the data into a brand new YAML file inside the /models directory
+          cat <<EOF > "models/${SAFE_FILE_NAME}.yaml"
+          name: "${MODEL_NAME}"
+          parameters: "${PARAM_SIZE}"
+          primary_task: "${PRIMARY_TASK}"
+          huggingface_url: "${HF_URL}"
+          description: "${DESCRIPTION}"
+          submitted_by: "@${{ github.event.issue.user.login }}"
+          EOF
+          
+          # Pass the variables downstream to use in the PR title
+          echo "safe_name=${SAFE_FILE_NAME}" >> $GITHUB_ENV
+          echo "model_name=${MODEL_NAME}" >> $GITHUB_ENV
+
+      - name: Open a Pull Request automatically
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "add: community model submission ${{ env.model_name }}"
+          title: "🚀 Add Model: ${{ env.model_name }}"
+          body: |
+            This is an automated PR generated from Issue #${{ github.event.issue.number }}.
+            Submitted by: @${{ github.event.issue.user.login }}
+            
+            Please review the generated data inside `models/${{ env.safe_name }}.yaml`.
+          branch: "submit/${{ env.safe_name }}"
+          base: "main"
+
+      - name: Comment on the original Issue
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "🚀 Awesome! A Pull Request has been automatically generated to review your submission. You can track its progress here: [View Pull Request](https://github.com/taskSLM/registry/pulls)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
