@@ -107,6 +107,11 @@ const BADGE_LABELS = {
   'fully-open': 'Fully Open'
 };
 
+let currentData = null;
+let currentTab = 'models';
+let modelFilter = '';
+let modelSort = 'params_desc';
+
 async function load() {
   try {
     // Try local first, then fall back to GitHub raw
@@ -160,7 +165,7 @@ function renderStats(data) {
     </div>`;
 }
 
-function renderModelTable(data, filter = '', sortBy = 'params_desc') {
+function getFilteredModels(data, filter, sortBy) {
   let models = Object.entries(data.models || {}).map(([k, m]) => ({key: k, ...m}));
   const f = filter.toLowerCase();
 
@@ -174,13 +179,16 @@ function renderModelTable(data, filter = '', sortBy = 'params_desc') {
     );
   }
 
-  // Sort
   if (sortBy === 'params_asc') models.sort((a,b) => (a.param_count_m || 9999) - (b.param_count_m || 9999));
   else if (sortBy === 'params_desc') models.sort((a,b) => (b.param_count_m || 0) - (a.param_count_m || 0));
   else if (sortBy === 'name') models.sort((a,b) => (a.name||'').localeCompare(b.name||''));
   else if (sortBy === 'developer') models.sort((a,b) => (a.developer||'').localeCompare(b.developer||''));
 
-  let rows = models.map(m => {
+  return models;
+}
+
+function renderModelRows(models) {
+  return models.map(m => {
     const hw = m.hardware_compat || {};
     return `
     <tr>
@@ -196,26 +204,47 @@ function renderModelTable(data, filter = '', sortBy = 'params_desc') {
       <td style="font-size:11px;max-width:200px">${renderTags(m.tags)}</td>
     </tr>`;
   }).join('');
+}
 
+function renderModelTab(data, filter, sortBy) {
+  const models = getFilteredModels(data, filter, sortBy);
   return `
     <div class="search-bar">
-      <input type="text" id="modelSearch" placeholder="Search by name, developer, task, or tag..." value="${escapeHtml(filter)}" oninput="switchTab('models', document.getElementById('modelSearch').value, document.getElementById('modelSort').value)">
-      <select id="modelSort" onchange="switchTab('models', document.getElementById('modelSearch').value, this.value)">
+      <input type="text" id="modelSearch" placeholder="Search by name, developer, task, or tag..." value="${escapeHtml(filter)}" oninput="filterModels()" onkeyup="filterModels()">
+      <select id="modelSort" onchange="filterModels()">
         <option value="params_desc" ${sortBy==='params_desc'?'selected':''}>Size: Largest first</option>
         <option value="params_asc" ${sortBy==='params_asc'?'selected':''}>Size: Smallest first</option>
         <option value="name" ${sortBy==='name'?'selected':''}>Name: A-Z</option>
         <option value="developer" ${sortBy==='developer'?'selected':''}>Developer: A-Z</option>
       </select>
     </div>
-    <p style="color:var(--dim);margin-bottom:8px">${models.length} model(s)</p>
+    <p style="color:var(--dim);margin-bottom:8px" id="modelCount">${models.length} model(s)</p>
     <div style="overflow-x:auto">
     <table>
       <thead><tr>
         <th>Model</th><th>Developer</th><th>Params</th><th>Best For</th><th>License</th><th>RPi5 / Mobile / GPU8</th><th>Tags</th>
       </tr></thead>
-      <tbody>${rows}</tbody>
+      <tbody id="modelTableBody">${renderModelRows(models)}</tbody>
     </table>
     </div>`;
+}
+
+function filterModels() {
+  // Read current values from DOM (input persists now!)
+  const searchEl = document.getElementById('modelSearch');
+  const sortEl = document.getElementById('modelSort');
+  if (!searchEl || !sortEl) return;
+
+  modelFilter = searchEl.value;
+  modelSort = sortEl.value;
+
+  const models = getFilteredModels(currentData, modelFilter, modelSort);
+
+  // Update only the table body and count — input is NOT re-rendered
+  const tbody = document.getElementById('modelTableBody');
+  const count = document.getElementById('modelCount');
+  if (tbody) tbody.innerHTML = renderModelRows(models);
+  if (count) count.textContent = models.length + ' model(s)';
 }
 
 function renderHardwareMatrix(data) {
@@ -299,19 +328,17 @@ function renderBenchmarks(data) {
     <a href="https://github.com/taskSLM/registry/blob/main/benchmarks/benchmarks.yaml">GitHub</a>.</p>`;
 }
 
-let currentTab = 'models';
-let currentData = null;
-
-function switchTab(tab, filterVal, sortVal) {
+function switchTab(tab) {
   currentTab = tab;
+  modelFilter = '';
+  modelSort = 'params_desc';
+
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
 
   const content = document.getElementById('tab-content');
-  const filter = filterVal || '';
-  const sort = sortVal || 'params_desc';
 
-  if (tab === 'models') content.innerHTML = renderModelTable(currentData, filter, sort);
+  if (tab === 'models') content.innerHTML = renderModelTab(currentData, '', 'params_desc');
   else if (tab === 'hardware') content.innerHTML = renderHardwareMatrix(currentData);
   else if (tab === 'tasks') content.innerHTML = renderTasks(currentData);
   else if (tab === 'datasets') content.innerHTML = renderDatasets(currentData);
@@ -334,7 +361,7 @@ function render(data) {
       <div class="tab" id="tab-datasets" onclick="switchTab('datasets')">Datasets</div>
       <div class="tab" id="tab-benchmarks" onclick="switchTab('benchmarks')">Benchmarks</div>
     </div>
-    <div id="tab-content">${renderModelTable(data)}</div>
+    <div id="tab-content">${renderModelTab(data, '', 'params_desc')}</div>
   `;
 }
 
