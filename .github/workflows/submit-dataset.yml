@@ -1,0 +1,81 @@
+name: "Auto-Generate Dataset from Issue Submission"
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'dataset-submission')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse Issue Form Responses
+        id: parse
+        uses: edumserrano/github-issue-forms-parser@v1
+        with:
+          template-filepath: '.github/ISSUE_TEMPLATE/submit-dataset.yml'
+          issue-form-body: '${{ github.event.issue.body }}'
+
+      - name: Generate YAML file from form data
+        run: |
+          JSON_DATA='${{ steps.parse.outputs.parsed-issue-body }}'
+
+          DATASET_NAME=$(echo "$JSON_DATA" | jq -r '."dataset_name"')
+          CREATOR=$(echo "$JSON_DATA" | jq -r '."creator"')
+          SIZE_ROWS=$(echo "$JSON_DATA" | jq -r '."size_rows"')
+          TARGET_TASK=$(echo "$JSON_DATA" | jq -r '."target_task"')
+          LICENSE=$(echo "$JSON_DATA" | jq -r '."license"')
+          HF_URL=$(echo "$JSON_DATA" | jq -r '."hf_url"')
+          DESCRIPTION=$(echo "$JSON_DATA" | jq -r '."description"')
+          TAGS_RAW=$(echo "$JSON_DATA" | jq -r '."tags" // ""')
+
+          SAFE_FILE_NAME=$(echo "$DATASET_NAME" | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]_-' | tr ' ' '-')
+
+          cat <<EOF > "datasets/${SAFE_FILE_NAME}.yaml"
+          name: "${DATASET_NAME}"
+          creator: "${CREATOR}"
+          size_rows: "${SIZE_ROWS}"
+          target_task: "${TARGET_TASK}"
+          license: "${LICENSE}"
+          huggingface_url: "${HF_URL}"
+          description: "${DESCRIPTION}"
+          submitted_by: "@${{ github.event.issue.user.login }}"
+          EOF
+
+          if [ -n "$TAGS_RAW" ]; then
+            echo "tags:" >> "datasets/${SAFE_FILE_NAME}.yaml"
+            echo "$TAGS_RAW" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
+              [ -n "$tag" ] && echo "  - ${tag}" >> "datasets/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
+          echo "safe_name=${SAFE_FILE_NAME}" >> $GITHUB_ENV
+          echo "dataset_name=${DATASET_NAME}" >> $GITHUB_ENV
+
+      - name: Open a Pull Request automatically
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "add: community dataset submission ${{ env.dataset_name }}"
+          title: "📊 Add Dataset: ${{ env.dataset_name }}"
+          body: |
+            This is an automated PR generated from Issue #${{ github.event.issue.number }}.
+            Submitted by: @${{ github.event.issue.user.login }}
+
+            Please review the generated data inside `datasets/${{ env.safe_name }}.yaml`.
+          branch: "submit-dataset/${{ env.safe_name }}"
+          base: "main"
+
+      - name: Comment on the original Issue
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "📊 Awesome! A Pull Request has been automatically generated to review your dataset submission. Track it here: [View Pull Request](https://github.com/taskSLM/registry/pulls)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

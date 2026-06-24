@@ -1,0 +1,105 @@
+name: "🎯 Submit a Task Definition"
+description: Add a standardized task definition to connect models and datasets.
+title: "[Task Submission]: "
+labels: ["task-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Define a new task for the SLM Registry!
+        Tasks are the connecting hub — they define *what* problems SLMs solve, and link to the best models and datasets for each problem.
+
+  - type: input
+    id: task_id
+    attributes:
+      label: "Task ID"
+      placeholder: "e.g., text-summarization, medical-ner"
+      description: "URL-safe unique ID: lowercase, hyphens only, no spaces."
+    validations:
+      required: true
+
+  - type: input
+    id: display_name
+    attributes:
+      label: "Display Name"
+      placeholder: "e.g., Text Summarization"
+    validations:
+      required: true
+
+  - type: input
+    id: domain
+    attributes:
+      label: "Domain"
+      placeholder: "e.g., Natural Language Processing, Software Engineering, Mathematics"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Task Description"
+      placeholder: "Describe what this task involves, what capabilities it tests, and why it matters for SLMs."
+    validations:
+      required: true
+
+  - type: input
+    id: input_format
+    attributes:
+      label: "Input Format"
+      placeholder: "e.g., Natural language question + context passage"
+    validations:
+      required: true
+
+  - type: input
+    id: output_format
+    attributes:
+      label: "Output Format"
+      placeholder: "e.g., Concise answer span from the context"
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: "Metrics Tracked"
+      placeholder: "- Metric 1 (e.g., ROUGE-L)\n- Metric 2 (e.g., BERTScore)\n- Metric 3 (e.g., Human Eval Win Rate)"
+      description: "List the standard evaluation metrics for this task, one per line."
+    validations:
+      required: true
+
+  - type: input
+    id: recommended_models
+    attributes:
+      label: "Recommended Models"
+      placeholder: "e.g., models/qwen2-5-7b-instruct.yaml, models/gemma-3-4b-it.yaml"
+      description: "Comma-separated paths to model YAML files known to perform well on this task."
+    validations:
+      required: false
+
+  - type: input
+    id: recommended_datasets
+    attributes:
+      label: "Recommended Datasets"
+      placeholder: "e.g., datasets/cnn-dailymail.yaml, datasets/xsum.yaml"
+      description: "Comma-separated paths to dataset YAML files for this task."
+    validations:
+      required: false
+
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      placeholder: "e.g., summarization, nlp, generation"
+      description: "Comma-separated list of tags."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: "Eligibility Check"
+      options:
+        - label: "This is a well-defined, narrow task with measurable success criteria."
+          required: true
+        - label: "The task is relevant to Small Language Models (under 8B parameters)."
+          required: true

@@ -1,0 +1,107 @@
+name: "Auto-Generate Task from Issue Submission"
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, 'task-submission')
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Parse Issue Form Responses
+        id: parse
+        uses: edumserrano/github-issue-forms-parser@v1
+        with:
+          template-filepath: '.github/ISSUE_TEMPLATE/submit-task.yml'
+          issue-form-body: '${{ github.event.issue.body }}'
+
+      - name: Generate YAML file from form data
+        run: |
+          JSON_DATA='${{ steps.parse.outputs.parsed-issue-body }}'
+
+          TASK_ID=$(echo "$JSON_DATA" | jq -r '."task_id"')
+          DISPLAY_NAME=$(echo "$JSON_DATA" | jq -r '."display_name"')
+          DOMAIN=$(echo "$JSON_DATA" | jq -r '."domain"')
+          DESCRIPTION=$(echo "$JSON_DATA" | jq -r '."description"')
+          INPUT_FORMAT=$(echo "$JSON_DATA" | jq -r '."input_format"')
+          OUTPUT_FORMAT=$(echo "$JSON_DATA" | jq -r '."output_format"')
+          METRICS_RAW=$(echo "$JSON_DATA" | jq -r '."metrics" // ""')
+          MODELS_RAW=$(echo "$JSON_DATA" | jq -r '."recommended_models" // ""')
+          DATASETS_RAW=$(echo "$JSON_DATA" | jq -r '."recommended_datasets" // ""')
+          TAGS_RAW=$(echo "$JSON_DATA" | jq -r '."tags" // ""')
+
+          SAFE_FILE_NAME=$(echo "$TASK_ID" | tr '[:upper:]' '[:lower:]' | tr -cd '[:alnum:]_-' | tr ' ' '-')
+
+          cat <<EOF > "tasks/${SAFE_FILE_NAME}.yaml"
+          task_id: "${TASK_ID}"
+          display_name: "${DISPLAY_NAME}"
+          domain: "${DOMAIN}"
+          description: "${DESCRIPTION}"
+          input_format: "${INPUT_FORMAT}"
+          output_format: "${OUTPUT_FORMAT}"
+          submitted_by: "@${{ github.event.issue.user.login }}"
+          EOF
+
+          # Append metrics as YAML list
+          if [ -n "$METRICS_RAW" ]; then
+            echo "metrics_tracked:" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            echo "$METRICS_RAW" | sed 's/^[[:space:]]*[-*][[:space:]]*//' | while read -r metric; do
+              [ -n "$metric" ] && echo "  - ${metric}" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
+          # Append recommended models
+          if [ -n "$MODELS_RAW" ]; then
+            echo "recommended_models:" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            echo "$MODELS_RAW" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r ref; do
+              [ -n "$ref" ] && echo "  - ref: \"${ref}\"" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
+          # Append recommended datasets
+          if [ -n "$DATASETS_RAW" ]; then
+            echo "recommended_datasets:" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            echo "$DATASETS_RAW" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r ref; do
+              [ -n "$ref" ] && echo "  - ref: \"${ref}\"" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
+          # Append tags
+          if [ -n "$TAGS_RAW" ]; then
+            echo "tags:" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            echo "$TAGS_RAW" | tr ',' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | while read -r tag; do
+              [ -n "$tag" ] && echo "  - ${tag}" >> "tasks/${SAFE_FILE_NAME}.yaml"
+            done
+          fi
+
+          echo "safe_name=${SAFE_FILE_NAME}" >> $GITHUB_ENV
+          echo "task_id=${TASK_ID}" >> $GITHUB_ENV
+
+      - name: Open a Pull Request automatically
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "add: community task submission ${{ env.task_id }}"
+          title: "🎯 Add Task: ${{ env.task_id }}"
+          body: |
+            This is an automated PR generated from Issue #${{ github.event.issue.number }}.
+            Submitted by: @${{ github.event.issue.user.login }}
+
+            Please review the generated data inside `tasks/${{ env.safe_name }}.yaml`.
+          branch: "submit-task/${{ env.safe_name }}"
+          base: "main"
+
+      - name: Comment on the original Issue
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body "🎯 Awesome! A Pull Request has been automatically generated to review your task submission. Track it here: [View Pull Request](https://github.com/taskSLM/registry/pulls)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

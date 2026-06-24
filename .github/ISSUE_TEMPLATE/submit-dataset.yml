@@ -1,0 +1,92 @@
+name: "📊 Submit a Dataset"
+description: Add a task-specific dataset to the registry.
+title: "[Dataset Submission]: "
+labels: ["dataset-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for contributing a dataset to the SLM Registry!
+        Datasets must be publicly accessible and under a permissive license (MIT, Apache 2.0, CC-BY, CC-BY-SA, CC0, etc.).
+
+  - type: input
+    id: dataset_name
+    attributes:
+      label: "Dataset Name"
+      placeholder: "e.g., OpenMathInstruct-2"
+    validations:
+      required: true
+
+  - type: input
+    id: creator
+    attributes:
+      label: "Creator / Organization"
+      placeholder: "e.g., NVIDIA, HuggingFaceTB, ise-uiuc"
+    validations:
+      required: true
+
+  - type: input
+    id: size_rows
+    attributes:
+      label: "Size (rows / examples)"
+      placeholder: "e.g., 14,000,000"
+    validations:
+      required: true
+
+  - type: input
+    id: target_task
+    attributes:
+      label: "Target Task"
+      placeholder: "e.g., Math Reasoning, Code Generation, Text-to-SQL"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: license
+    attributes:
+      label: "Dataset License"
+      options:
+        - "MIT"
+        - "Apache 2.0"
+        - "CC-BY-4.0"
+        - "CC-BY-SA-4.0"
+        - "CC0"
+        - "ODC-BY"
+        - "Other (specify in description)"
+    validations:
+      required: true
+
+  - type: input
+    id: hf_url
+    attributes:
+      label: "Hugging Face or Download URL"
+      placeholder: "https://huggingface.co/datasets/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Dataset Description"
+      placeholder: "Describe what the dataset contains, how it was created, its intended use, and what makes it valuable for SLM fine-tuning or evaluation."
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: "Tags"
+      placeholder: "e.g., math-reasoning, fine-tuning, synthetic-data, chain-of-thought"
+      description: "Comma-separated list of tags. See TAGS.md for standard tags."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: "Eligibility Check"
+      options:
+        - label: "The dataset is publicly accessible for download."
+          required: true
+        - label: "The dataset is under a permissive license (MIT, Apache 2.0, CC-BY, CC-BY-SA, CC0, or equivalent)."
+          required: true

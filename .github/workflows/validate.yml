@@ -1,0 +1,48 @@
+name: "Validate Registry"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'models/**'
+      - 'datasets/**'
+      - 'tasks/**'
+      - 'scripts/validate.py'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'models/**'
+      - 'datasets/**'
+      - 'tasks/**'
+      - 'scripts/validate.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate YAML syntax and required fields
+        run: python scripts/validate.py
+
+      - name: Validate cross-references
+        run: python scripts/validate.py --check-refs
+
+      - name: Validate tags (strict)
+        run: python scripts/validate.py --strict
+
+      - name: Check HuggingFace URLs
+        run: python scripts/validate.py --check-urls
+        continue-on-error: true  # Network flakiness shouldn't block PRs

@@ -1,0 +1,46 @@
+name: "Auto-Generate Registry Index"
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'models/**'
+      - 'datasets/**'
+      - 'tasks/**'
+      - 'scripts/generate_index.py'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Generate index.json
+        run: python scripts/generate_index.py
+
+      - name: Commit and push index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Only commit if index.json changed
+          if git diff --quiet index.json; then
+            echo "No changes to index.json — skipping commit."
+          else
+            git add index.json
+            git commit -m "chore: auto-generate index.json [skip ci]"
+            git push
+            echo "✅ index.json updated and pushed."
+          fi
